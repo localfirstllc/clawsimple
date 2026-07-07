@@ -4,13 +4,6 @@ export const siteConfig = {
   domain: 'clawsimple.com',
   description: 'Managed OpenClaw and Hermes Agent hosting for Telegram bots with platform AI, managed search, and private servers.',
   
-  product: {
-    name: 'OpenClaw',
-    url: 'https://openclaw.ai',
-    domain: 'openclaw.ai',
-    repoUrl: 'https://github.com/openclaw/openclaw',
-  },
-
   company: {
     name: 'ClawSimple',
     address: 'USA', 
@@ -24,7 +17,7 @@ export const siteConfig = {
 
   links: {
     twitter: 'https://x.com/clawsimpleapp',
-    github: 'https://github.com/jinzheio/clawsimple',
+    github: 'https://github.com/localfirstllc/clawsimple',
     discord: 'https://discord.gg/3UbQJF7EaG',
     trustpilot: 'https://www.trustpilot.com/review/clawsimple.com',
   },

@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductHuntEmbed } from "@/components/home/product-hunt-embed";
+import { siteConfig } from "@/config/site";
 import { trackUmami, markSignupStarted } from "@/lib/analytics/umami";
 
 const fadeUp = {
@@ -103,25 +104,48 @@ export function Hero({
             variants={fadeUp}
             className="flex flex-col items-center gap-4 lg:items-start"
           >
-            <Button
-              size="lg"
-              className="group rounded-full px-8 transition hover:brightness-105"
-              asChild
-            >
-              <Link
-                href={`/${locale}#deploy`}
-                onClick={() => {
-                  markSignupStarted("cta");
-                  trackUmami("CTA Clicked", {
-                    cta_location: "hero",
-                    destination: "deploy_widget",
-                  });
-                }}
+            <div className="flex flex-col items-center gap-3 sm:flex-row">
+              <Button
+                size="lg"
+                className="group rounded-full px-8 transition hover:brightness-105"
+                asChild
               >
-                {t("cta")}
-                <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
+                <Link
+                  href={`/${locale}#deploy`}
+                  onClick={() => {
+                    markSignupStarted("cta");
+                    trackUmami("CTA Clicked", {
+                      cta_location: "hero",
+                      destination: "deploy_widget",
+                    });
+                  }}
+                >
+                  {t("cta")}
+                  <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-full border-border bg-background/70 px-6"
+                asChild
+              >
+                <a
+                  href={siteConfig.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    trackUmami("CTA Clicked", {
+                      cta_location: "hero",
+                      destination: "github",
+                    });
+                  }}
+                >
+                  <Github className="size-4" aria-hidden="true" />
+                  {t("githubCta")}
+                </a>
+              </Button>
+            </div>
             <div className="flex items-center gap-2">
               <span className="inline-flex max-w-[22rem] items-center rounded-full border border-primary/20 bg-primary/5 px-2.5 py-0.5 text-center text-[10px] font-medium leading-snug text-primary sm:max-w-none">
                 {t("noCreditCard")}

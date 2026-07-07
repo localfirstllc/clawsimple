@@ -35,6 +35,7 @@
       "description": "不用配伺服器，不用敲命令行。我們裝好 OpenClaw 或 Hermes Agent，接好 AI，讓你的機器人在獨立伺服器上持續運行。",
       "trustLine": "獨立伺服器 • 3 分鐘部署",
       "cta": "啟動我的機器人",
+      "githubCta": "查看 GitHub",
       "noCreditCard": "註冊無需信用卡，部署前需添加支付方式",
       "productHuntLabel": "已登上 Product Hunt",
       "secondaryCta": "查看方案",
@@ -126,8 +127,8 @@
           "description": "在同一台伺服器上新增多個 Telegram 機器人，不額外收訂閱費。"
         },
         "yourStack": {
-          "title": "你的棧，你的密鑰",
-          "description": "開源運行環境。你的憑證只留在你的伺服器上。"
+          "title": "開源",
+          "description": "ClawSimple 倉庫已公開。部署前可以先看代碼。"
         }
       }
     },

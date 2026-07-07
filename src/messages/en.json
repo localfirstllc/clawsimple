@@ -34,6 +34,7 @@
       "title": "Your Telegram AI bot, running in 3 minutes",
       "description": "No server setup. No terminal commands. We install OpenClaw or Hermes Agent, connect the AI, and keep your bot running on a private server.",
       "cta": "Start my bot",
+      "githubCta": "View GitHub",
       "noCreditCard": "No card needed to sign up. Payment method required before deployment.",
       "trustLine": "Private server • 3-minute setup",
       "productHuntLabel": "Featured on Product Hunt",
@@ -126,8 +127,8 @@
           "description": "Add extra Telegram bots to the same server at no extra subscription cost."
         },
         "yourStack": {
-          "title": "Your stack, your keys",
-          "description": "Open-source runtimes. Your credentials stay on your server."
+          "title": "Open source",
+          "description": "The ClawSimple repo is public. Review the code before you deploy."
         }
       }
     },

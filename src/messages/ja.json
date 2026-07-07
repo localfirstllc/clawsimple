@@ -35,6 +35,7 @@
       "description": "サーバー設定も、ターミナル操作も不要。OpenClaw または Hermes Agent をインストールし、AI を接続して、専用サーバー上でボットを継続的に稼働させます。",
       "trustLine": "専用サーバー • 3分でセットアップ",
       "cta": "ボットを始める",
+      "githubCta": "GitHub を見る",
       "noCreditCard": "登録にカードは不要です。デプロイ前に支払い方法が必要です。",
       "productHuntLabel": "Product Hunt 掲載中",
       "secondaryCta": "プランを見る",
@@ -126,8 +127,8 @@
           "description": "同じサーバーに複数の Telegram ボットを追加しても、追加のサブスクリプション料金はかかりません。"
         },
         "yourStack": {
-          "title": "あなたのスタック、あなたの鍵",
-          "description": "オープンソースの実行環境。認証情報はあなたのサーバーにのみ保存されます。"
+          "title": "オープンソース",
+          "description": "ClawSimple のリポジトリは公開されています。デプロイ前にコードを確認できます。"
         }
       }
     },
