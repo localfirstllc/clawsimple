@@ -1,0 +1,1 @@
+ALTER TABLE "server_pool" ADD COLUMN "bootstrapped_at" timestamp;

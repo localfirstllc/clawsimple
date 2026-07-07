@@ -1,0 +1,25 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="hermes-teal" x1="308" y1="172" x2="716" y2="854" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F5C62"/>
+      <stop offset="1" stop-color="#183437"/>
+    </linearGradient>
+    <linearGradient id="hermes-bronze" x1="242" y1="244" x2="804" y2="804" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0B072"/>
+      <stop offset="0.55" stop-color="#B86A2A"/>
+      <stop offset="1" stop-color="#7B4723"/>
+    </linearGradient>
+  </defs>
+  <circle cx="512" cy="512" r="348" stroke="url(#hermes-teal)" stroke-width="26" opacity="0.24"/>
+  <circle cx="512" cy="512" r="396" stroke="url(#hermes-bronze)" stroke-width="18" stroke-linecap="round" stroke-dasharray="106 42 186 74"/>
+  <path d="M322 278C322 247.072 347.072 222 378 222C408.928 222 434 247.072 434 278V458H590V278C590 247.072 615.072 222 646 222C676.928 222 702 247.072 702 278V746C702 776.928 676.928 802 646 802C615.072 802 590 776.928 590 746V562H434V746C434 776.928 408.928 802 378 802C347.072 802 322 776.928 322 746V278Z" fill="url(#hermes-teal)"/>
+  <path d="M222 344L434 300" stroke="url(#hermes-bronze)" stroke-width="38" stroke-linecap="round"/>
+  <path d="M214 428L434 392" stroke="url(#hermes-bronze)" stroke-width="30" stroke-linecap="round" opacity="0.95"/>
+  <path d="M248 514L434 474" stroke="url(#hermes-bronze)" stroke-width="24" stroke-linecap="round" opacity="0.88"/>
+  <path d="M590 300L802 344" stroke="url(#hermes-bronze)" stroke-width="38" stroke-linecap="round"/>
+  <path d="M590 392L810 428" stroke="url(#hermes-bronze)" stroke-width="30" stroke-linecap="round" opacity="0.95"/>
+  <path d="M590 474L776 514" stroke="url(#hermes-bronze)" stroke-width="24" stroke-linecap="round" opacity="0.88"/>
+  <circle cx="770" cy="258" r="38" fill="#F6F0E7" stroke="url(#hermes-bronze)" stroke-width="18"/>
+  <path d="M734 734C765.379 698.471 794.785 657.782 821.04 611.709" stroke="url(#hermes-teal)" stroke-width="22" stroke-linecap="round"/>
+  <path d="M289 411C338.344 337.426 424.549 289 522 289" stroke="url(#hermes-teal)" stroke-width="18" stroke-linecap="round" opacity="0.45"/>
+</svg>

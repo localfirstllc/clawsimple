@@ -1,0 +1,25 @@
+---
+title: Switching Models in OpenClaw
+date: 2026-02-10
+description: A quick guide on how to switch between different AI models using the /models command.
+image: /images/blog/switching-models.png
+---
+
+Thanks to [ClawSimple's managed deployment](/) (which configures three optional models), OpenClaw allows you to switch between different AI models on the fly directly in your Telegram bot.
+
+![Switching Models](/images/blog/switching-models.png)
+
+### How to Switch
+
+1.  **Open your bot** in Telegram.
+2.  Type the command `/models` and hit send.
+3.  You will see a list of available providers:
+    *   **Models (clawsimple)**: These are the managed models included in your standard/max plan.
+4.  Select a **Provider** to view its models.
+5.  Click on any **Model Name** (e.g., `anthropic/claude-sonnet-4.5`) to switch to it immediately.
+
+Your bot will confirm the switch, and all subsequent messages will be processed by the new model.
+
+> **Update (March 2026)**: The `/models` command now supports **BYOM (Bring Your Own Model)**! 
+>
+> You can now switch models on the fly even if you use your own API key. In the past, you needed to redeploy your bot with new model details, but now it's all handled dynamically.

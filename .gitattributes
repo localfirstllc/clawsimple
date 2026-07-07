@@ -1,0 +1,17 @@
+# Git archive export-ignore
+
+.gitignore export-ignore
+.github/ export-ignore
+.next/ export-ignore
+.source/ export-ignore
+.wrangler/ export-ignore
+coverage/ export-ignore
+playwright-report/ export-ignore
+test-results/ export-ignore
+.playwright-auth/ export-ignore
+.env export-ignore
+.env.* export-ignore
+secrets.json export-ignore
+tmp/ export-ignore
+logs/ export-ignore
+*.tsbuildinfo export-ignore

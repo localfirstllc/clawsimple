@@ -1,0 +1,1 @@
+ALTER TABLE "workflow_catalog_items" ADD COLUMN "required_integrations_json" json DEFAULT '[]'::json NOT NULL;

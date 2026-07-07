@@ -1,0 +1,2 @@
+ALTER TYPE "public"."deployment_skill_install_status" ADD VALUE 'needs_dependency' BEFORE 'failed';--> statement-breakpoint
+ALTER TYPE "public"."deployment_skill_install_status" ADD VALUE 'unsupported_on_host' BEFORE 'failed';

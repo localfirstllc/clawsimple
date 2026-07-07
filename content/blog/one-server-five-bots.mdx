@@ -1,0 +1,106 @@
+---
+title: "I Run 5 Telegram Bots on One Subscription — Here's Why You Should Too"
+description: "One server seat, five independent AI bots: a personal assistant, a work research bot, a family Q&A bot, a content-generation agent, and a customer-support bot for my side project. Here's the full setup and what changed after switching."
+date: 2026-02-22
+---
+
+Last month someone in the r/selfhosted thread asked a question I'd been ignoring for a while:
+
+> "If you're already paying for an OpenClaw server, why are you only running one bot on it?"
+
+I had no good answer. I was running exactly one bot—my personal assistant—and paying for three separate subscriptions to cover a few other use cases. When I finally consolidated everything onto a single seat using OpenClaw's multi-agent feature, I saved money, time, and a lot of mental overhead. Here's what I actually set up and why each one earns its place.
+
+> **Note:** If you invite your bot to a Telegram group and it isn't responding, you need to disable its Group Privacy. For detailed instructions, see our guide: [How to Enable Your Bot in Telegram Group Chats](/blog/how-to-enable-group-chat).
+
+---
+
+### Why This Wasn't Obvious to Me Before
+
+When I first deployed OpenClaw via [ClawSimple](https://clawsimple.com), I treated it like a single-tenant piece of software. One bot, one Telegram token, one purpose. That's how most people start—and it's fine for getting your feet wet.
+
+But OpenClaw's gateway is built around **agent-level routing**: each agent gets its own isolated workspace, its own Telegram token, and its own AI model. A single instance can run a fleet of them. The only reason I wasn't doing this from day one is that I hadn't read far enough into the docs.
+
+The community figured this out fast. By early Feb. 2026, r/OpenClaw and r/LocalLLaMA threads are full of setups where one self-hosted instance handles three to eight distinct bots. The pattern is so common that ClawSimple now lets you add extra agents directly from the dashboard—no SSH required.
+
+---
+
+### My Five-Agent Setup
+
+#### Agent 1: The Personal Assistant (`@xxx_assistant_bot`)
+This is the original. It has Claude as its model, access to a dedicated calendar, emails, weather, and a Notion integration. Every morning at 7:11 it sends me a briefing. Every night at 21:00 it formats a diary entry. This is the one I'd never give up.
+
+**Model:** Anthropic Claude (via BYOM)  
+**Memory:** Persistent across all sessions  
+**Key skills:** Calendar, Gmail, Web Search, Notion
+
+#### Agent 2: The Work Research Drone (`@xxx_research_bot`)
+I work in product management. I have a second Telegram account on my work phone dedicated purely to research tasks: competitive analysis, summarizing papers, drafting spec sections. This agent uses a different model tuned for longer-context reasoning, runs on the same server, and shares **zero memory** with my personal assistant.
+
+Keeping it separate was intentional. I don't want my PM research agent to know anything about my morning routine. Clean separation is the whole point.
+
+**Model:** OpenAI GPT-5.2  
+**Memory:** Per-workspace, project-scoped  
+**Key skills:** Web Search, PDF summarizer, GitHub
+
+#### Agent 3: The Family Q&A Bot (`@family_helper_bot`)
+My parents and spouse are in a Telegram group. I set up a third bot that they can ask anything—recipes, medication names, translation between Chinese and English, quick math. It's deliberately limited: no browsing beyond safe topics, no memory across sessions (privacy), and a very friendly system prompt.
+
+The model here is Google Gemini—fast and cheap for this kind of light, high-frequency use. Because it shares the same server as my other bots, there's no extra cost beyond the API calls. My family doesn't even know it's OpenClaw underneath; they just see a helpful bot that replies instantly.
+
+**Model:** Google Gemini 3 Pro (via BYOM)  
+**Memory:** None (fresh each session)  
+**Key skills:** Translation, Web Search (restricted)
+
+#### Agent 4: The Content Pipeline (`@content_agent_bot`)
+I write a newsletter. This agent manages the pipeline: it monitors a list of RSS feeds, summarizes the two or three most interesting items each week, drafts an outline, and sends it to a private Telegram chat with me for review. I message back edits in plain text, and it reformats and prepares the final draft.
+
+What surprised me is how much cleaner this workflow became once the agent had **its own identity**. Because it has dedicated memory and doesn't share context with my personal assistant, it never confuses my newsletter drafts with my personal diary entries. The agent boundaries are doing real work here.
+
+**Model:** Claude (same as personal assistant—shared BYOM key)  
+**Memory:** Newsletter-scoped, retained across weeks  
+**Key skills:** RSS, Web Search, Telegram scheduler
+
+#### Agent 5: Customer Support for My Side Project (`@support_bot`)
+I run a small Telegram community around a side project. This agent handles tier-1 support: FAQ answers, installation help, bug triage into a Notion database. When it can't answer, it tags a thread for me to review later.
+
+This one alone would have cost me a separate subscription if I'd kept my old setup. Now it costs exactly the additional API calls it makes—nothing else.
+
+**Model:** GPT-5.2  
+**Memory:** Per-user, resets weekly  
+**Key skills:** FAQ lookup, Notion, Telegram topic routing
+
+---
+
+### What Actually Changed
+
+**Cost:** I went from three separate ClawSimple subscriptions down to one. The API cost difference from running more models is real but much smaller than another monthly seat fee.
+
+**Reliability:** When I need to Relaunch the server—which I do after major OpenClaw updates—all five agents come back automatically. ClawSimple walks through each agent's config, restores them in order, and notifies me when they're live. Before multi-agent, I had to manually redo each deployment one by one.
+
+**Mental overhead:** Separate Telegram bots with distinct names and personalities means I always know which one I'm talking to and what it can do. There's no ambiguity. My personal assistant doesn't accidentally answer a customer-support question because it literally can't see those messages.
+
+**Visibility:** From the ClawSimple dashboard I can see all five agents under a single subscription card, check their status, and add or remove them without touching a config file.
+
+---
+
+### What I'd Do Differently
+
+If I were starting fresh today, I'd plan the agent topology upfront. I wasted a few weeks with my personal assistant trying to be everything—research, family Q&A, and personal tasks. Splitting them out earlier would have saved a lot of prompt-engineering headache.
+
+I'd also pick models by task type from the start rather than defaulting to the same model everywhere. Gemini Flash for the family bot (fast, cheap, good enough), Claude for anything that needs reasoning chains, GPT-5.2 for long-form content work. The BYOM plan on ClawSimple makes this trivial because you just provide each agent's API key once and it's done.
+
+---
+
+### Getting Started
+
+If you already have a ClawSimple subscription, you can add your second agent from the Profile page: open Deployment Details, hit **Add Agent**, and fill in a new Telegram bot token and model. That's it. The new agent appears in your agent table, shares the server, and has its own isolated workspace.
+
+If you're starting fresh, deploy one bot first to get comfortable, then add agents as your use cases grow. You don't need to architect the whole fleet on day one.
+
+The main thing the r/OpenClaw community taught me: **your server seat is underutilized if it's only running one bot**. The infrastructure is already there. The agents are cheap to add. The only constraint is what you actually need a bot to do.
+
+I went from one to five in about two hours. I haven't looked back.
+
+---
+
+*Using [ClawSimple](https://clawsimple.com) to manage OpenClaw deployments. All agents in this post run on a single BYOM seat with individual provider keys.*

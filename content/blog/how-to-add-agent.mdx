@@ -1,0 +1,39 @@
+---
+title: How to Add an Agent After Successful Deployment
+description: Learn how to manage and add more AI agents seamlessly to your OpenClaw server from your Profile page once your initial deployment is up and running.
+date: 2026-02-23
+image: /images/blog/add-agent-button.png
+---
+
+After deploying your first OpenClaw server with [ClawSimple](/), you might find yourself wanting to run multiple independent bots for different purposes. The good news is, **you can effortlessly attach more Agents to the same active server without paying extra server fees or dealing with complex setup procedures**.
+
+Below is a quick, visual guide to show you how to add a new Agent from your Dashboard.
+
+## Step 1: Navigate to Your Profile Console
+
+Log in to the ClawSimple console and head over to your **Profile > Overview** page. Here you'll find all the details of your active deployments (Active Plans).
+
+Locate the server card where you want to host your new Agent, and look for the **"+ Add Agent"** button.
+
+![Add Agent button on profile](/images/blog/add-agent-button.png)
+
+## Step 2: Configure Your New Agent
+
+Clicking the "+ Add Agent" button will bring up a configuration modal. Here, you only need to provide the essential information for the new bot.
+
+Since this new Agent is attached to your existing deployment, it inherits some common settings (like access restrictions), but you will need to specify:
+
+1. **Telegram Bot Token**: The API token of your brand new bot obtained from Telegram's `@BotFather`.
+2. **AI Model**: Select the specific AI model you want this particular bot to use from the dropdown menu (yes, different bots on the same server can run different models!).
+3. **Allowed User ID** (Optional/Defaulted): Typically, this defaults to your main account ID. You may specify another Telegram User ID if you are setting this up for someone else.
+
+![Filling in the Agent setup](/images/blog/add-agent-modal.png)
+
+## Step 3: Wait for It to Connect
+
+Once everything looks correct, hit the **"Add agent"** button to submit. ClawSimple's backend will automatically push your new configuration to the running server.
+
+Your newly added bot will be marked as "Active" shortly. As soon as that happens, you can start messaging your new assistant directly on Telegram.
+
+**Scale Your AI Workforce Anytime:** 
+Thanks to our efficient underlying architecture, a single server can comfortably host up to 10 independent bots as long as you stay within request limits. Give it a try and deploy your next specialized AI assistant right away!

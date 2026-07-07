@@ -1,0 +1,34 @@
+---
+title: How to Enable Your Bot in Telegram Group Chats
+description: A simple guide on how to invite your OpenClaw bot to group chats and why your AI tokens are perfectly safe.
+date: 2026-02-23
+---
+
+By default, new Telegram bots are created with "Group Privacy" enabled. This prevents them from reading most messages in group chats, which means your OpenClaw bot might not respond when you invite it to a group.
+
+To unleash your AI assistant in your family or work group chats, you need to turn off this privacy setting. Don't worry—it's very easy to do, and your AI quota is completely safe! Here is the step-by-step guide.
+
+## How to Disable Group Privacy
+
+You can change this setting by talking to Telegram's official **@BotFather**, and it takes less than a minute.
+
+1. **Open @BotFather**: Search for `@BotFather` in Telegram (look for the blue verified checkmark) and send the message `/setprivacy`.
+2. **Select Your Bot**: A list of your bots will appear at the bottom. Tap the username of the bot you want to add to a group.
+3. **Disable Privacy**: BotFather will tell you the current status (it usually says `ENABLED`). Tap the **Disable** button.
+4. **Success**: You should see a message saying `Success! The new status is: DISABLED`.
+
+That's it! Now, when you invite your bot to a Telegram group chat, it will be able to read messages and participate in the conversation.
+
+## Why Your AI Tokens Are Safe
+
+You might be thinking: *"If I add my bot to a massive group, won't strangers talking in the group drain all my API tokens and AI Quota?"*
+
+**The absolute answer is: No.**
+
+Your OpenClaw server comes with a robust **Group Policy** built right in. Here's how it protects you:
+
+- **Strict Allowlist**: Your bot is programmed to completely ignore everyone except you (and any other "Allowed User IDs" you configured in [ClawSimple](/)).
+- **Invisible to Strangers**: If a stranger in the group tries to chat with the bot, the bot simply drops the message. It never processes it and never sends it to the AI model, costing you exactly **$0.00**.
+- **Seamless Interaction**: Thanks to our latest updates, when *you* (the boss) speak in the group, the bot will recognize you and reply intelligently—you don't even need to type an `@` mention!
+
+So go ahead, safely add your personal AI assistant to your group chats with friends, family, or colleagues. You have total control over who gets to use it!

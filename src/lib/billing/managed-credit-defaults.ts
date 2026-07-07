@@ -1,0 +1,5 @@
+import { PRICING } from "@/data/pricing";
+
+export const DEFAULT_INCLUDED_MANAGED_CREDITS_STANDARD_USD =
+  PRICING.STANDARD.aiCredits;
+export const DEFAULT_INCLUDED_MANAGED_CREDITS_MAX_USD = PRICING.MAX.aiCredits;

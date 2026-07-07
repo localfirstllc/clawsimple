@@ -1,0 +1,25 @@
+---
+title: 在 OpenClaw 中切換模型
+date: 2026-02-10
+description: 快速指南：如何使用 /models 命令在不同的 AI 模型之間切換。
+image: /images/blog/switching-models.png
+---
+
+得益於 [ClawSimple](/) 的託管部署方式（配置了三個可選模型），OpenClaw 允許您直接在 Telegram 機器人中隨時切換不同的 AI 模型。
+
+![切換模型](/images/blog/switching-models.png)
+
+### 如何切換
+
+1.  在 Telegram 中**打開您的機器人**。
+2.  輸入 `/models` 命令並發送。
+3.  您將看到可用提供商的列表：
+    *   **Models (clawsimple)**：這些是包含在標準/Max 方案中的託管模型。
+4.  選擇一個**提供商**以查看其模型。
+5.  點擊任何**模型名稱**（例如 `anthropic/claude-sonnet-4.5`）以立即切換。
+
+您的機器人將確認切換，隨後的所有消息都將由新模型處理。
+
+> **[2026年3月 更新]**：`/models` 命令現在已經支持 **BYOM (自帶模型)** 用戶！
+>
+> 即便您自帶 API Key，現在也可以隨時在 Telegram 中動態切換模型了。過去您需要重新部署機器人才能切換，現在一切都在聊天中自動完成。

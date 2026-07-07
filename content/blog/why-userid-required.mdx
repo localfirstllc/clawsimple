@@ -1,0 +1,49 @@
+---
+title: Why Do You Need to Enter UserId When Deploying OpenClaw?
+description: Understanding the security importance of UserId in protecting your AI assistant from unauthorized access.
+date: 2026-02-09
+---
+
+## In Simple Terms
+
+When you deploy an OpenClaw Telegram bot, you'll be asked to enter a UserId (user identifier). This is to **protect your AI assistant from being used by strangers**. Just like a lock on your door, UserId ensures that only people you authorize can interact with your AI assistant.
+
+## Background: Security Threats Facing OpenClaw
+
+In recent days, security researchers have discovered a concerning fact: **over 30,000 OpenClaw instances are exposed on the internet globally**, many of which are misconfigured and vulnerable to exploitation by hackers.
+
+Even worse, in the OpenClaw skills marketplace, **approximately 7.1% of skills (283 out of 3,984) have serious security issues**, with some even being malware disguised as legitimate tools.
+
+## Real Risks: What Happens Without Access Control?
+
+### Scenario 1: Strangers Controlling Your AI Assistant
+If your OpenClaw doesn't have UserId restrictions, anyone can:
+- Send commands to your AI assistant
+- Make it execute commands and access files
+- Steal API keys and sensitive information stored in your configuration files
+
+### Scenario 2: Attacks Hidden in Web Pages
+Hackers can embed malicious instructions in ordinary web pages or WhatsApp messages. When your AI assistant processes this content, it might:
+- Execute unauthorized commands
+- Download malware
+- Leak your personal data
+
+**This is like someone using your keys to open your home without your knowledge.**
+
+## How Does UserId Protect You?
+
+### 1. **Authentication First**
+OpenClaw officially emphasizes the principle of "**identity over intelligence**". This means:
+- Before the AI assistant performs any action, it first confirms "who is this person"
+- Only the UserId you specify can interact with the AI assistant
+- Requests from strangers are automatically rejected
+
+### 2. **Whitelist Mechanism**
+By setting a UserId, you create an "allow list":
+- ✅ People on the list: can use the AI assistant
+- ❌ People not on the list: completely unable to access
+
+### 3. **Preventing Prompt Injection Attacks**
+Even if hackers embed malicious instructions in web pages, if their identity is not on your UserId whitelist, these instructions will not be executed.
+
+By using OpenClaw through a one-click deployment service like [ClawSimple](/), you not only use a dedicated server (instead of your personal computer full of personal information), but also protect your AI assistant from being used by strangers through UserId.

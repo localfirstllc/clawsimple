@@ -1,0 +1,104 @@
+---
+title: "What's New in OpenClaw: QA Lab, Memory Wiki, Media Generation, and More"
+description: "OpenClaw's April releases (v2026.4.1–v2026.4.8) shipped QA Lab, Memory Wiki with belief-layer digests, a full media generation pipeline, six new model providers, and a wave of gateway improvements."
+date: 2026-05-18
+image: /images/blog/switching-models.png
+---
+
+The last batch of public OpenClaw releases landed in early April — [`2026.4.1`](https://github.com/openclaw/openclaw/releases/tag/v2026.4.1) through [`2026.4.8`](https://github.com/openclaw/openclaw/releases/tag/v2026.4.8) — and they packed in a lot. Since our [early April check-in](/blog/openclaw-updates-early-april-2026), the feature density has only gone up.
+
+Here's what landed.
+
+---
+
+## QA Lab: A Full Interactive Testing Suite
+
+The biggest single addition this cycle is QA Lab — a complete testing and evaluation framework for agent behavior:
+
+- **Live suite runner** with a **Slack-like chat UI** and light/dark mode
+- **One-command Docker launcher** for isolated test environments
+- **Repo-backed scenario runner** that executes real-world workflows against your agent
+- **Frontier harness bakeoff loop** for comparing model performance side by side
+- **Attachment understanding scenarios** for testing multimodal agent behavior
+
+If you've ever wondered whether your agent actually handles edge cases the way you expect, QA Lab gives you a systematic way to find out — without spamming your real chat channels.
+
+---
+
+## Memory Wiki: Belief Layers, Digests, and Health Reports
+
+OpenClaw's memory system got a significant architectural upgrade:
+
+- **Belief-layer digests** let the agent compile and reconcile what it "knows" over time
+- **Health reports** surface memory quality and coverage at a glance
+- **Compiled digest prompts** improve retrieval relevance without bloating the context window
+- **REM preview and safe promotion replay** make it safer to review and commit memory changes
+
+The practical effect: agents that keep getting more useful the longer you use them, instead of gradually losing track of what they've learned.
+
+---
+
+## Media Generation Pipeline: Video, Music, and Comfy Workflows
+
+Media capabilities expanded dramatically:
+
+- **Runway video generation** provider, with detached async task tracking
+- **Music generation tooling** for creative and audio workflows
+- **Comfy workflow support** for custom image generation pipelines
+- **Vydra media provider** for additional generation options
+- **Explicit media provider capabilities** so the agent knows which provider can handle which request
+
+Video and music generation tasks now run as tracked background jobs — the agent fires them off and reports back when they're done, rather than blocking the conversation.
+
+---
+
+## Six New Model Providers and Better Model Detection
+
+The model catalog kept growing:
+
+- **Arcee AI** — new provider plugin with OpenRouter support and onboarding instructions
+- **Gemma 4** — Google's latest, with cross-provider resolution so you don't need to specify which provider hosts it
+- **Bedrock IAM credential auth** via `@aws/bedrock-token` for AWS-native setups
+- **Bedrock embedding provider** for memory search over Amazon's infrastructure
+- **Bedrock Guardrails** for content safety policies
+- **Ollama vision detection** — automatically detects vision capability from `/api/show`, so local models with vision just work without manual config
+
+---
+
+## Search, Inference, and Gateway Improvements
+
+On the tooling side:
+
+- **SearXNG** joins the bundled web search providers, giving you a self-hostable, privacy-respecting search backend
+- **Infer CLI** — a first-class `infer` command for running inference workflows directly from the terminal
+- **Compaction checkpoints** with a pluggable provider registry, making long-running sessions more memory-efficient
+- **Configurable chat history** — set your own max chars limit in the gateway
+- **Chat-native task board** for tracking agent tasks inline
+- **Prompt cache runtime context** exposed to context engines for faster, cheaper repeated inference
+
+---
+
+## Agent Controls and Desktop Improvements
+
+- **Prompt override and heartbeat controls** per agent — fine-tune behavior without editing config files
+- **Global default provider params** (`agents.defaults.params`) so all agents inherit consistent model settings
+- **macOS Voice Wake** can now trigger Talk Mode, making hands-free conversation more fluid
+- **iOS gateway** shows clearer connection error messages instead of silent failures
+- **Cron `--tools` flag** for per-job tool allow-lists — schedule a research job with web search but no shell access, for example
+- **GitHub App helper** (`gh-read`) for agent-assisted code review workflows
+
+---
+
+## ClawSimple Platform Updates
+
+On the managed side, the past month brought several improvements to how [ClawSimple](/) runs OpenClaw:
+
+- **Automated release check rollback** — if a new OpenClaw version fails validation, your deployment automatically rolls back to the last known-good version instead of staying broken
+- **Deployment health monitoring** — continuous SSH-based health probes catch issues before you notice them
+- **Disk pressure reporting** — the platform now warns and auto-cleans when disk space runs critically low
+- **Diagram workflow skills** — new built-in skills for flowcharts and tech diagrams, with SVG previews in the inspiration UI
+- **Support inbox cron gate** — the support AI only activates when there's actually new mail to process, keeping things efficient
+
+---
+
+As always, ClawSimple-managed agents get these updates automatically. If you want the latest right now, head to your Profile and hit **Relaunch**.

@@ -1,0 +1,124 @@
+---
+title: "What's New in Hermes Agent: Kanban, Curator, Grok OAuth, and a Dramatically Lighter Install"
+description: "Hermes Agent shipped four major releases in four weeks — v0.11 through v0.14 — delivering multi-agent task boards, autonomous skill curation, xAI Grok with a 1M context window, and a debloating wave that makes installs faster and lighter."
+date: 2026-05-18
+---
+
+The pace of Hermes Agent development over the past month has been extraordinary. Four numbered releases — [v0.11](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.4.23) (Interface), [v0.12](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.4.30) (Curator), [v0.13](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.5.7) (Tenacity), and [v0.14](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.5.16) (Foundation) — landed between late April and mid-May, totaling over 3,900 commits, 2,500 merged PRs, and more than 500 issues closed.
+
+Here are the features you'll actually feel.
+
+---
+
+## Multi-Agent Kanban: Delegate to an AI Team
+
+v0.13 shipped one of the most requested capabilities: a durable multi-agent Kanban board.
+
+- Spin up a board, drop tasks on it, and let multiple Hermes workers pick them up, hand off, and close them out
+- Heartbeats, zombie detection, and retry budgets keep the team honest — if a worker goes silent, another claims the task
+- Hallucination gates and auto-block on incomplete exit prevent garbage from landing in your "done" column
+- One install, many kanbans — run separate boards for different projects
+
+Combined with `/goal` (v0.13), which locks the agent onto a target across turns via the Ralph loop, Hermes is now far less likely to drift off-task mid-session.
+
+---
+
+## Autonomous Curator: Your Agent Maintains Itself
+
+v0.12 introduced `hermes curator` — a background agent that runs on the gateway's cron ticker and maintains your skill library on its own schedule:
+
+- **Grades skills** by quality and usage
+- **Consolidates** related skills into fewer, better ones
+- **Prunes dead skills** that haven't been used
+- **Writes per-run reports** so you can review what changed
+- Defense-in-depth gates protect bundled and hub skills from mutation
+- `hermes curator status` ranks skills by usage — most-used to least-used
+
+The self-improvement loop (the core mechanism Hermes uses to decide what to remember after each turn) also got a major upgrade in v0.12: rubric-based scoring replaces free-form evaluation, the fork prefers the skill the agent just loaded, and live runtime credentials propagate correctly so the loop has access to the same tools the agent does.
+
+---
+
+## xAI Grok via SuperGrok OAuth — 1M Context Window
+
+v0.14 brought Grok into Hermes as a first-class provider. If you pay for SuperGrok, you can now use Grok inside Hermes by signing in with your xAI account — no API key, no separate billing.
+
+- **grok-4.3 gets a 1M token context window** — drop whole codebases or research corpora into a single prompt
+- OAuth flow handles entitlement errors gracefully
+- SSH-to-tunnel docs for completing OAuth when signed into a remote box
+
+---
+
+## OpenAI-Compatible Local Proxy: One Subscription, Every Tool
+
+Also in v0.14: `hermes proxy` starts a local HTTP endpoint that speaks the OpenAI API but is backed by whichever OAuth provider you're signed into — Claude Pro, ChatGPT Pro, SuperGrok.
+
+The practical upshot: Codex CLI, Aider, Cline, Continue, and any custom script that expects an OpenAI-compatible endpoint now works with your existing subscriptions. No API keys required.
+
+---
+
+## Debloating Wave: Lighter, Faster Installs
+
+v0.14 made Hermes dramatically lighter:
+
+- **Heavy backends now lazy-install on first use** — messaging adapter SDKs, image-gen SDKs, and TTS providers are no longer pulled down at install time unless you actually use them
+- **`pip install hermes-agent` works from PyPI** — a clean install no longer drags in every optional dependency
+- **Tiered install** falls back gracefully when a wheel rejects on your platform
+- **Cold start shaved by ~19 seconds** — on top of the ~57% TUI cold-start cut from v0.12
+- **Browser CDP calls are 180x faster** — automation feels instant instead of laggy
+- **Cross-session 1-hour Claude prompt caching** — repeated inference is cheaper and faster
+
+---
+
+## Video, Voice, and Media Tools
+
+- **`video_analyze`** (v0.13) — native video understanding on Gemini and compatible multimodal models. The agent can now watch and describe what's in a video
+- **`video_generate`** (v0.14) — unified pluggable video generation pipeline
+- **xAI Custom Voices** (v0.13) — voice cloning TTS provider
+- **ComfyUI v5 + TouchDesigner-MCP** (v0.12) — moved from optional to built-in by default
+
+---
+
+## New Inference Providers
+
+Nine new inference paths landed across the four releases:
+
+- **xAI Grok via SuperGrok OAuth** (v0.14)
+- **GPT-5.5 via Codex OAuth** (v0.11) — live model discovery in the model picker
+- **Native AWS Bedrock** (v0.11) — Converse API on a new pluggable transport layer
+- **NVIDIA NIM** (v0.11)
+- **Arcee AI** (v0.11)
+- **Google Gemini CLI OAuth** (v0.11) + native AI Studio API routing
+- **Vercel ai-gateway** (v0.11) — with pricing and dynamic discovery
+- **OpenRouter Pareto Code router** (v0.14)
+- **Providers as a pluggable surface** (v0.13) — add custom providers without touching core
+
+---
+
+## Developer Experience
+
+- **New Ink-based TUI** (v0.11) — full React/Ink rewrite of the interactive CLI with a Python JSON-RPC backend. Sticky composer, live streaming, status bar with per-turn stopwatch and git branch
+- **LSP semantic diagnostics on every write** (v0.14) — real-time code feedback in supported editors
+- **`computer_use` for non-Anthropic providers** (v0.14) — the cua-driver backend now works beyond Claude
+- **Clickable URLs in any terminal** (v0.14)
+- **Native Windows beta** (v0.14)
+- **Zed ACP Registry via `uvx`** (v0.14)
+- **`huggingface/skills` as a trusted default tap** (v0.14) — community skills discoverable out of the box
+
+---
+
+## Reliability and Security
+
+- **Checkpoints v2** (v0.13) — rewritten state persistence with real pruning, so long-running sessions don't bloat
+- **Gateway auto-resume** (v0.13) — sessions interrupted by restart pick up where they left off
+- **Redaction ON by default** (v0.13) — 8 P0 security fixes closed in one release
+- **Telegram native button UI for `clarify`** (v0.14) — the agent can now ask you clarifying questions with tappable buttons instead of text walls
+
+---
+
+## Internationalization
+
+Hermes v0.13 shipped static gateway and CLI translations for 7 locales: **Chinese, Japanese, German, Spanish, French, Ukrainian, and Turkish**. The docs site also gained a Chinese (zh-Hans) locale.
+
+---
+
+If you want to try the latest Hermes Agent without managing your own server, [ClawSimple](/) now offers one-click Hermes deploys with runtime switching between OpenClaw and Hermes from your Profile page.

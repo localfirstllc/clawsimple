@@ -1,0 +1,1 @@
+DROP TABLE "managed_search_crawl_usage_seat_daily" CASCADE;

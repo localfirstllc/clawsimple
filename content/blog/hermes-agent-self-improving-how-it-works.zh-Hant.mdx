@@ -1,0 +1,73 @@
+---
+title: "Hermes Agent 的自我進化是怎麼運轉的，以及你怎麼用它"
+description: "每約 15 次工具調用，Hermes 就會暫停一次，做自我評估，把剛學到的寫進一條可複用的 Skill。這篇文章拆解了四步 agent loop、三種餵知識給它吃的方式，以及值得你花時間看的學習資源。"
+date: 2026-07-03
+image: /images/blog/hermes-self-improving.png
+---
+
+每執行約 15 次工具調用，Hermes 會停下來，做一次自我評估。它會看剛才做了什麼、什麼方法有效、哪裡可以更好——然後把這輪經驗寫成一條 Skill Document，存進技能庫。下次遇到類似任務，直接調用，不再從零開始。
+
+「在用了大概四週以後，我就不叫它『工具』了。」一位在 [r/hermesagent](https://reddit.com/r/hermesagent) 泡了三個月的用戶[寫道](https://www.reddit.com/r/hermesagent/comments/1u8fm0t/three_months_with_hermes_agent_what_i_wish_i_had/)：「它開始主動做我還沒開口的事。不是聰明——是它認識我。」
+
+這就是 Hermes 和其他 agent 框架拉開距離的地方。不是模型更強，不是工具更多——是它會在用的過程裡變得越來越像你的 agent。
+
+## 自我進化的四個環節
+
+[Hugging Face 在 6 月 17 號發了一個 Hermes 架構拆解影片](https://www.youtube.com/watch?v=n32qq7Kwzh0)，63,000 次觀看，是目前最完整的建築藍圖。他們把 agent loop 拆成了四步。
+
+**第一步，構建上下文。** 每次收到訊息，Hermes 不是直接把訊息發給模型。它會從四個地方拉資料：工作記憶（當前工作階段）、核心記憶（你是誰、做什麼）、技能記憶（學到的技能）、長期記憶（跨工作階段的歷史）。四層拼在一起，才是發給模型的完整 prompt。
+
+上下文視窗用了 50% 以後，Hermes 會觸發一次壓縮——把已有訊息總結成一段，而不是繼續堆 token。這個機制是省成本的關鍵，也是它能 24 小時跑著、不燒光 API 額度的基礎。
+
+**第二步，工具執行。** Hermes 預裝 17 個以上工具，90 個預裝技能，而且數量會隨使用增長。工具調用是標準的 agent loop——模型決定用什麼工具、執行、把結果塞回上下文。
+
+**第三步，工作階段管理。** 如果你在 agent 還在處理上一輪時又發了一條訊息，工作階段管理器會決定是中斷還是排隊。這一步看起來小，但對長期執行的 agent 很重要——沒有工作階段管理，並發訊息會把上下文攪亂。
+
+**第四步，自我評估——也就是 /learn 的觸發點。** 這是 Hermes 和其他 agent 框架真正的分界線。每 15 次工具調用後，agent 會暫停，回看剛才的操作序列，把有效的模式提煉成一條 Skill Document。這個技能會被寫入 `~/.hermes/skills/`，在未來的工作階段裡自動載入。重複使用大約 20 次後，同類任務完成速度能快約 40%。
+
+也就是說：第一個月你可能只是在用 Hermes；第二個月，Hermes 開始用你。
+
+## 三種方式讓它學
+
+不用手動寫 skill 檔案。Hermes 提供了三條路讓使用者餵知識給它。
+
+**第一條：直接對話。** 最高頻的路徑。你跟 Hermes 說要做一件事，做完了，它自己總結。你不需要做任何額外操作——前提是你真的在用，而不是把它當搜尋引擎用兩天就關掉。Sharbel A. 在[一個 4,700 次觀看的影片](https://www.youtube.com/watch?v=JFMxDgmW8cw)裡說：「裝 Hermes 是最容易的部分，難的是知道給它什麼工作流程。」你給它越真實的、反覆發生的任務，它越能學。
+
+**第二條：/learn 命令。** v0.18 把這做成了「一招學會」。給它一個資料夾、一個 URL、一份 PDF，或者演示一遍你要的操作流程，它會自動提煉成可複用的 skill 模組。Superbash 在 [v0.18 解讀影片](https://www.youtube.com/watch?v=eZFqLbzRR1k)裡提到一個有意思的用法：「你可以把那個 skill 當成 PRD，丟給一個 coding agent，繼續細化。」——也就是說，/learn 不只是讓 Hermes 自己用，它產生的 skill 檔案是標準格式的，可以拿去給 Claude Code 或者其他工具接著改。
+
+**第三條：三個檔案定義人格。** [@sandy4kad](https://x.com/sandy4kad/status/2072659245527351761) 分享了自己把 Hermes 當聯合創辦人的設定。只用了三個檔案：
+
+- `~/.hermes/SOUL.md`：定義 agent 的身份——「一個不會說『我不會』的彈性執行者」。
+- `~/.hermes/MEMORY.md`：上下文記憶，專案背景、目前目標、約束條件。
+- `~/.hermes/WORKSPACE.md`（可選）：具體的任務板和工作記錄。
+
+[@JulianGoldieSEO](https://x.com/JulianGoldieSEO/status/2072664183733465317) 寫的一段話很準：「大多數人關掉聊天視窗，AI 就忘了他們存在過。Hermes 不會。同一個 agent 在我的終端機、Telegram、Discord、Slack、WhatsApp、Email 裡。一個記憶。每個我接觸它的介面。這時候我才明白：這不是聊天機器人。」
+
+## 實際上手的學習資源
+
+按從淺到深排：
+
+**入門級——瞭解它能幹什麼。**
+- [Di Decoded: Hermes AI Agent Is INSANE — Everything It Can Do + Full Setup](https://www.youtube.com/watch?v=votKFdja114)（2026 年 6 月 21 日）：從頭到尾的安裝 + 功能演示，25 美元/月的完整方案。適合第一次接觸還沒裝的人。
+- [Greg Isenberg + Alex Finn: Hermes Agent Desktop Full Setup + Real Use Cases](https://www.youtube.com/watch?v=EJm8Ka-gVOc)（6 月 6 日，123,832 次觀看）：桌面應用的完整走法。Alex Finn 展示了多模型切換的工作流程——本地 Qwen 做日常，Opus 4.8 做規劃。這個影片是目前觀看量最高的 Hermes 上手內容。
+
+**實操級——讓它真正做事。**
+- [Sharbel A.: 6 Hermes Agent Workflows That Make It Actually Useful](https://www.youtube.com/watch?v=JFMxDgmW8cw)（7 月 1 日，4,700 次觀看）：工作流程設計的方法論，而不是「點這個按鈕」。特別講到要給 agent 一個 system——否則它「感覺強大但不知道做什麼」。
+- [AI LABS: Insane Ways To Make Your Hermes Agent Setup 90% Cheaper](https://www.youtube.com/watch?v=5d02TYoOzfE)（7 月 1 日，7,100 次觀看）：成本最佳化實戰。講壓縮閾值怎麼調、max turns 預設 150 要不要改、本地模型和雲端模型怎麼搭配。
+
+**進階級——理解它在怎麼跑。**
+- [Hugging Face: Hermes Architecture EXPLAINED: Memory, Context & Gateways](https://www.youtube.com/watch?v=n32qq7Kwzh0)（6 月 17 日，63,331 次觀看）：最完整的技術拆解。四層記憶、上下文構建、工作階段管理、壓縮機制——不只是給使用者看的，也面向「想自己做一個」的開發者。
+- [Superbash (BoxminingAI): Hermes Agent Update v0.18 is HUGE!](https://www.youtube.com/watch?v=eZFqLbzRR1k)（7 月 2 日）：v0.18 的逐條解讀。涵蓋驗證式完工（agent 不再只說「好了」而是先自檢）、MoA 委員會、/journey 透明記憶。
+- [Jack Roberts: This Hermes Update Changes Everything](https://www.youtube.com/watch?v=u121jU2L0OY)（6 月 30 日，29,402 次觀看）：Mixture of Agents 的詳細介紹——「Hermes 長出了一個委員會」。
+
+**社群級——跟其他人一起摸索。**
+- [r/hermesagent](https://reddit.com/r/hermesagent)：主要討論區。7 月 1 號的 v0.18 發布文、Mac + MLX 蘋果晶片部署者指南、免費模型/API 資源列表、以及「三個月後回頭看」的反思文都在這裡。
+- [r/hermesagent: three months with Hermes Agent — what i wish i had understood earlier](https://www.reddit.com/r/hermesagent/comments/1u8fm0t/three_months_with_hermes_agent_what_i_wish_i_had/)：最值得看的一篇使用者筆記。「別把它當工具。別給它無關緊要的任務。它會累——不是它的累，是你的預算在累。」
+
+## 一個判斷
+
+Hermes 的自我進化不是行銷詞。它的四層記憶 + 定期自評 + 自動技能生成，是在工程上做到了讓 agent 在使用中改變行為。但這也意味著效果跟你投入的真實任務量成正比：你讓它做的事越淺、越少，它學的就越薄。
+
+反過來想：如果你是一個獨立開發者、一個每天有大量重複認知勞動的個體——Hermes 可能是目前在「個人 agent」這個方向上最接近實用的選擇。不是因為功能多，而是因為它會在三個月以後變得比第一天更好用。大多數工具做不到這一點。
+
+不要急著裝。先想一個問題：你要交給它的第一件反覆發生的任務是什麼？想清楚了再裝。

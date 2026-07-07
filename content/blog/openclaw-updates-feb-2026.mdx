@@ -1,0 +1,61 @@
+---
+title: What's New in OpenClaw — A Few Updates Worth Knowing About
+description: "Apple Watch support, nested subagents, Discord button interactions, more reliable scheduled tasks — OpenClaw has been shipping fast lately."
+date: 2026-02-21
+---
+
+OpenClaw has been releasing updates at a pretty fast pace lately. Here are a few changes that are actually worth paying attention to.
+
+---
+
+## Apple Watch Support
+
+You can now interact with your AI bot directly from Apple Watch — check messages, send quick replies, approve pending actions — without picking up your phone.
+
+On iPhone, the chat interface also got cleaned up. Behind-the-scenes tool activity no longer clutters your conversation, so the chat looks a lot more like a normal messaging app.
+
+---
+
+## AI Can Now Delegate to Other AI
+
+This feature is called subagents. The idea is simple: if you give your bot a complex task — say, "go through these files, write summaries, and compile a report" — it can now split the work and run parts of it in parallel using sub-tasks, then bring everything together at the end.
+
+These sub-tasks can even spawn their own sub-tasks, up to three levels deep.
+
+For anything multi-step or high-volume, this makes a real difference in how efficiently things get done.
+
+---
+
+## Discord Bots Can Now Send Buttons and Menus
+
+If you have OpenClaw connected to a Discord server, this update changes the experience quite a bit:
+
+- Your bot can send messages with buttons and dropdown menus — no more typing back commands
+- Replies stream in as they're generated, so you see the content arriving in real time
+- The bot's status shows clearly at each phase — thinking, running a tool, done, error
+
+It starts to feel a lot less like a text command interface and more like an actual participant in the server.
+
+---
+
+## Scheduled Tasks Are More Reliable
+
+A lot of people use OpenClaw to run things on a schedule — a daily news digest, a weekly report, that kind of thing. This update fixed a batch of issues:
+
+- Tasks that were silently skipping execution now run correctly
+- Multiple tasks triggered at the same time no longer interfere with each other
+- Completed tasks can now push results to a URL of your choice
+
+If you had scheduled tasks that felt unreliable before, this should be noticeably better.
+
+---
+
+## Memory Search Now Works in Non-English Languages
+
+OpenClaw can store things you've discussed and recall them later. The underlying search was rewritten to handle Chinese, Japanese, and other non-Latin languages properly. If you've been chatting in Chinese and found that the bot couldn't always remember things correctly, that's now fixed.
+
+---
+
+## No action needed on ClawSimple
+
+Your bot will be updated automatically. If you'd prefer to get the latest version right now, just head to your Profile page and hit **Relaunch**.

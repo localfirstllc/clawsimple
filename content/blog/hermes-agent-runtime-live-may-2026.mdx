@@ -1,0 +1,67 @@
+---
+title: "Hermes Agent Runtime Is Now Live on ClawSimple — Switch in One Click"
+description: "ClawSimple now supports Hermes Agent as a first-class runtime alongside OpenClaw. Deploy Hermes in one click, switch runtimes from your Profile, and get health monitoring across both."
+date: 2026-05-18
+---
+
+Since [we first compared Hermes Agent and OpenClaw](/blog/hermes-agent-vs-openclaw), the question we kept hearing was: *can I just try Hermes without building a separate server?*
+
+The answer is now yes. Over the past month, Hermes Agent has shipped as a first-class runtime on [ClawSimple](/). Here's everything that landed.
+
+---
+
+## One-Click Hermes Deploy
+
+Hermes Agent is now fully integrated into the ClawSimple deployment pipeline:
+
+- **Hermes installs automatically** during new dedicated deployments — no manual setup, no separate server
+- **Isolated install environment** keeps Hermes dependencies from conflicting with your OpenClaw setup
+- **Prepared runtime** is ready before the switch, so you're not waiting on installs when you decide to try it
+
+The heavy lifting — cloning the repo, resolving dependencies, configuring the gateway — all happens behind the scenes.
+
+---
+
+## Runtime Switching from Your Profile
+
+The headline feature: you can now switch any agent between OpenClaw and Hermes directly from your Profile page.
+
+- **One-click switch** — pick OpenClaw or Hermes from the runtime selector, confirm, and the platform handles the rest
+- **Idempotent switching** — switching back and forth is safe; the platform tracks state and won't leave services in a broken half-state
+- **Telegram allowlists preserved** — your bot's Telegram configuration follows the agent across runtime switches, no reconfiguration needed
+- **OpenClaw allowlists restored** when switching back — your previous OpenClaw settings come back intact
+
+The runtime metadata (which runtime is active, service state, version) is now persisted and visible across redeploys, so you always know exactly what your agent is running.
+
+---
+
+## Homepage and Discovery
+
+The ClawSimple homepage now surfaces both runtimes:
+
+- **Runtime summary cards** with icons for OpenClaw and Hermes, showing current version support at a glance
+- **Runtime choice feature card** explaining the switching capability to new users
+- **Localized copy** across English, Simplified Chinese, Traditional Chinese, and Japanese
+
+The goal is simple: whether you want OpenClaw's multi-channel gateway or Hermes's memory-first architecture, you can see what's available before signing up.
+
+---
+
+## Health Monitoring Across Both Runtimes
+
+The new deployment health monitor covers both OpenClaw and Hermes:
+
+- **Continuous SSH-based health probes** check that your agent's services are up and responding
+- **Hermes runtime checks** use systemd to verify the Hermes gateway is healthy
+- **Disk pressure reporting** warns when either runtime is running low on space, with automatic cleanup when things get critical
+- **Daily launchd-wrapped monitoring** keeps tabs on production deployments without manual intervention
+
+If something goes wrong with either runtime, the platform knows about it — often before you do.
+
+---
+
+## What's Next
+
+Hermes on ClawSimple is still early. The current focus is on making the runtime switch as seamless as possible and ensuring both OpenClaw and Hermes agents stay healthy and up to date.
+
+If you're on ClawSimple, you can switch any agent to Hermes right now from your Profile page. If you're not yet on the platform, [sign up](/) and deploy an agent with either runtime in minutes.

@@ -1,0 +1,1 @@
+ALTER TABLE "install_sessions" ADD COLUMN "custom_openai_api_key_ciphertext" text;

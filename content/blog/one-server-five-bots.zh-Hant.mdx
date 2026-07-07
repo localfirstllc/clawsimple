@@ -1,0 +1,106 @@
+---
+title: "我用一個訂閱跑了 5 個 Telegram Bot——你也該這樣做"
+description: "一台伺服器、五個獨立 Agent：個人助手、工作調研 Bot、家庭答疑 Bot、內容生產 Agent 和副業客服 Bot。完整配置和切換後的真實變化。"
+date: 2026-02-22
+---
+
+上個月在 r/selfhosted 看到一個問題，讓我沉默了一會兒：
+
+> "你已經在為一台 OpenClaw 伺服器付費了，為什麼只跑一個 Bot？"
+
+我沒有好的答案。我當時只跑了一個 Bot——我的個人助手——還開著三個獨立訂閱來覆蓋其他場景。後來我把所有場景合併到一個 Seat 上，用 OpenClaw 的多 Agent 功能統一管理，省了錢、省了精力，腦子也清爽多了。以下是我的具體配置和原因。
+
+> **提示：** 如果您將 Bot 拉入 Telegram 群聊後它沒有反應，您可能需要關閉它的群組隱私模式 (Disable Privacy)。具體操作詳情，請參考我們的教學：[如何在 Telegram 群聊中啟用您的 Bot](/blog/how-to-enable-group-chat)。
+
+---
+
+### 為什麼我一開始沒想到這樣做
+
+剛透過 [ClawSimple](https://clawsimple.com) 部署 OpenClaw 的時候，我把它當成單租戶軟體來用。一個 Bot、一個 Telegram Token、一個用途。這是大多數人的起點——入門階段完全沒問題。
+
+但 OpenClaw 的 Gateway 本身就是用 **Agent 級路由**設計的：每個 Agent 有自己獨立的工作區、獨立的 Telegram Token、獨立的 AI 模型。一個實例可以跑一支 Bot 隊。我沒有早點這麼做，純粹是沒讀夠文檔。
+
+社群很早就摸清了這一點。2026 年 2 月初，r/OpenClaw 和 r/LocalLLaMA 裡有大量帖子在討論三到八個 Bot 共用一台自托管實例的方案。這個玩法已經普及到 ClawSimple 直接在 Dashboard 裡做了「Add Agent」功能——不用 SSH，點幾下即可。
+
+---
+
+### 我的五個 Agent 配置
+
+#### Agent 1：個人助手（`@myassistant_bot`）
+這是最早的那個。模型是 Claude，接了我的日曆、郵件、天氣和 Notion。每天 7:11 自動發早報，晚上 21:00 幫我整理日記。這個不會拆。
+
+**模型：** Anthropic Claude（BYOM）  
+**記憶：** 跨會話持久化  
+**主要 Skills：** 日曆、Gmail、Web 搜尋、Notion
+
+#### Agent 2：工作調研引擎（`@research_bot`）
+我做產品管理。我有一個專用工作手機上的 Telegram 帳號，專門用來做競品分析、論文摘要和 PRD 初稿。這個 Agent 用了對長上下文理解更強的模型，跑在同一台伺服器上，但和個人助手**完全不共享記憶**。
+
+刻意分開是有意為之的。我不想讓 PM 調研 Agent 知道我的早報是什麼內容。乾淨的邊界是重點。
+
+**模型：** OpenAI GPT-5.2  
+**記憶：** 按專案範圍隔離  
+**主要 Skills：** Web 搜尋、PDF 摘要、GitHub
+
+#### Agent 3：家庭問答 Bot（`@family_helper_bot`）
+我父母和老婆在一個 Telegram 群組裡。我建了第三個 Bot 讓他們隨時問問題——食譜、藥名查詢、中英互譯、簡單計算。它有意做了限制：不隨意瀏覽，不跨會話保留記憶（隱私），系統 Prompt 也寫得非常友好。
+
+模型用的是 Google Gemini——速度快、價格低，這種高頻輕量場景完全夠用。因為和其他 Bot 共用同一台伺服器，除了 API 調用費以外沒有額外成本。我家人根本不知道背後是 OpenClaw，他們只看到一個秒回的好用 Bot。
+
+**模型：** Google Gemini 3 Pro（BYOM）  
+**記憶：** 無（每次會話都是新的）  
+**主要 Skills：** 翻譯、Web 搜尋（受限範圍）
+
+#### Agent 4：內容生產管道（`@content_agent_bot`）
+我在寫一份簡報。這個 Agent 管理整個生產流程：監控 RSS 訂閱列表，每週摘要最值得讀的兩三條，生成草稿大綱，發到我的私人 Telegram 對話裡供我審閱。我回覆純文字修改意見，它重新排版準備終稿。
+
+最讓我驚喜的是，這套工作流在 Agent 擁有**獨立身份**之後變得異常順暢。因為它有專屬記憶，不與個人助手共享上下文，從不會把我的簡報草稿和日記條目混淆。Agent 隔離在真正發揮作用。
+
+**模型：** Claude（與個人助手共用 BYOM Key）  
+**記憶：** 按週維護的簡報上下文  
+**主要 Skills：** RSS、Web 搜尋、Telegram 定時器
+
+#### Agent 5：副業客服 Bot（`@support_bot`）
+我在維護一個副業專案的 Telegram 社群。這個 Agent 處理一線客服：FAQ 解答、安裝幫助、Bug 錄入 Notion。遇到回答不了的問題，它會標記一條 thread 等我晚些來處理。
+
+這一個單獨計算的話，按之前的配置會是另一個 ClawSimple 訂閱。現在它的成本就等於它產生的 API 調用費——別無其他。
+
+**模型：** GPT-5.2  
+**記憶：** 按用戶記錄，每週重置  
+**主要 Skills：** FAQ 檢索、Notion、Telegram 話題路由
+
+---
+
+### 實際發生了什麼變化
+
+**成本：** 三個獨立 ClawSimple 訂閱縮減為一個。多跑幾個模型的 API 成本變化是真實存在的，但遠小於額外的月費。
+
+**可靠性：** 需要重新部署伺服器（通常是 OpenClaw 大版本更新後），所有五個 Agent 都會自動恢復。ClawSimple 會按順序重新配置每個 Agent，全部上線後通知我。以前我得手動一個個重新部署。
+
+**心智負擔：** 五個擁有不同名稱和個性的 Telegram Bot，我永遠知道在和哪個說話、它能做什麼。沒有歧義。個人助手不會意外回答客服諮詢，因為它根本看不到那些訊息。
+
+**可視化：** ClawSimple Dashboard 上，五個 Agent 都在同一張訂閱卡片下，狀態一目了然，增減 Agent 不用碰任何配置文件。
+
+---
+
+### 如果重來一次我會怎麼做
+
+如果從頭開始，我會提前規劃好 Agent 拓撲。我浪費了幾週時間讓個人助手試圖包攬一切——調研、家庭問答、個人事務——全在一個 Bot 裡。早點拆開能省很多 Prompt 工程的麻煩。
+
+我也會從一開始就按任務類型選模型，而不是預設給所有 Bot 用同一個模型。Gemini Flash 給家庭 Bot（快、便宜、夠用），Claude 給需要推理鏈的場景，GPT-5.2 給長內容寫作。ClawSimple 的 BYOM 方案讓這件事變得很簡單，給每個 Agent 配一個 API Key，一次搞定。
+
+---
+
+### 怎麼上手
+
+如果你已經有 ClawSimple 訂閱，在 Profile 頁就能加第二個 Agent：打開 Deployment Details，點 **Add Agent**，填入新的 Telegram Bot Token 和模型。完成。新 Agent 會出現在你的 Agent 列表裡，共享伺服器，有自己獨立的工作區。
+
+如果你從零開始，先部署一個 Bot 熟悉流程，再按需求增加 Agent。不用一開始就架構整支隊伍。
+
+社群給我最大的啟發是這句話：**如果一台伺服器 Seat 只跑一個 Bot，你沒有用夠它。** 基礎設施已經在那裡了。添加 Agent 幾乎不用額外花錢。唯一的限制是你真正需要一個 Bot 做什麼。
+
+我從一個變成五個，大概花了兩個小時。之後就沒回頭過。
+
+---
+
+*透過 [ClawSimple](https://clawsimple.com) 管理 OpenClaw 部署。本文所有 Agent 運行在同一個 BYOM Seat 上，各自配有獨立的 Provider Key。*

@@ -1,0 +1,67 @@
+---
+title: "What's New in OpenClaw: Exa Search, Stable Telegram Replies, and a Lighter Runtime"
+description: "No new public tag since late March, but OpenClaw's main branch has shipped several practical changes over the past two weeks: Exa search plugin, a Telegram reply fallback fix, and a wave of startup performance improvements."
+date: 2026-04-01
+image: /images/blog/plugins-hub.png
+---
+
+As of April 1, OpenClaw hasn't cut another public version tag since mid-March, but the main branch has still landed a useful batch of changes over the past two weeks.
+
+---
+
+## Web Search Gets Stronger: Exa Joins the Bundled Plugins
+
+If you use OpenClaw as a research assistant, this is probably the most notable recent change:
+
+- **Exa search is now part of the bundled plugin system.** OpenClaw's native support for semantic search and web discovery has taken another step forward.
+- Building on last week's Tavily integration, Exa fills the gap between "fast information lookup" and "semantically finding high-quality pages."
+
+---
+
+## Plugin System Keeps Slimming Down: Lighter Core, On-Demand Extensions
+
+Over the past two weeks, OpenClaw has continued significant work on its plugin architecture:
+
+- More channel, provider, TTS, and image-generation capabilities have been moved into plugins.
+- The **install heavy plugins on demand** direction continues — no longer bundling everything into the core startup path.
+- The plugin installation flow keeps converging around a **ClawHub-first** approach.
+
+---
+
+## Telegram Replies Are Far Less Likely to Go Missing
+
+A key recent fix: Telegram replies now include `allow_sending_without_reply` as a fallback.
+
+The underlying problem is real: sometimes the original message no longer exists, the thread state has changed, or the reply target is no longer valid — Telegram simply refuses to send. From the user's perspective, it looks like "the AI never responded."
+
+With this fallback in place, even when the reply target is invalid, the message can still be sent rather than silently dropped. For anyone who frequently uses OpenClaw in group chats, Topics, or complex threads, this will eliminate a lot of unexplained "silence."
+
+---
+
+## Agent Context Stays More Coherent: ACP Hidden Thought Replay Fixed
+
+If you've used ACP or related advanced session modes, there's also a less visible but important fix:
+
+- The **hidden thought replay** retention issue during session load and gateway chat paths has been resolved.
+
+In scenarios where sessions need to be resumed, reconnected, or reloaded, the internal agent state that isn't shown to the user — but does influence reasoning continuity — can now carry through more completely.
+
+---
+
+## Runtime Keeps Getting Leaner: Cold Start, Reply Paths, Memory All Trimmed
+
+Performance optimization has been another clear theme over the past two weeks, and it wasn't just one change — it was a sustained series:
+
+- In the reply pipeline, session store, media path, context token, usage cost, runner execution, and memory logic are all moving toward **lazy-load**.
+- A lighter memory status manager has been added.
+- Unnecessary cron persistence and startup reload churn have been reduced.
+- Cold start overhead continues to drop through pre-generated bundled plugin metadata and splitting out runtime heavy surfaces.
+
+---
+
+## Model Catalog Filling In: Mistral and MiniMax Updates
+
+The model catalog also received some additions this round:
+
+- **Mistral curated catalog models** added
+- Missing **MiniMax** catalog models filled in, with default entries kept in sync

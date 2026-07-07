@@ -1,0 +1,1 @@
+ALTER TABLE "deployment_agents" ADD COLUMN "runtime" text DEFAULT 'openclaw' NOT NULL;

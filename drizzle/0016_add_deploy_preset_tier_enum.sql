@@ -1,0 +1,3 @@
+CREATE TYPE "public"."deploy_preset_tier" AS ENUM('economy', 'standard', 'premium');--> statement-breakpoint
+ALTER TABLE "deploy_preset_models" ALTER COLUMN "tier" SET DATA TYPE "public"."deploy_preset_tier" USING "tier"::"public"."deploy_preset_tier";--> statement-breakpoint
+ALTER TABLE "deploy_preset_pricing_rules" ALTER COLUMN "tier" SET DATA TYPE "public"."deploy_preset_tier" USING "tier"::"public"."deploy_preset_tier";

@@ -1,0 +1,82 @@
+---
+title: What's New in OpenClaw — The Past Half Month (3.8 to 3.13)
+description: "Full GPT-5.4 1M context support, Perplexity integration restored, Slack buttons, robust scheduled tasks, and better mobile apps."
+date: 2026-03-18
+image: /images/blog/switching-models.png
+---
+
+OpenClaw has moved very fast in the first half of March, rolling out multiple updates from [`2026.3.8`](https://github.com/openclaw/openclaw/releases/tag/v2026.3.8) all the way to [`2026.3.13`](https://github.com/openclaw/openclaw/releases/tag/v2026.3.13-1).
+
+Instead of a fragmented changelog, we've pulled together the most important changes over the past two weeks that you'll actually feel in your day-to-day usage.
+
+---
+
+## Using all 1M Tokens of GPT-5.4 & Perplexity Search Returns
+
+Following the release of newer models, `2026.3.8` landed some key engine capability updates:
+- **Full GPT-5.4 Support**: Agents are no longer constrained by legacy Codex lengths. You now have full access to the massive 1,050,000-token context window, meaning giant codebases or massive documents won't get arbitrarily truncated anymore.
+- **Perplexity is Back**: Compatibility for Perplexity OpenRouter and Sonar models has been fully restored. Whether via native API keys or proxies, you can point your Agent to Perplexity for high-quality web research once again.
+
+---
+
+## Smoother Chat and More Stable Mac Voice Mode
+
+The client experience has seen several tangible improvements over the last two weeks:
+
+- The chat history no longer reloads the entire page when background tools are running.
+- Extremely long responses are no longer squished into a single, unreadable block of gray text.
+- `2026.3.12` reorganized the dashboard layout — putting chat, config, and agent management into a much cleaner view.
+- Mac users also got a fix in `2026.3.8` that resolves crashing issues with VoiceWake and Talk overlay panels, making hands-free conversation much more reliable.
+
+---
+
+## Slack Bots Send Buttons, Teams Gets Tougher
+
+If you plug OpenClaw into your workspace, the integrations have matured:
+
+- **Slack**: `2026.3.12` and `3.13` added support for Slack Block Kit. Bot replies aren't just walls of text anymore—they can use buttons, cards, and dropdowns. This makes handling approvals and quick selections feel like a native Slack app.
+- **MS Teams**: `2026.3.8` patched an allowlist issue. Now, channel restrict policies strictly enforce sender limits, closing a loophole where outside senders in group channels could accidentally be authorized.
+
+---
+
+## Telegram and Discord Channel Stability
+
+The messaging pipelines have been significantly toughened up:
+
+- **Telegram**: Image and file download flows are more robust; plus, `3.8` fixed polling restarts so bots no longer trigger multiple overlapping long-polls (which used to cause duplicate replies when restarting).
+- **Discord**: Reply splitting, status feedback, and routing stability have been tuned.
+- `/reset` behavior improved: The original account and thread context are better preserved, so conversations are far less likely to "cross the streams" after a reset.
+
+---
+
+## Scheduled Tasks Are Worth Automating Again
+
+Lots of users rely on OpenClaw for daily digests or weekly aggregations rather than real-time chat. Starting in `3.8`, the cron engine got some serious TLC:
+
+- Server restarts no longer break scheduled tasks: Overdue jobs will now intelligently catch up instead of simultaneously flooding the system or skipping silently.
+- `2026.3.11` addressed status recording and retry boundaries.
+- `2026.3.13` eliminated specific system deadlocks caused by nested cron overlapping.
+
+In short: if scheduled tasks have ever disappointed you before, try them again. They are significantly more predictable now.
+
+---
+
+## Mobile Experience Stepped Up
+
+Mobile users aren't left behind with these patches:
+
+- iOS gained a proper welcome screen, onboarding flow, and a home layout optimized for smaller screens.
+- Android received a rebuilt chat settings page, making connection, voice, and media preferences much clearer.
+- The initial QR-code pairing and onboarding process is noticeably smoother.
+
+---
+
+## A Treat for Self-Hosted Users
+
+If you run your own instance, Docker now supports the `OPENCLAW_TZ` timezone setting. In addition, `3.8` added auto-detection for SELinux modes, automatically applying the proper volume labels in Podman. That fixes pesky `Permission denied` errors on RHEL/Fedora hosts without manual hacking.
+
+---
+
+## No action needed on ClawSimple
+
+Your bot will be updated automatically. If you'd prefer to get the latest models—and that huge context window—right now, just head to your Profile page and hit **Relaunch**.

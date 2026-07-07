@@ -1,0 +1,67 @@
+---
+title: 過去兩週 OpenClaw 有哪些變化：Exa 搜尋、更穩的回覆鏈路、以及更輕的執行時
+description: "雖然 3 月底沒有再切新 tag，但 OpenClaw 主幹在過去兩週仍然落下了幾項很實用的變化：Exa 搜尋插件、Telegram 回覆兜底，以及一系列啟動效能優化。"
+date: 2026-04-01
+image: /images/blog/plugins-hub.png
+---
+
+截至 4 月 1 日，雖然 OpenClaw 還沒有像月中那樣繼續打出新的公開版本 tag，但主幹分支在過去兩週裡還是落下了一批很實用的變化。
+
+---
+
+## Web Search 繼續補強：Exa 現在也進入了 bundled plugins
+
+如果你把 OpenClaw 當成研究助理來用，這應該是最近最值得注意的變化之一：
+
+- **Exa 搜尋現在進入了 bundled plugin 體系**。OpenClaw 對語義搜尋和網頁發現的原生支援又往前走了一步。
+- 在上週已經接入 Tavily 的基礎上，這一輪 Exa 的加入，進一步補齊了「快速找資訊」和「按語義找高品質頁面」之間的空白。
+
+---
+
+## 插件系統繼續下沉：核心更輕，擴展更像「按需載入」
+
+過去兩週，OpenClaw 在插件架構上繼續做了很多工作：
+
+- 更多 channel、provider、TTS 和 image-generation 相關能力被進一步移入 plugins。
+- **重型插件按需安裝**的方向繼續推進，不再預設把所有能力都塞進核心啟動路徑。
+- 插件安裝流程也在繼續圍繞 **ClawHub 優先** 的思路收斂。
+
+---
+
+## Telegram 回覆更不容易丟失
+
+最近一個很關鍵的修復是，Telegram 回覆裡加入了 `allow_sending_without_reply` 的兜底邏輯。
+
+有時候原始訊息已經不存在、執行緒狀態已經變了，或者 reply target 不再有效，Telegram 就會直接拒絕發送。結果從使用者視角看，就是「AI 好像沒回我」。
+
+加上這個兜底後，即使 reply 目標失效，訊息也能盡量繼續發出去，而不是整條丟失。對頻繁在群聊、Topic、複雜執行緒裡使用 OpenClaw 的人來說，這會減少很多莫名其妙的「沉默」。
+
+---
+
+## Agent 的「腦內狀態」更連貫了：ACP 隱藏思路回放問題被修復
+
+如果你用過 ACP 或相關的進階會話模式，最近還有一個不那麼表面、但很關鍵的修復：
+
+- **hidden thought replay** 在 session load 和 gateway chat 路徑上的保留問題被修好了。
+
+在某些需要恢復上下文、回接會話、或者重新載入執行狀態的場景裡，Agent 內部那部分「不直接展示給使用者，但會影響後續推理連貫性」的狀態，現在能更完整地延續下去。
+
+---
+
+## 執行時繼續瘦身：冷啟動、回覆路徑、記憶體路徑都在被減重
+
+過去兩週另一個非常明顯的主題，是效能優化，而且不是只改一處，而是連續做了一整串：
+
+- 回覆鏈路裡，session store、media path、context token、usage cost、runner execution、memory 等邏輯都在轉向 **lazy-load**。
+- 增加了更輕量的 memory status manager。
+- 減少了 cron 持久化和啟動時的無謂 reload churn。
+- 透過預生成 bundled plugin metadata、拆分 runtime heavy surfaces，繼續壓低冷啟動開銷。
+
+---
+
+## 模型目錄也在補齊：Mistral、MiniMax 繼續完善
+
+本輪模型目錄也有一些補強：
+
+- 增加了 **Mistral curated catalog models**
+- 補上了 **MiniMax** 缺失的 catalog models，並繼續同步預設項

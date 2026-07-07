@@ -1,0 +1,95 @@
+---
+title: "How to Give Your AI Bot Web Search Powers for Free"
+description: "A simple step-by-step guide for non-technical users to set up the Brave Search API. Let your OpenClaw bot browse the internet in 10 minutes."
+date: 2026-02-26
+image: /images/blog/brave-api-dashboard.png
+---
+
+Do you want your AI bot to browse the internet like a real person, searching for the latest news, weather, or stock prices?
+
+By default, an AI model's knowledge might be locked to several months or even years ago. However, by configuring a "Search API", your bot can instantly connect to the live web and retrieve the most up-to-date information at any time!
+
+We highly recommend using the **Brave Search API** for this purpose. Even though they recently updated their rules to require a credit card on file, they still generously offer **$5 in free monthly credits** (enough for about 1,000 search requests every month), which is plenty for typical everyday use. As long as you follow the fail-safe trick in this guide to set a "spending limit", there is absolutely no risk of being charged.
+
+Follow this beginner-friendly tutorial. With just 5 easy steps, you can get your API key set up even if you know nothing about code!
+
+---
+
+## Step 1: Visit the Brave Search API Website
+
+1. Open your browser and navigate to the official Brave API website: [https://brave.com/search/api/](https://brave.com/search/api/).
+2. Click the sign-up button on the page.
+
+![Brave API Homepage](/images/blog/brave-api-home.png)
+
+## Step 2: Register and Log In
+
+1. On the registration page, enter your email address and create a password.
+2. Agree to the terms and click to create your account.
+3. Brave will send a verification link to your email. Check your inbox, click the link, and you will be logged into the Brave API dashboard.
+
+![Brave API Dashboard](/images/blog/brave-api-dashboard.png)
+
+## Step 3: Simply Claim Your Free Credits
+
+Brave provides $5 of automatic free credits to users every month. However, **you must verify your account by adding a payment method (credit or debit card) first.**
+
+1. Once logged in, go to the left-hand menu and make sure you're on the **"Search API"** dashboard.
+2. Follow the on-screen prompts to enter your payment details and subscribe to the API plan.
+3. **⚠️ Zero-Charge Trick (Crucial Step):** The moment you successfully add your card, go to the left menu and click **Usage limits**.
+4. Force your **Monthly spend limit** to exactly `$5.00`.
+  *(Don't worry! Since the system gifts you $5 for free, setting the limit to $5 means "only allow the system to consume the free $5 you gave me". The service will pause once you hit $5, **absolutely ensuring no real charges are made to your card**.)* 
+5. Click Save!
+
+![Brave API Usage Limits](/images/blog/brave-api-usage-limits.png)
+
+## Step 4: Generate Your API Key
+
+Now it's time to get your "magic internet key".
+
+1. In the Brave API dashboard, look for the **"API Keys"** section.
+2. Click the **"Create API Key"** or **"Generate Key"** button.
+3. Give your key a recognizable name (e.g., `MyOpenClawBot`).
+4. Once created, you will see a long string of letters and numbers. This is your API Key!
+5. Click **"Copy"** next to the key to save it to your clipboard.
+
+**⚠️ Warning:** Think of this API Key as a password. Do not share it publicly!
+
+![Brave API Keys](/images/blog/brave-api-keys.png)
+
+## Step 5: Give the Key to Your OpenClaw Bot
+
+This final step is the easiest. Just send the copied key to your OpenClaw bot directly in chat, asking it to configure the web search for you. For example:
+`Here is my Brave API Key, please help me configure web search:` + `Your API Key`
+
+The bot will automatically configure it for you and return a message like this:
+```
+Gateway restart restart ok (gateway.restart)
+Restart to apply Brave Search API key configuration
+Run: openclaw doctor --non-interactive
+```
+If it says it failed—try again!
+---
+
+## Test it out!
+
+You're done! Now, open Telegram and go back to your bot's chat.
+
+Try asking it a question about a recent event, for example:
+* *"Check today's Apple stock price for me."* 
+* *"Summarize the major news about AI in the last 24 hours."*
+
+You will see the bot instantly search the web, provide the latest information, and even include real website links in its answer. 
+
+Congratulations! Your personal AI assistant is now officially online and smarter than ever.
+
+---
+
+## The Easiest Way to Deploy Your AI Agent
+
+While you can plug your new Brave Search API key into various AI projects, the easiest way to manage your bots is through [ClawSimple](/). With ClawSimple, you can:
+* Easily deploy one or multiple AI agents on a single server, and configure web search automatically by just sending a message.
+* Relaunch and manage your agents' settings at any time with just a few clicks.
+* Bring your own model keys (BYOM) to maximize flexibility and save costs. 
+
+Get started with your ultimate personal AI team today!

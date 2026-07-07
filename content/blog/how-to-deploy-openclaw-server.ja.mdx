@@ -1,0 +1,71 @@
+---
+title: OpenClawサーバーを自分でデプロイする方法
+description: ワンクリック・スクリプトを使用して、ご自身のUbuntuサーバーにOpenClawをインストールするためのステップバイステップガイドです。
+date: 2026-02-03
+---
+
+[ClawSimple](/)は便利なフルマネージドサービスを提供していますが、OpenClawをご自身のインフラストラクチャ上で無料で実行することも完全に自由です。
+
+このガイドでは、新規のUbuntuサーバー上でセルフホスト型のOpenClawインスタンスをセットアップする手順を説明します。
+
+## 必要なもの
+
+始める前に、以下をご用意ください：
+
+1.  **新規Ubuntuサーバー**: Ubuntu 22.04 LTS以降を推奨します。2 vCPU / 4GB RAM 程度のスペックが良い出発点です（AWS, DigitalOcean, Hetzner, Sakura VPSなど）。
+2.  **Rootアクセス**: SSHでサーバーに `root`（またはsudo権限）でログインできる必要があります。
+3.  **Telegram Bot Token**: Telegramの [@BotFather](https://t.me/BotFather) で新しいボットを作成し、API Tokenを取得してください。
+4.  **Telegram User ID**: 許可リスト（Allowlist）に自分を追加するために、ご自身の数値User IDを見つけてください（[@userinfobot](https://t.me/userinfobot) などで確認できます）。
+5.  **AI API Key**（オプション）: 特定のモデルを使用したい場合は、OpenAIまたはZ.aiのAPIキー。
+
+## ステップ 1: サーバーに接続する
+
+ターミナルを開き、SSHでサーバーにログインします：
+
+```bash
+ssh root@your-server-ip
+```
+
+## ステップ 2: インストーラーを実行する
+
+依存関係（Node.js, pnpm）の処理、systemdサービスの作成、初期設定を自動で行うインストールスクリプトを用意しました。
+
+以下のコマンドをコピーして、ターミナルに貼り付けてください：
+
+```bash
+curl -fsSL https://clawsimple.com/api/install | bash
+```
+
+スクリプトの実行中に、いくつか質問されます：
+
+*   **Telegram Bot Token**: BotFatherから取得したTokenを貼り付けます。
+*   **Telegram User ID**: あなたの数値IDを入力します。
+*   **AI API Keys**:（オプション）持っている場合は入力します。
+
+## ステップ 3: デプロイ完了
+
+スクリプトが終了すると、以下のような成功メッセージが表示されます：
+
+```text
+==========================================
+  ClawSimple Installation Complete!
+==========================================
+```
+
+あなたのOpenClawボットは、`clawsimple` という名前のsystemdサービスとしてバックグラウンドで実行されています。
+
+### 便利なコマンド
+
+*   **ステータス確認**: `sudo systemctl status clawsimple`
+*   **ログ確認**: `sudo journalctl -u clawsimple -f`
+*   **再起動**: `sudo systemctl restart clawsimple`
+
+## 次のステップ
+
+これで、あなたのボットはTelegram上でオンラインになっているはずです！`Hi` とメッセージを送ってみてください。
+
+セルフホスト版ですので、設定は自由にコントロールできます。
+*   環境変数: `/opt/clawsimple/.env`
+*   OpenClaw設定: `/opt/clawsimple/.openclaw/openclaw.json`
+
+開発をお楽しみください！

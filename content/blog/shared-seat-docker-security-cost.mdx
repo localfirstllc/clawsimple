@@ -1,0 +1,87 @@
+---
+title: "Understanding Shared Plans: High Security, Lower Cost"
+description: "A simple explanation of how ClawSimple's Shared Plans keep your AI agents secure and isolated while lowering your monthly costs, straight from the official architecture."
+date: 2026-03-03
+---
+
+> "How can the Shared Plan be cheaper? Does cheaper mean less secure?"
+
+If you're wondering how ClawSimple's Shared Plan works behind the scenes, this article will answer three simple questions:
+
+1. How do we keep your AI agents secure when sharing a server?
+2. Why is it significantly cheaper than a dedicated server?
+3. What are the trade-offs, and how do we protect you from noisy neighbors?
+
+---
+
+## The Core Concept: Your Own Private Room
+
+Imagine moving into an apartment building instead of buying a whole house. You share the overall foundation (the server), but your apartment (your container) has its own locks, its own space, and its own rules.
+
+According to the official OpenClaw architecture, we don't just dump all users into one big chat group. Every single ClawSimple Shared Plan user gets:
+
+- **Their own private container.** 
+- **Their own secure gateway.** 
+- **Their own independent storage.**
+
+This means your AI agents, your files, and your chat history are completely isolated from everyone else on the same physical server.
+
+---
+
+## Why Is It Cheaper?
+
+When you rent a dedicated server, you're paying for 100% of that computer's power, 24 hours a day. However, most personal AI agents are mostly idle. They only work when you talk to them. It's like paying to keep a taxi running in your driveway just in case you need to go somewhere.
+
+The Shared Plan solves this by splitting the cost:
+
+- We put several secure "apartments" (containers) on one large, powerful server.
+- You only pay a fraction of the total server cost.
+- We strictly limit the maximum number of users per server, ensuring it never gets overcrowded.
+
+The result? You get the same OpenClaw experience, but your wallet stays much happier. It's the perfect choice for personal use, testing, and everyday automation.
+
+---
+
+## Is It Just As Secure?
+
+Yes, the fundamental security barriers remain identical to a dedicated server.
+
+In ClawSimple’s Shared Plan:
+- Strangers cannot access your AI agents. 
+- Your workspace is locked down. Other users on the server cannot see your data.
+- Nobody (not even you) has raw "root" access to the underlying machine, which further prevents anyone from breaking out of their container to snoop.
+
+While technically speaking, sharing a server foundation is different from owning a standalone physical machine, for 99% of personal and typical business automation tasks, this containerized isolation is an enterprise-standard, highly secure approach.
+
+---
+
+## The Trade-off: The "Noisy Neighbor"
+
+The real trade-off of a shared system isn't security—it's performance.
+
+Because you are sharing the engine of the server, if someone else's AI suddenly starts doing a massive, complex task that eats up a lot of CPU power, your AI might reply a second or two slower. This is a common phenomenon in cloud computing known as the "noisy neighbor" effect.
+
+---
+
+## How We Stop Noisy Neighbors
+
+To make sure one heavy user doesn't ruin the experience for everyone else, we put strict speed limits in place right from the start.
+
+When your Shared Plan is created, we instantly apply hard limits on:
+- **CPU (Brain Power):** No single user can hog all the processing power.
+- **Memory (RAM):** No single user can eat up all the system memory.
+- **Processes:** Limits on how many tasks one user can run simultaneously.
+
+These aren't just marketing promises—they are actual code rules (`--cpus`, `--memory`) burned into your container when it's built.
+
+---
+
+## Conclusion
+
+The ClawSimple Shared Plan is not a "downgraded" product. It's a smarter, more cost-effective way to host your agents.
+
+- Your data remains locked down and private.
+- We use strict borders to keep things running smoothly.
+- You stop paying for 24/7 idle time.
+
+If you want a low-risk, highly affordable way to start building your AI automations, the Shared Plan is the best way to get moving. You can always click a button to upgrade to a massive dedicated server later when your project takes off!

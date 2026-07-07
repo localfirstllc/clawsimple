@@ -1,0 +1,67 @@
+---
+title: "Hermes Agent 執行時現已上線 ClawSimple——一鍵切換"
+description: "ClawSimple 現已將 Hermes Agent 作為一等公民執行時與 OpenClaw 並列支援。一鍵部署 Hermes，從 Profile 頁面切換執行時，享受跨兩個執行時的健康監控。"
+date: 2026-05-18
+---
+
+自從[我們首次對比 Hermes Agent 和 OpenClaw](/blog/hermes-agent-vs-openclaw) 以來，最常聽到的問題是：*我能直接試用 Hermes 而不需要自建伺服器嗎？*
+
+答案現在是肯定的。在過去一個月裡，Hermes Agent 已作為一等公民執行時上線 [ClawSimple](/)。以下是我們所做的所有工作。
+
+---
+
+## 一鍵部署 Hermes
+
+Hermes Agent 已完全整合到 ClawSimple 部署管線中：
+
+- **新專用部署中自動安裝 Hermes**——無需手動設定，無需獨立伺服器
+- **隔離的安裝環境**確保 Hermes 的依賴不會與你的 OpenClaw 環境衝突
+- **預準備的執行時**在切換之前就已就緒，當你決定嘗鮮時不需要等待安裝
+
+克隆倉庫、解析依賴、配置 Gateway——這些重活都在後臺自動完成。
+
+---
+
+## 從 Profile 頁面切換執行時
+
+核心功能：你現在可以直接從 Profile 頁面將任意 Agent 在 OpenClaw 和 Hermes 之間切換。
+
+- **一鍵切換**——從執行時選擇器中選擇 OpenClaw 或 Hermes，確認，平臺會處理剩下的一切
+- **冪等切換**——來回切換是安全的；平臺跟蹤狀態，不會讓服務處於損壞的半切換狀態
+- **Telegram 白名單保留**——你的 Bot Telegram 配置會隨 Agent 跨執行時切換保留，無需重新配置
+- **切回時恢復 OpenClaw 白名單**——你之前的 OpenClaw 設定會完整恢復
+
+執行時元資料（活躍的執行時、服務狀態、版本）現在會持久儲存並在重新部署後仍然可見，讓你始終清楚自己的 Agent 在執行什麼。
+
+---
+
+## 首頁和功能發現
+
+ClawSimple 首頁現在展示兩種執行時：
+
+- **執行時摘要卡片**，帶 OpenClaw 和 Hermes 圖示，一眼看到當前版本支援
+- **執行時選擇功能卡片**，向新使用者說明切換能力
+- **多語言文案**，覆蓋英文、簡體中文、繁體中文和日文
+
+目標很簡單：無論你想要 OpenClaw 的多渠道 Gateway，還是 Hermes 的記憶優先架構，都能在註冊前看到可選方案。
+
+---
+
+## 跨執行時健康監控
+
+新的部署健康監控覆蓋 OpenClaw 和 Hermes：
+
+- **基於 SSH 的持續健康探針**檢查 Agent 服務是否正常執行和響應
+- **Hermes 執行時檢查**使用 systemd 驗證 Hermes Gateway 健康狀態
+- **磁碟壓力報告**在任一執行時空間不足時發出警告，緊急時自動清理
+- **每日 launchd 包裹式監控**持續關注生產部署，無需人工干預
+
+如果任一執行時出現問題，平臺會在你發現之前就知道。
+
+---
+
+## 下一步
+
+Hermes 在 ClawSimple 上還處於早期階段。當前的重點是讓執行時切換儘可能無縫，並確保 OpenClaw 和 Hermes Agent 都保持健康和最新。
+
+如果你已經在 ClawSimple 上，現在就可以從 Profile 頁面將任意 Agent 切換到 Hermes。如果你還沒有加入平臺，請[註冊](/)並在幾分鐘內部署一個使用任一執行時的 Agent。

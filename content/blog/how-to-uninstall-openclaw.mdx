@@ -1,0 +1,70 @@
+---
+title: How to Completely Uninstall OpenClaw from Your Local Machine
+description: "Many users who try installing OpenClaw locally find that a standard uninstall leaves behind files. This guide shows you how to remove it completely."
+date: 2026-03-11
+---
+
+Many people try installing OpenClaw on their own computers, only to find that it leaves behind quite a mess when they try to remove it. This is because OpenClaw is more than just a simple program—it quietly creates numerous hidden folders containing its memory, logs, and configurations while running.
+
+If you have decided to stop running it on your local machine, follow these simple steps to thoroughly wipe all traces of OpenClaw from your computer.
+
+## Step 1: Stop and Basic Uninstall
+
+First, we need to instruct OpenClaw to stop whatever it's doing and remove its main services.
+
+Open your Terminal and run the following command:
+
+```bash
+openclaw uninstall --all --yes
+```
+
+**Why do this?**  
+This command not only removes the core component but also ensures that any of its background services are properly shut down.
+
+## Step 2: Remove the Command Line Tool
+
+The previous step turns off the services, but your terminal might still recognize the `openclaw` command. To completely remove the entry point, we need to delete its executable.
+
+Simply run:
+
+```bash
+rm -f $(which openclaw)
+```
+
+**Why do this?**  
+Since users install OpenClaw using various package managers (like npm, pnpm, or bun), this command is universally effective. It automatically locates exactly where the `openclaw` command is hidden in your system and deletes it.
+
+> **How to verify it worked?**  
+> Type `openclaw` into the terminal again and press Enter. If it says `command not found`, you have successfully deleted the command.
+
+## Step 3: Clean Up Hidden Cache and Data
+
+Even after the first two steps, OpenClaw leaves behind a significant amount of data—such as its memory banks and workspace files—tucked away in hidden folders on your computer.
+
+To free up that disk space, copy and paste the following command into your terminal, then hit Enter:
+
+```bash
+rm -rf ~/.openclaw ~/.clawdbot ~/.moltbot ~/.molthub ~/clawd
+```
+
+**Why do this?**  
+This instantly purges all the hidden directories OpenClaw might have claimed. Please note: this will permanently delete your agent's historical data, so make sure you don't need it anymore.
+
+## Step 4: Revoke Account Authorizations
+
+Here is a crucial step that is often overlooked: if you ever connected OpenClaw to your GitHub, Gmail, or Google Drive, uninstalling the software locally **does not** disconnect those accounts!
+
+**What to do:**  
+For your own security, log into the settings pages of platforms like GitHub or Google, navigate to your "Authorized Apps" list, and manually revoke any access granted to OpenClaw.
+
+---
+
+## Why People Are Moving Away from Local Agent Deployments
+
+As you might have noticed, hosting an AI Agent on your own computer can be quite a headache. It demands high-level system permissions, quietly consumes your storage space, and is frustratingly stubborn when you try to remove it. Giving an AI that much unbridled permission over your personal machine also introduces unnecessary security risks.
+
+This is exactly why a growing number of users are migrating to **[ClawSimple](/)**.
+
+With ClawSimple, you can hand off the tedious server configuration, environment setup, and security isolation entirely to us. By simply providing your API Key and a Telegram Bot Token, you instantly get a dedicated, 24/7 AI assistant—without turning your personal computer into a messy testing ground.
+
+If you ever want to reset everything and start fresh, a single click on **Relaunch** in the ClawSimple dashboard instantly gives you a brand-new Bot. And if you decide you no longer need it, you can shut down and destroy the server instance at any time—with absolutely zero worry about residual data polluting your personal computer.

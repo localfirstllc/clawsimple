@@ -1,0 +1,187 @@
+---
+title: "Hermes Agent セットアップガイド：インストール、設定、よくある落とし穴"
+description: "Hermes Agent のインストール、モデルキー、Telegram gateway、skills、ブラウザ、Docker、Termux、Windows、ローカルモデル、OpenClaw 移行をまとめた実用ガイドです。"
+date: 2026-04-27
+---
+
+Hermes Agent は最近注目されています。チャット agent、メモリ、skills、ツール、messaging gateway、terminal backends が1つのプロジェクトにまとまっているからです。
+
+そのぶん、最初のセットアップで迷いやすくなります。ユーザーが知りたいのは「Hermes のインストール方法」だけではありません。API key をどこに置くのか、Windows ではなぜ WSL2 が必要なのか、Telegram はどう接続するのか、Docker でローカルファイルが見えない理由、skills の有効化、ローカルモデルがツールを呼ばない理由もよく聞かれます。
+
+このガイドでは短く整理します。
+
+## Hermes Agent とは
+
+Hermes Agent は Nous Research のオープンソース agent です。コマンドラインから実行でき、gateway 経由でチャットプラットフォームにも接続できます。skills、過去の作業の記憶、ツール呼び出し、複数の terminal backend によるタスク実行に対応しています。
+
+公式 README にある主な入口は次の通りです。
+
+- `hermes` は対話型 CLI を起動します。
+- `hermes model` は LLM provider とモデルを変更します。
+- `hermes tools` は有効化するツールを設定します。
+- `hermes gateway` は Telegram、Discord、Slack、WhatsApp、Signal、Email などのメッセージ入口を起動します。
+- `hermes update` はインストール済み環境を更新します。
+- `hermes doctor` はよくある問題を診断します。
+- `hermes claw migrate` は OpenClaw からデータを移行します。
+
+サーバー上で bot を動かし、スマホのチャットから使いたい場合は、CLI より gateway の設定が重要です。
+
+## Hermes Agent をインストールする
+
+公式のクイックインストールコマンドは次の通りです。
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+```
+
+公式ドキュメントでは Linux、macOS、WSL2、Termux 経由の Android が対象です。ネイティブ Windows は公式インストールパスではサポートされていないため、Windows ユーザーは WSL2 を使います。
+
+インストール後、shell を再読み込みして起動します。
+
+```bash
+source ~/.bashrc
+hermes
+```
+
+zsh の場合：
+
+```bash
+source ~/.zshrc
+hermes
+```
+
+## モデルキーを設定する
+
+Hermes は通常設定と secret を分けます。
+
+- `~/.hermes/config.yaml` は secret ではない設定を保存します。
+- `~/.hermes/.env` は API keys と tokens を保存します。
+
+公式の config コマンドは値を適切な場所に保存します。
+
+```bash
+hermes config
+hermes config set model anthropic/claude-opus-4
+hermes config set OPENROUTER_API_KEY sk-or-...
+hermes config check
+hermes config migrate
+```
+
+ガイド付きでモデルを選びたい場合は `hermes model` を使います。具体的な key や設定名が分かっている場合は `hermes config set` を使います。
+
+## Telegram または他の gateway を設定する
+
+スマホから使うなら messaging gateway を設定します。
+
+```bash
+hermes gateway setup
+hermes gateway start
+```
+
+gateway は Telegram や他のチャットプラットフォームから Hermes にアクセスできるようにする部分です。messaging session のデフォルト作業ディレクトリは home です。変更したい場合は `MESSAGING_CWD` を設定します。
+
+例：
+
+```bash
+hermes config set MESSAGING_CWD /home/ubuntu/projects
+```
+
+Hermes を VPS で動かす場合、この設定が「bot は返信する」状態と「bot が間違ったディレクトリで作業する」状態を分けることがあります。
+
+## skills をインストールして使う
+
+Skills は Hermes が必要に応じて読み込む手順書です。インストール済み skills を表示します。
+
+```bash
+hermes skills list
+```
+
+検索します。
+
+```bash
+hermes skills search docker
+```
+
+公式の任意 skill をインストールします。
+
+```bash
+hermes skills install official/research/arxiv
+```
+
+インストールした skills は通常、新しい session で有効になります。現在の session で使いたい場合は session をリセットするか、公式ドキュメントの即時反映オプションを使います。
+
+## OpenClaw から移行する
+
+Hermes には OpenClaw 移行コマンドがあります。
+
+```bash
+hermes claw migrate
+hermes claw migrate --dry-run
+hermes claw migrate --preset user-data
+```
+
+公式 README では、persona ファイル、memories、ユーザー作成 skills、承認パターン、messaging settings、許可された secrets、TTS assets、workspace instructions を取り込めると説明されています。
+
+まず `--dry-run` を使ってください。移行は個人 agent の状態に触れるため、上書き前に計画を確認します。
+
+すでに [ClawSimple](https://clawsimple.com) を使っている場合は、managed runtime switch から OpenClaw を動かし、Hermes Agent を試せます。サーバーを作り直す必要はありません。
+
+## よくあるセットアップ質問
+
+### Hermes は Windows で動きますか？
+
+公式インストールパスではネイティブ Windows は対象外です。WSL2 を使い、その中で Linux 用インストールコマンドを実行します。
+
+### Hermes は Android で動きますか？
+
+Termux 経由で動きます。公式インストーラーには Termux 用パスがあり、Android に合わない依存関係を避けるために curated dependency set を使います。
+
+ただし、コミュニティでは Android のネイティブ Python 依存関係で失敗した報告もあります。まず更新し、公式 Termux パスを優先してください。
+
+### Hermes は Docker で動きますか？
+
+動きます。ただしファイルアクセスは volume mount と作業ディレクトリに依存します。コンテナから見えないローカルファイルは Hermes も読み書きできません。操作したいフォルダを mount し、作業ディレクトリを設定します。
+
+### ブラウザ自動化が一部サイトで失敗する理由は？
+
+Headless browser は bot detection に引っかかることがあります。一部ユーザーは CDP で実際の Chrome session に接続し、その browser profile を開いたままにしています。これはサイトごとの問題で、保護されたすべてのサイトで動く保証はありません。
+
+### ローカルモデルは会話できるのに、なぜツールを呼ばないのですか？
+
+ツール呼び出しはモデル、provider adapter、prompt 形式、Hermes 設定に依存します。コミュニティでは、一部ローカルモデルが会話はできても tool use が不安定という報告があります。まず動作確認済みの hosted model で tool path を確認し、その後ローカルモデルに切り替えて比較します。
+
+### Hermes にネイティブ multi-agent support はありますか？
+
+GitHub には native multi-agent support の feature request が開いています。その issue では、現在の Hermes は単一 agent 寄りで、persona と memory のパスが global に近いと説明されています。複数の名前付き agent と隔離された runtime state が今日必要な場合は、まず issue の最新状態を確認してください。
+
+## 初回実行チェックリスト
+
+1. 公式スクリプトでインストールする。
+2. `hermes doctor` を実行する。
+3. `hermes model` でモデルを選ぶ。
+4. `hermes config set` で必要な keys を入れる。
+5. `hermes` を実行する。
+6. skill を1つインストールして試す。
+7. Telegram などのチャットプラットフォームを使うなら `hermes gateway setup` を実行する。
+8. gateway をプロジェクトフォルダで動かしたいなら `MESSAGING_CWD` を設定する。
+9. OpenClaw データを導入する前に `hermes claw migrate --dry-run` を使う。
+10. 既に修正済みかもしれない問題を調べる前に `hermes update` で更新する。
+
+## Managed hosting が役立つ場面
+
+shell、Python 環境、API keys、gateway、systemd、Docker、更新を自分で扱えるなら、自分で Hermes をホストするのは良い選択です。
+
+目的が「チャットで使える bot を持つこと」なら、managed hosting の方が楽です。[ClawSimple](https://clawsimple.com) は OpenClaw と Hermes Agent 周辺のサーバー設定、runtime switching、保守を扱うので、インストールではなくタスクから始められます。
+
+## 参考
+
+- Hermes Agent GitHub: [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
+- 公式インストール文書: [Installation](https://github.com/NousResearch/hermes-agent/blob/main/website/docs/getting-started/installation.md)
+- 公式設定文書: [Configuration](https://hermes-agent.nousresearch.com/docs/user-guide/configuration/)
+- 公式 skills 文書: [Working with Skills](https://hermes-agent.nousresearch.com/docs/guides/work-with-skills)
+- GitHub issue: [Native multi-agent support request](https://github.com/NousResearch/hermes-agent/issues/7517)
+- GitHub issue: [Install/configure crash report](https://github.com/NousResearch/hermes-agent/issues/12074)
+- Reddit: [Android Termux install failure discussion](https://www.reddit.com/r/hermesagent/comments/1smjhmr/hermes_agent_v090_install_failing_on_android/)
+- Reddit: [Browser use problem discussion](https://www.reddit.com/r/hermesagent/comments/1skesbe/browser_use_problem/)
+- Reddit: [Docker file access discussion](https://www.reddit.com/r/hermesagent/comments/1sdqlo2/hermesagent_installation_in_docker_wont_be_able/)
+- Reddit: [Local models not using tools discussion](https://www.reddit.com/r/hermesagent/comments/1seykze/local_models_not_using_tools/)

@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": "workers/runner-notify/src/index.js",
+  "name": "clawsimple-runner-notify",
+  "compatibility_date": "2026-05-03",
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "RUNNER_NOTIFY_ROOM",
+        "class_name": "RunnerNotifyRoom"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["RunnerNotifyRoom"]
+    }
+  ],
+  "routes": [],
+  "vars": {
+    "CONTROL_PLANE_URL": "https://example.com"
+  }
+}

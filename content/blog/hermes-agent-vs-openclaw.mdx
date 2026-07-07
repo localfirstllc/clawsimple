@@ -1,0 +1,78 @@
+---
+title: "Hermes Agent Is Getting Attention — What Is It, and Should I Switch from OpenClaw?"
+description: "Based on the Hermes Agent and OpenClaw repositories, a clear breakdown of the real differences between the two projects and where ClawSimple fits."
+date: 2026-04-16
+---
+
+If you're using OpenClaw, you've probably seen Hermes Agent come up recently.
+
+It's been getting more discussion in the community — some users are comparing the two, some are asking whether to switch. One fairly concrete example: someone running OpenClaw on Android in a Termux + proot environment hit problems after an upgrade, switched to a native Hermes install, and the issues went away.
+
+---
+
+## What Each Project Is Actually Emphasizing
+
+The first screen of the Hermes GitHub repo is direct: it learns skills from experience, keeps improving them during use, reminds itself to persist knowledge, and searches its own past conversations. Then six terminal backends: `local`, `Docker`, `SSH`, `Daytona`, `Singularity`, `Modal`.
+
+OpenClaw emphasizes something different: a Gateway that connects Telegram, Slack, WhatsApp, Signal, Discord, and other channels, with multi-agent routing, a web console, mobile nodes, and media support.
+
+---
+
+## What the Switchers Actually Cared About
+
+Based on the posts, switching reasons usually come down to two things:
+
+**Runtime environment.** Some users run OpenClaw in unusual setups — Termux, older systems, custom containers. When things break, it's hard to debug. Hermes's six terminal backend options are a direct answer for these users.
+
+**Memory and skill accumulation.** Hermes leads with "grows through use," which resonates with users who care about an agent that gets better over time. OpenClaw has memory and skills too, but that's not the headline it leads with.
+
+Worth noting: Hermes ships a `hermes claw migrate` command specifically for importing OpenClaw settings, memories, skills, and API keys in one step.
+
+---
+
+## Where ClawSimple Fits
+
+ClawSimple does something concrete: it deploys OpenClaw for you and handles things when they break.
+
+No SSH, no systemd, no manual backups. Upgrades and relaunches are dashboard operations. The official bot runs independently from the main instance, so even if the instance goes down, you can still trigger status checks and recovery through it.
+
+---
+
+## For Non-Technical Users: The One Thing That Matters Most for Each
+
+**Hermes**: The biggest upside is that it gets better the more you use it — it builds skills from your conversations and develops a real sense of a personal assistant over time. The biggest downside is that there's no managed hosting. Installation is just the beginning; when something breaks, you're on your own. For users without a technical background, this is less "a bit tricky" and more "basically inaccessible."
+
+**Native OpenClaw**: The biggest upside is that it works inside apps you already use — Telegram and WhatsApp are already on your phone, no new interface to learn. The biggest downside is the same as Hermes: security config, version upgrades, and debugging when things go wrong are all your responsibility. Reddit is full of posts from people who "followed the steps" and still got stuck.
+
+**ClawSimple**: The biggest upside is zero technical barrier — fill in your Bot Token, click deploy, and you're running in minutes, with someone to help when things break. The biggest downside is that it runs OpenClaw, not Hermes, so there's no "grows smarter over time" experience. If that's specifically what you're after, ClawSimple won't deliver it.
+
+For non-technical users, Hermes and native OpenClaw share the same core problem: no one to catch you when things fall over.
+
+---
+
+## Which One to Pick
+
+**Hermes is a better fit if:**
+
+- You want an agent that builds up skills from conversations over time
+- Your runtime environment matters — Docker, SSH, VPS, serverless are all real considerations
+- You're comfortable handling installation and maintenance yourself
+
+**Native OpenClaw is a better fit if:**
+
+- Multi-channel access is the priority — Telegram, WhatsApp, Signal all pointing to one AI
+- You want a web console, mobile nodes, and similar features
+- You're a technical user who wants to control the whole stack
+
+**ClawSimple is a better fit if:**
+
+- You want OpenClaw without managing the server
+- You need something that stays up and can be recovered without you doing it manually
+- You're a regular user or small team that wants an instance running as fast as possible
+
+---
+
+## Sources
+
+- Hermes Agent GitHub: [NousResearch/hermes-agent](https://github.com/nousresearch/hermes-agent)
+- OpenClaw GitHub: [openclaw/openclaw](https://github.com/openclaw/openclaw)

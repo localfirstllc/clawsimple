@@ -1,0 +1,868 @@
+{
+  "common": {
+    "getStarted": "開始する",
+    "learnMore": "詳細を見る",
+    "overview": "概要",
+    "pricing": "料金",
+    "deploy": "開始",
+    "profile": "プロフィール",
+    "roadmap": "ロードマップ",
+    "signIn": "ログイン",
+    "signOut": "ログアウト",
+    "dashboard": "ダッシュボード",
+    "language": "言語",
+    "blog": "ブログ",
+    "whatsNew": "最新情報",
+    "viewAllUpdates": "すべての更新を見る",
+    "relaunchFixHint": "新機能は通常そのまま使えます。不具合があればサポートに連絡してください。サーバーを確認します。",
+    "loading": "読み込み中..."
+  },
+  "home": {
+    "socialProof": {
+      "badge": "初期ユーザーのリアルな声",
+      "quote": "「本当に良かったのは一つだけ。」",
+      "summary": "11 個の OpenClaw 即時サービスを見比べたあと、Mike MacCana の評価はこの短い一文に集約されます。",
+      "name": "Mike MacCana",
+      "role": "Quicknode Developer Relations",
+      "sourceNote": "2026 年 3 月 2 日に Solana at QuickNode アカウントから X へ公開投稿された内容です。",
+      "iframeTitle": "Mike MacCana による ClawSimple の動画コメント",
+      "cta": "元の投稿を見る"
+    },
+    "hero": {
+      "notificationBanner": "📣 2月15日（UTC）より新規プランの価格が改定されます。既存のサブスクリプションに変更はありません。",
+      "learnMore": "詳細はこちら",
+      "title": "Telegram AI ボットを3分で起動",
+      "description": "サーバー設定も、ターミナル操作も不要。OpenClaw または Hermes Agent をインストールし、AI を接続して、専用サーバー上でボットを継続的に稼働させます。",
+      "trustLine": "専用サーバー • 3分でセットアップ",
+      "cta": "ボットを始める",
+      "noCreditCard": "登録にカードは不要です。デプロイ前に支払い方法が必要です。",
+      "productHuntLabel": "Product Hunt 掲載中",
+      "secondaryCta": "プランを見る",
+      "openSourceCore": "OpenClaw + Hermes Agent を先に準備",
+      "localFirstControl": "OpenClaw と Hermes Agent をインストール",
+      "telegramFirst": "プラットフォーム AI を接続",
+      "freshServerRelaunch": "managed search を含む",
+      "multipleAgentsPerSeat": "まず1つの実務を動かしてから広げる",
+      "maintenanceBot": "限定メンテナンスボット",
+      "badge": "Managed OpenClaw + Hermes Agent Hosting",
+      "supportedVersion": "OpenClaw {version} をサポート",
+      "supportedHermesVersion": "Hermes Agent {version} をサポート",
+      "supportedVersions": "OpenClaw {openclawVersion} + Hermes Agent {hermesVersion} をサポート",
+      "dismissBanner": "バナーを閉じる",
+      "snapshot": {
+        "title": "ClawSimple コントロールスナップショット",
+        "liveControl": "ライブコントロール",
+        "streaming": "稼働中",
+        "creator": "作成者",
+        "license": "ライセンス",
+        "channels": "チャンネル",
+        "deployLog": "セットアップログ",
+        "running": "実行中",
+        "cmd": "$ openclaw deploy --channel telegram"
+      },
+      "screenshots": {
+        "list": "すべてのエージェントをワンタップで",
+        "hermes": "まるでチームメイトのような返信",
+        "openclaw": "トピックごとに1グループ。整理整頓。",
+        "physics": "どんなタスクも任せれば完了"
+      }
+    },
+    "trustBanner": {
+      "items": {
+        "privateServer": {
+          "title": "専用サーバー",
+          "description": "他者と共有しない、あなた専用のサーバーで稼働"
+        },
+        "fastSetup": {
+          "title": "3分でセットアップ",
+          "description": "フォーム入力からボット稼働まで、完全自動化"
+        },
+        "managedSearch": {
+          "title": "マネージド検索",
+          "description": "新規デプロイでは検索とページ読解をすぐ使えます"
+        }
+      }
+    },
+    "howItWorks": {
+      "eyebrow": "使い方",
+      "title": "3ステップで初めての対話を始める。",
+      "steps": {
+        "connect": {
+          "title": "接続",
+          "description": "Telegram Bot Token を貼り付け、AI モデルを選択"
+        },
+        "build": {
+          "title": "自動構築",
+          "description": "サーバー、OpenClaw、AI、検索が自動的に設定されます"
+        },
+        "chat": {
+          "title": "チャット開始",
+          "description": "Telegram でボットが稼働。すぐに会話を始められます。"
+        }
+      }
+    },
+    "benefits": {
+      "eyebrow": "ClawSimple を選ぶ理由",
+      "title": "設定作業をスキップ。対話を始めよう。",
+      "items": {
+        "noTerminal": {
+          "title": "ターミナル不要",
+          "description": "1つのフォーム、1回のクリック。サーバー設定、パッケージ、実行環境はおまかせ。"
+        },
+        "aiIncluded": {
+          "title": "AI 接続済み",
+          "description": "プラットフォーム AI とマネージド検索がデフォルトで接続。API Key の準備は不要。"
+        },
+        "staysRunning": {
+          "title": "継続稼働",
+          "description": "自動監視。対応が必要な場合は、サポートがサーバー作業を引き受けます。"
+        },
+        "pickRuntime": {
+          "title": "実行環境を選択",
+          "description": "ボットごとに OpenClaw または Hermes Agent を選択。作成時に決定します。"
+        },
+        "multiAgent": {
+          "title": "複数ボット、追加料金なし",
+          "description": "同じサーバーに複数の Telegram ボットを追加しても、追加のサブスクリプション料金はかかりません。"
+        },
+        "yourStack": {
+          "title": "あなたのスタック、あなたの鍵",
+          "description": "オープンソースの実行環境。認証情報はあなたのサーバーにのみ保存されます。"
+        }
+      }
+    },
+    "features": {
+      "title": "他の区画も直すべき理由",
+      "mainHeading": "大事なのは OpenClaw や Hermes Agent を入れることではなく、入れた直後に何ができるかです。",
+      "subtitle": "ClawSimple は OpenClaw と Hermes Agent をインストールし、プラットフォーム AI と managed search を接続し、専用サーバー上でボットを安定して動かします。",
+      "installFlow": {
+        "badge": "インストールフロー",
+        "title": "最初の実務まで3ステップ",
+        "desc": "ボットとサービスをつなぎ、prompt を貼れば最初の仕事をすぐ走らせられます。"
+      },
+      "feature1": {
+        "title": "かんたんセットアップ",
+        "description": "ワンクリックで、あなたのボットを高性能なサーバーで動かします。"
+      },
+      "feature2": {
+        "title": "負荷に合わせて自動調整",
+        "description": "ユーザーが増えても、システムが自動でパフォーマンスを調整し快適さを保ちます。"
+      },
+      "feature3": {
+        "title": "24/7監視",
+        "description": "ボットを常時監視するので、安心です。"
+      },
+      "osCore": {
+        "title": "オープンな agent 実行環境",
+        "desc": "OpenClaw は引き続きオープンソース (MIT) で、Hermes Agent も並行して使えます。スタックを確認しながら、ClawSimple を使い続けられます。"
+      },
+      "paidDelivery": {
+        "title": "まず OpenClaw と Hermes Agent を動かす",
+        "desc": "セットアップ、更新、運用をこちらで引き受けるので、サーバー作業を飛ばして本題に入りやすくなります。"
+      },
+      "runtimeChoice": {
+        "title": "OpenClaw または Hermes Agent",
+        "desc": "ボット作成時に OpenClaw または Hermes Agent を選びます。作成後、その実行環境は固定されます。"
+      },
+      "yourInfra": {
+        "title": "検索と読解をすぐ使える",
+        "desc": "Web 検索、ページ読解、要約の基本動線を先に整えてあるので、最初のワークフロー前に配線を組む必要がありません。"
+      },
+      "byokAllPlans": {
+        "title": "プラットフォーム AI を接続済み",
+        "desc": "標準のデプロイでは ClawSimple のプラットフォーム AI token とモデル設定を使います。ClawSimple 内で自分のモデル key を入力する必要はありません。"
+      },
+      "multiAgent": {
+        "title": "1体のボットから複数 Agent へ",
+        "desc": "まず1つの役立つ助手を動かし、必要になったらメール、予定、調査、保守ごとに agent を分けられます。"
+      },
+      "maintenanceBot": {
+        "title": "Profile のメンテナンス操作",
+        "desc": "Profile から bot、モデル、各 bot の固定ランタイムを管理できます。",
+        "guideCta": "Profile を開く"
+      },
+      "workflowReady": {
+        "title": "インストーラーは必要な設定だけを行う",
+        "desc": "インストーラーは OpenClaw、Hermes Agent、プラットフォーム AI、managed search、それらを安定して動かすための基本設定だけを扱います。"
+      },
+      "step1": {
+        "title": "ボットとサービスをつなぐ",
+        "desc": "Telegram ボットトークンを入れ、必要なら Gmail、Calendar、Tasks、Notion をつなぎます。"
+      },
+      "step2": {
+        "title": "環境をこちらで準備",
+        "desc": "サーバー、OpenClaw、Hermes Agent、プラットフォーム AI、managed search、基本の実行設定まで準備します。"
+      },
+      "step3": {
+        "title": "prompt を貼って始める",
+        "desc": "メール確認、予定整理、Web 要約など、最初の実務をすぐ走らせられます。"
+      }
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "開始前によくある質問",
+      "subtitle": "初めてのユーザーが気になるポイントを先に整理しました。",
+      "items": {
+        "telegramWhy": {
+          "question": "なぜTelegramを標準チャネルとしているのですか？",
+          "answer": "Telegramは導入が速く、長時間運用でも安定しやすく、多くのユーザーに馴染みがあります。まずはTelegramで素早く公開し、必要に応じて他チャネルへ拡張できます。"
+        },
+        "telegramCredentials": {
+          "question": "Telegram Bot Token と User ID は何ですか？",
+          "answer": "Bot Tokenは@BotFatherで発行されるボットの秘密キーです。User IDは、ボットと会話できるユーザーを指定する数値IDです（通常、ご自身のTelegram IDとなります。@Getmyid_bot や @userinfobot で確認できます）。Tokenはボット識別、User IDはアクセス制御に使います。"
+        },
+        "hermesSwitch": {
+          "question": "作成後に bot を Hermes Agent から OpenClaw に変更できますか？",
+          "answer": "できません。bot 作成時に OpenClaw または Hermes Agent を選びます。別のランタイムが必要な場合は、そのランタイムで新しい bot を作成してください。"
+        },
+        "cloudVsMacMini": {
+          "question": "クラウドサーバーと Mac mini での OpenClaw / Hermes Agent 運用、どちらが良い？",
+          "answer": "最短で OpenClaw や Hermes Agent setup を進め、運用負荷を減らしたいならクラウドが有利です。インストールを自動化でき、稼働状態を監視しやすく、サーバー問題はサポートが対応できます。Mac mini はローカルで完全管理したい人に向いています。実際はクラウドで始めて、後から一部を自前環境へ移すケースが多いです。"
+        },
+        "modelRecommendation": {
+          "question": "最初におすすめのAIモデルは？",
+          "answer": "迷った場合は、プランに対してClawSimpleが初期選択するデフォルトモデルから始めるのがおすすめです。品質・速度・コストのバランスを重視しており、後からいつでも変更できます。"
+        },
+        "billingMethod": {
+          "question": "料金体系はどうなっていますか？",
+          "answer": "料金は、プラン、含まれる AI / 検索利用量、必要に応じた追加のマネージド利用量に基づきます。新しいデプロイでは ClawSimple のプラットフォーム AI 接続とマネージド検索を標準で使うため、セットアップ時に AI provider key は不要です。"
+        },
+        "addAgentBilling": {
+          "question": "1つの deployment に agent を追加すると別料金になりますか？",
+          "answer": "別サーバー契約としては課金されません。追加 agent は同じ deployment と同じサーバーを再利用するため、agent を1つ増やすだけで新しいサーバーを買う形にはなりません。増えるのは利用量です。agent が増えて稼働が活発になると、その deployment のマネージド AI と検索クレジットの消費は速くなります。"
+        },
+        "addAgentRequirements": {
+          "question": "agent を追加するとき、何を用意すればいいですか？",
+          "answer": "最低限、新しい bot 用の Telegram Bot Token と、プラットフォームモデルの選択が必要です。許可する Telegram User ID は通常、保存済みの自分の ID が初期値として入りますが変更もできます。"
+        },
+        "addAgentFlow": {
+          "question": "agent 追加の実際の流れは？",
+          "answer": "Profile > Overview で対象 deployment を開き、Add Agent を押して、bot token とモデル関連の設定を入力して送信します。すると ClawSimple は同じ deployment 上で add_agent job をキューし、稼働中の OpenClaw 設定を更新します。job が完了すると新しい bot は active として表示されます。"
+        },
+        "addAgentCapacity": {
+          "question": "何体くらいの agent で重くなり始めますか？ AI credits は共有ですか？",
+          "answer": "現在の実装では一律の固定数はありません。軽い Telegram アシスタントが数体なら同居しやすいですが、複数 agent が同時に活発に動き、長いツール実行や重いモデルを使い始めると余裕は減ります。managed AI credits は deployment または seat 単位で集計されるため、同じ deployment 上の agent は同じ利用バケットを共有します。"
+        }
+      }
+    }
+  },
+  "pricing": {
+    "title": "Managed OpenClaw + Hermes Agent Hosting の料金",
+    "subtitle": "Standard と Max から、内蔵 AI 利用枠とサーバー容量に合わせて選べます。",
+    "monthly": "月額",
+    "yearly": "年額",
+    "yearlyDiscount": "17%オフ",
+    "billedYearly": "年額請求",
+    "billedYearlyWithTotal": "{total} を年額請求",
+    "newBadge": "New",
+    "allPaidPlansKeyNote": "すべての有料プランに、管理運用、プラットフォーム AI、マネージド検索、同じサーバーで複数 Bot を動かせる構成が含まれます。",
+    "period": "/月",
+    "whyPay": {
+      "title": "なぜ有料？",
+      "subtitle": "オープンソースを尊重する価格設定。",
+      "certainty": {
+        "title": "確実性への投資",
+        "description": "オープンソースは可能であることを意味しますが、簡単であることを意味しません。私たちはセットアップの不確実性を取り除きます。"
+      },
+      "hiddenCosts": {
+        "title": "隠れたコストを回避",
+        "description": "権限設定のミス、サービスの不具合、モデルの設定ミスは数時間の損失につながります。"
+      },
+      "ownership": {
+        "title": "インフラの所有権",
+        "description": "サーバーと認証情報はあなたのものです。私たちは最初の導入のみを自動化します。"
+      }
+    },
+    "plans": {
+      "standard": {
+        "title": "スタンダード",
+        "description": "多くのユーザーに向く標準プランです。管理運用、内蔵 AI クレジット、managed search/crawl、専用サーバーが含まれます。"
+      },
+      "max": {
+        "title": "Max",
+        "description": "毎日の利用が多い人向けです。より多くの AI クレジット、より多い managed search/crawl 余力、そして同じ管理運用が使えます。"
+      }
+    },
+    "features": {
+      "provisioning": "安全なクラウド設定",
+      "byok": "プラットフォーム AI を含む",
+      "systemd": "マネージドサーバーサポート",
+      "updates": "ワンクリック更新",
+      "maintenanceBot": "Profile のメンテナンス操作",
+      "runtimeSwitching": "bot ごとに OpenClaw または Hermes Agent を選択",
+      "creditsIncluded": "${credits} の月間利用クレジットを含む",
+      "useYourOwnKeyAnytime": "プラットフォーム AI 接続を含む",
+      "clawSimpleIncluded": "6$ AIクォータを含む",
+      "standardQuota": "標準的な使用量",
+      "standardTopupOrByok": "追加クレジットは AI と search/crawl で共通利用",
+      "hassleFree": "設定の手間なし",
+      "everythingInStandard": "スタンダード版の全機能を含む",
+      "fiveXQuota": "2倍のAI使用量",
+      "prioritySupport": "優先サポート",
+      "highSpecServer": "高性能サーバー",
+      "earlyAccess": "新機能への先行アクセス",
+      "installScript": "インストールスクリプト",
+      "stepByStepDocs": "詳細ドキュメント",
+      "transparency": "完全な透明性",
+      "noVendorLockIn": "ベンダーロックインなし",
+      "multipleAgents": "1サブで複数Agent"
+    },
+    "choosePlan": "プランを選択",
+    "deployNow": "ボットを始める",
+    "multiAgent": {
+      "title": "1つのサブで複数 Agent",
+      "description": "同じサーバーに複数の Telegram Bot を追加。各 Agent は独自の Token と AI モデルを持てます。"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "ClawSimpleにログイン",
+      "google": "Googleで続行",
+      "or": "または",
+      "emailLabel": "メールアドレス",
+      "emailPlaceholder": "you@example.com",
+      "submit": "マジックリンクを送信",
+      "sent": "マジックリンクを送信しました！メールを確認してください。",
+      "description": "認証用のログインメールをお送りします。メールアドレスを入力してください。",
+      "error": "問題が発生しました。もう一度お試しください。"
+    }
+  },
+  "footer": {
+    "tagline": "OpenClaw と Hermes Agent ボットの運用をもっとかんたんに。",
+    "product": "プロダクト",
+    "company": "会社",
+    "legal": "法的情報",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "about": "私たちについて"
+  },
+  "deploy": {
+    "widget": {
+      "badge": "今すぐ開始",
+      "title": "ボットを起動",
+      "description": "Token を貼り付け、モデルを選んで、開始。",
+      "trustSignals": {
+        "noServerKnowledge": "サーバー知識不要",
+        "platformAi": "プラットフォーム AI 接続済み",
+        "multiAgent": "複数ボット、追加料金なし"
+      }
+    },
+    "help": {
+      "newTokenWarning": "セットアップごとに新しいボット（新しい連携キー）を使用してください。",
+      "closeModal": "モーダルを閉じる",
+      "telegramHelp": "Telegramヘルプ",
+      "tokenTitle": "Bot Tokenの確認方法",
+      "allowlistTitle": "TelegramユーザーIDの確認方法",
+      "close": "閉じる",
+      "tokenStepOne": "Telegramを開き、<code>@BotFather</code> を検索します。",
+      "tokenStepTwo": "<code>/newbot</code> を送信し、案内に従って作成します。",
+      "tokenStepThree": "最後のメッセージに表示されるTokenをコピーします。",
+      "tokenExample": "例: <code>123456789:ABC-DEF1234ghIkl-zyx57W2v1u123ew11</code>",
+      "tokenCaption": "BotFatherのTokenメッセージ",
+      "allowlistStepOne": "<code>@userinfobot</code>（または <code>@getmyid_bot</code>）を検索します。",
+      "allowlistStepTwo": "ボットを開始し、表示された数字のユーザーIDをコピーします。",
+      "allowlistStepThree": "そのIDを入力します。複数ある場合はカンマ区切りで入力します。",
+      "allowlistWarning": "重要: なりすましを避けるため、必ず正確なユーザー名 <first>@userinfobot</first> または <second>@getmyid_bot</second> を使ってください。",
+      "allowlistExample": "例: <code>6861230049</code>",
+      "allowlistCaption": "User IDの応答例"
+    },
+    "statusTitle": "Agent のステータス",
+    "statusModalLabel": "デプロイ状況",
+    "statusModalCompleted": "デプロイ完了",
+    "statusModalFailed": "デプロイに失敗しました",
+    "statusModalPreparing": "Agent を準備しています",
+    "statusModalClose": "閉じる",
+    "statusModalChatReady": "🎉 Telegram で新しいボットとチャットできるようになりました！",
+    "statusCardChatCta": "Telegram で {username} とチャット",
+    "statusModalOpenTelegram": "Telegram で {username} を開く",
+    "deployPhaseProvisioning": "サーバーを準備中",
+    "deployPhaseRuntime": "ランタイムをインストール中",
+    "deployPhaseBot": "ボットを設定中",
+    "deployPhaseHealth": "最終ヘルスチェック",
+    "deployPhaseReady": "もうすぐ完了",
+    "noDeployment": "まだ運用が開始されていません。開始すると、ここに状況が表示されます。",
+    "statusActive": "稼働中",
+    "statusFailed": "問題が発生",
+    "statusDeploying": "起動中...",
+    "paymentPending": "支払い待ちです。1時間以内に完了してください。",
+    "graceEnds": "支払い期限",
+    "completePayment": "支払いを完了",
+    "deploying": "起動中...",
+    "realProgressLabel": "実際の進行状況",
+    "deployProgressHint": "通常2〜3分かかります。このウィンドウは閉じても大丈夫です。バックグラウンドですべて準備を整えます。",
+    "progressSteps": {
+      "serverAssigned": {
+        "title": "サーバー確保",
+        "description": "デプロイ先のノードが確保され、このセットアップに紐付けられました。"
+      },
+      "nodeReported": {
+        "title": "ノード情報受信",
+        "description": "起動スクリプトから実際のノード情報が返ってきました。"
+      },
+      "runtimeInstalled": {
+        "title": "ランタイム導入完了",
+        "description": "基本パッケージ、OpenClaw CLI、Hermes Agent ランタイムの導入が完了しました。"
+      },
+      "botConfigured": {
+        "title": "ボット設定完了",
+        "description": "Telegram とモデル設定がこのデプロイに反映されました。"
+      },
+      "serviceStarted": {
+        "title": "サービス起動",
+        "description": "systemd サービスが立ち上がり、gateway プロセスが開始されました。"
+      },
+      "serviceReady": {
+        "title": "ヘルスチェック完了",
+        "description": "最終確認が通り、ボットを利用できる状態です。"
+      }
+    },
+    "setupVideo": {
+      "iframeTitle": "OpenClaw と Hermes Agent セットアップ手順動画"
+    },
+    "viewFullStatus": "詳細ステータスを表示",
+    "viewStatusDetail": "詳細を見る",
+    "viewAllDeployments": "すべてのボットを見る",
+    "showActiveOnly": "稼働中のみ",
+    "confirm": {
+      "title": "新しいデプロイの確認",
+      "heading": "別のデプロイを作成しますか？",
+      "description": "追加のデプロイを作成しようとしています。",
+      "chargeTitle": "新しい有料サーバー",
+      "chargeMonthly": "確定すると、別サーバー分として ${monthly}/月 が請求されます。",
+      "chargeYearly": "確定すると、別サーバー分として ${total}/年（約 ${monthlyEquivalent}/月）が請求されます。",
+      "chargeReason": "新しいサーバーは、1台では計算能力が足りない場合か、ボット同士を完全に分離したい場合にだけ追加するのがおすすめです。",
+      "warningTitle": "リマインダー",
+      "warningText": "各ボットのセットアップでは、異なるボットを使用してください。そうすることで、それぞれのボットと個別に会話できるようになります。",
+      "warningReason": "",
+      "botFatherLink": "@BotFatherで新しいボットを作成",
+      "cancel": "キャンセル",
+      "confirm": "確認して開始",
+      "processing": "処理中..."
+    },
+    "form": {
+      "title": "個人 Agent サーバーを作成",
+      "tokenLabel": "Telegram Bot Token",
+      "tokenPlaceholder": "@BotFather で取得したボットトークンを入力",
+      "tokenHelp": "Telegram Bot Tokenの取得方法",
+      "userLabel": "Telegram ユーザーID",
+      "userPlaceholder": "ユーザーIDを入力してください",
+      "userPlaceholderSaved": "保存済みの Telegram ユーザー ID から読み込み済みです",
+      "checkingProfile": "プロフィールを確認中...",
+      "userSavedHint": "Profile に保存した Telegram ユーザー ID を使用しています。変更するにはそちらでリンク解除してください。",
+      "userHint": "ここに指定したユーザーだけがボットと会話できます。複数ある場合はカンマ区切りです。",
+      "userHelp": "TelegramユーザーID許可リストの取得方法",
+      "existingDeploymentFound": "既存のデプロイが見つかりました",
+      "aiModelLabel": "内蔵AIモデル",
+      "providerLabel": "AIプロバイダー",
+      "apiKeyLabel": "API Key",
+      "apiKeyPlaceholder": "sk-...",
+      "havePromo": "プロモーションコードをお持ちですか？",
+      "promoLabel": "プロモーションコード",
+      "promoPlaceholder": "コードを入力",
+      "apply": "適用",
+      "working": "処理中...",
+      "monthly": "月額",
+      "yearly": "年額",
+      "yearlyDiscount": "17%オフ",
+      "deployNow": "今すぐ開始",
+      "addPayment": "支払い方法を追加",
+      "useClawSimple": "6$ AIクォータを使用",
+      "useClawSimpleMax": "28$ AIクォータを使用",
+      "bringYourOwn": "プラットフォーム AI モデル",
+      "runtimeLabel": "Agent ランタイム",
+      "runtimeHermes": "Hermes Agent",
+      "runtimeHermesDesc": "新しいサーバーの既定です。作成後は変更できません。",
+      "runtimeOpenClaw": "OpenClaw",
+      "runtimeOpenClawDesc": "この bot で従来の OpenClaw ランタイムを使います。",
+      "tooltips": {
+        "runtime": "デフォルトの体験には Hermes Agent、クラシックモードには OpenClaw Agent を選択してください。ランタイムは作成後に固定されます。",
+        "plan": "Standard：ほとんどのユーザーに最適。Max：より多くの AI 使用量と高いサーバー性能で、日常的なヘビーユースに。",
+        "model": "この AI モデルが bot で使用されます。モデルは Telegram で /models コマンドを使っていつでも切り替えられます。"
+      },
+      "modelSwitchHint": "迷っても大丈夫です。Telegramで /models コマンドを使っていつでもモデルを変更できます。",
+      "stepOne": "ステップ 1",
+      "stepTwo": "ステップ 2",
+      "planLabel": "プランを選ぶ",
+      "planHelper": "この専用サーバーに含める AI 利用枠を選びます。",
+      "legacyPlanLockedHelper": "このサブスクリプションは従来の legacy プランをそのまま使い続けます。このプランの公開申込み入口は終了しましたが、既存の契約ではここから引き続きデプロイできます。",
+      "planStandard": "スタンダード",
+      "planMax": "Max",
+      "legacyPlanLockedBadge": "既存サブスクリプション",
+      "planPrivateBadge": "専用サーバー",
+      "legacyPlanLockedDescription": "この legacy プランは現在のサブスクリプションで引き続き利用できます。ここから同じプランでデプロイを続けられます。",
+      "planStandardDesc": "専用サーバーに内蔵AI利用枠が含まれるプランです。ほとんどのユーザーにおすすめです。",
+      "planMaxDesc": "専用サーバーにより多くの内蔵AI利用枠が含まれるプランです。利用量が多い方向けです。",
+      "aiSetupStatusManaged": "このプランにはAI課金が含まれています",
+      "aiSetupStatusOwn": "このプランではご自身のAIプロバイダーを使います",
+      "aiSetupSummaryManaged": "セットアップ時にプロバイダー接続は不要です。",
+      "aiSetupSummaryOwn": "次のセクションでプロバイダー情報を接続します。",
+      "aiSetupNextManaged": "プロバイダーの追加や変更は後から Profile でも行えます。",
+      "aiSetupNextOwn": "下でプロバイダーを選び、このサーバーで使う API 情報を入力してください。",
+      "managedSetupTitle": "内蔵AIの設定",
+      "providerSetupTitle": "AIアカウントを接続",
+      "providerSetupDesc": "下にプロバイダー情報を入力してください。サーバーをあなたのAIアカウントに接続するために使います。",
+      "baseUrlLabel": "Base URL",
+      "baseUrlPlaceholder": "https://api.example.com/v1",
+      "baseUrlDesc": "プロバイダーからカスタムAPI URLを案内されている場合だけ変更してください。",
+      "modelNameLabel": "モデル名",
+      "modelNamePlaceholder": "model-id",
+      "modelNameDesc": "プロバイダーの正確なモデルIDを使用してください（OpenAI互換）。",
+      "fallbackModelsLabel": "予備モデル（任意）",
+      "fallbackModelsPlaceholder": "model-a,model-b,model-c",
+      "modelCostWarning": "このモデルは高価です。${price}/月のクォータでは、このモデルで約{messageCount}件のメッセージを利用できます。Telegram の <command>/models</command> コマンドで、いつでもより安いモデルに切り替えられます。",
+      "presetAnthropic": "Anthropic",
+      "presetOpenAI": "OpenAI",
+      "presetPoe": "Poe",
+      "presetGoogle": "Google Gemini",
+      "presetCustom": "カスタム",
+      "editConnection": "接続を編集",
+      "connectionDetails": "接続の詳細"
+    },
+    "security": {
+      "title": "安全性と透明性",
+      "description": "あなたのキーはサーバーの初期化にのみ使用されます。保存されることはありません。"
+    },
+    "card": {
+      "title": "プロフィール",
+      "loading": "デプロイを読み込み中...",
+      "dismissError": "エラーを閉じる",
+      "signInRequired": "サーバーを表示するにはログインしてください。",
+      "signIn": "ログイン",
+      "personalAccount": "個人アカウント",
+      "workspaceLabel": "Profile ワークスペース",
+      "manageBilling": "請求を管理",
+      "signOut": "ログアウト",
+      "adminPanel": "管理パネル",
+      "tabs": {
+        "overview": "概要",
+        "billing": "請求",
+        "settings": "設定",
+        "feedback": "フィードバック"
+      },
+      "tabDescriptions": {
+        "overview": "サーバー一覧と稼働状況を管理します。",
+        "billing": "サブスクリプションと Credits を管理します。",
+        "settings": "Telegram アカウント設定を管理します。",
+        "feedback": "コミュニティ導線とサポート窓口です。"
+      },
+      "noDeployments": "まだサーバーが作成されていません。",
+      "noActiveDeployments": "現在稼働中のサーバーはありません。",
+      "stats": {
+        "activeServers": "稼働中のサーバー",
+        "addDeployment": "サーバーを追加",
+        "addDeploymentHint": "新しいサーバーを追加",
+        "liveDeploymentCount": "稼働中のデプロイ {count}",
+        "serverCountLabel": "合計 {count}",
+        "activePlans": "有効なプラン",
+        "extraCreditBalance": "Credits 残高",
+        "planQuotaHint": "サーバーごとの AI と search/crawl の利用枠は下に表示されます。",
+        "noExtraCredits": "Credits はまだ購入されていません。",
+        "nextExpiringCredits": "${amount} が次に期限切れ"
+      },
+      "noSubscriptions": {
+        "title": "有効なサブスクリプションはまだありません。",
+        "description": "新しいマネージドサーバーを始めて、最初のボットを立ち上げましょう。",
+        "cta": "サーバー設定を開く"
+      },
+      "billing": {
+        "managedCreditsTitle": "マネージド Credits",
+        "managedCreditsDescription": "プラン付属の AI または managed search/crawl 枠を使い切った後に使われます。",
+        "creditCarryoverHint": "購入した Credits は購入から 365 日後に期限切れになります。",
+        "includedUsage": "各サイクルに含まれるもの: ${ai} AI · ${search} search/crawl",
+        "balance": "残高 ${amount}",
+        "noExtraCredits": "Credits はまだ購入されていません。",
+        "nextExpiration": "${amount} は {date} に期限切れ",
+        "buyCredits": "${amount} ドル分の Credits を購入",
+        "creditConfirmTitle": "保存済みカードに請求",
+        "creditConfirmAmount": "${amount} ドル分の Credits を購入",
+        "creditConfirmDescription": "利用可能な場合は、Stripe に保存済みの支払い情報を使います。Stripe が確認を必要とする場合は checkout が開きます。",
+        "creditConfirmSavedCard": "支払いが完了すると、Credits は残高へ追加されます。",
+        "creditConfirmCancel": "キャンセル",
+        "creditConfirmAction": "続行",
+        "servers": "{active}/{capacity} サーバー",
+        "subscriptionStarted": "サブスクリプション開始 {time}",
+        "ends": "{date} に終了"
+      },
+      "createFirst": "最初のボットを起動する",
+      "showActiveOnly": "実行中のみ表示",
+      "save": "保存",
+      "cancel": "キャンセル",
+      "unknown": "不明",
+      "settings": {
+        "aiProviderTitle": "AI Provider",
+        "aiProviderDescription": "1台のサーバーにカスタム provider を設定します。保存後、そのサーバー上のすべての bot がこの接続を使います。",
+        "aiProviderCustomStatus": "Custom AI",
+        "aiProviderPlatformStatus": "Platform AI",
+        "aiProviderNoDeployments": "実行中のサーバーはありません。",
+        "aiProviderDeploymentLabel": "サーバー",
+        "aiProviderPresetLabel": "Provider",
+        "aiProviderApiKeyLabel": "API Key",
+        "aiProviderApiKeyPlaceholder": "空欄のままなら現在のキーを保持",
+        "aiProviderModelLabel": "メインモデル",
+        "aiProviderModelPlaceholder": "例: gpt-5.2",
+        "aiProviderFallbackModelsLabel": "予備モデル",
+        "aiProviderFallbackModelsPlaceholder": "任意、カンマ区切り",
+        "aiProviderBaseUrlLabel": "Base URL",
+        "aiProviderBaseUrlPlaceholder": "https://api.example.com/v1",
+        "aiProviderHelp": "OpenClaw または Hermes Agent 内部で手動変更した設定は、ここで保存した設定を上書きできます。",
+        "aiProviderSave": "AI provider を保存",
+        "aiProviderSaving": "保存中...",
+        "telegramUserIdTitle": "Telegram ユーザー ID",
+        "telegramUserIdDescription": "一度保存すると、新規デプロイと Agent 追加時に Telegram Allow list が自動入力されます。",
+        "savedStatus": "保存済み",
+        "notSavedStatus": "未保存",
+        "telegramUserIdLabel": "Telegram ユーザー ID",
+        "telegramUserIdPlaceholder": "数字の Telegram ユーザー ID を入力",
+        "savedHint": "保存済みでロックされています。変更するにはリンク解除してください。",
+        "enterHint": "数字の Telegram ユーザー ID を一度入力してください。",
+        "saving": "保存中...",
+        "unlink": "リンク解除",
+        "unlinking": "リンク解除中...",
+        "refresh": "更新",
+        "refreshing": "更新中..."
+      },
+      "paymentPending": "1時間以内に支払いを完了してください。",
+      "graceEnds": "支払い期限",
+      "completePayment": "支払いを完了",
+      "endingSoon": "次の請求サイクルで終了予定です。",
+      "undoRemoval": "元に戻す",
+      "delete": "削除",
+      "justNow": "たった今",
+      "minutesAgo": "{n}分前",
+      "hoursAgo": "{n}時間前",
+      "daysAgo": "{n}日前",
+      "status": {
+        "active": "稼働中",
+        "deploying": "準備中",
+        "failed": "エラー",
+        "removed": "停止済み",
+        "paymentPending": "お支払い待ち",
+        "endingSoon": "まもなく終了"
+      },
+      "serverModal": {
+        "genericDescription": "新しいサーバーのプランを選んでください。",
+        "useExistingSeat": "今回は現在のサブスクリプションの未使用シートを使います。",
+        "addSeat": "新しいサーバーを作成すると、別料金が発生します。"
+      },
+      "serverCopy": {
+        "defaultName": "サーバー {index}",
+        "createdAt": "{time} に作成",
+        "addSamePlanServer": "このサブスクリプションで同じ種類のサーバーを追加",
+        "noSearchResults": "検索条件に一致するサーバーはありません。",
+        "quotaUsage": "AI quota ${used} / ${cap} · {percent}% · 残り ${left}",
+        "quotaUnused": "まだ AI 使用量はありません · ${cap} 利用可能",
+        "quotaUsed": "AI 使用量 ${used} / ${cap} · 残り ${left}",
+        "scheduledPlan": "{date} に {plan} へ変更予定",
+        "addAgent": "Agent を追加",
+        "exportBackup": "バックアップを作成",
+        "downloadBackup": "バックアップをダウンロード",
+        "downloadBackupAgain": "再ダウンロード",
+        "backupExporting": "バックアップを作成中",
+        "encryptedBackup": "暗号化バックアップ",
+        "revealBackupPassword": "パスワードを表示",
+        "revealBackupPasswordAgain": "もう一度表示",
+        "showBackupDetails": "詳細を表示",
+        "hideBackupDetails": "詳細を隠す",
+        "backupPassword": "パスワード",
+        "copyBackupPassword": "パスワードをコピー",
+        "decryptCommand": "復号コマンド",
+        "copyDecryptCommand": "コマンドをコピー",
+        "backupExportTitle": "暗号化された完全バックアップを生成してダウンロードします",
+        "backupStarting": "暗号化バックアップの作成を開始しています...",
+        "backupPreparing": "暗号化バックアップを準備中です。サーバーの処理を待っています。",
+        "backupReady": "暗号化バックアップの準備ができました。先にダウンロードし、復号が必要なときだけパスワードを表示してください。",
+        "backupReadyToast": "暗号化バックアップの準備ができました。ダウンロードを開始します。",
+        "backupTimedOut": "バックアップがタイムアウトしました。再試行してください。",
+        "sessionExpired": "セッションの有効期限が切れました。再度サインインしてください。",
+        "downloadLinkError": "ダウンロードリンクを作成できませんでした。",
+        "downloadLinkMissing": "ダウンロードリンクが見つかりません。",
+        "backupExportError": "暗号化バックアップを作成できませんでした。",
+        "backupIdMissing": "バックアップ作成で backup_id が返されませんでした。",
+        "revealBackupPasswordError": "バックアップのパスワードを表示できませんでした。",
+        "backupPasswordMissing": "バックアップのパスワードが見つかりません。",
+        "backupPasswordWarning": "このパスワードは安全に保管してください。ファイルとパスワードの両方を持つ人は誰でもこのバックアップを復号できます。",
+        "backupPasswordCopied": "バックアップのパスワードをコピーしました。",
+        "decryptCommandCopied": "復号コマンドをコピーしました。",
+        "changePlan": "プラン変更",
+        "preparing": "準備中...",
+        "relaunch": "再起動デプロイ",
+        "cancelServer": "サーバーを解約",
+        "undoCancel": "解約を取り消す",
+        "agentsCount": "Agents（{count}）",
+        "scheduledRemoval": "削除予定です。",
+        "scheduledRemovalOn": "{date} に削除予定です。",
+        "tableName": "名前",
+        "tableOnlineSince": "稼働開始",
+        "tableModel": "モデル",
+        "tableActions": "操作",
+        "mainBadge": "Main",
+        "mainAgentTitle": "メイン Agent",
+        "mainAgentDescription": "多くのユーザーはまずここで skill の追加、モデル調整、Bot 情報の同期を行います。追加 Agent は必要になるまで折りたたみます。",
+        "skillsLabel": "インストール済み Skills",
+        "noSkillsInstalled": "まだ skill がありません。まずはここから始めるのが一般的です。",
+        "installSkill": "Skill を追加",
+        "editAgent": "Agent を編集",
+        "addAgentTitle": "Agent を追加",
+        "editAgentTitle": "Agent を編集",
+        "editMainAgentTitle": "メイン Agent を編集",
+        "agentFallbackName": "Agent",
+        "editAgentHint": "Token とモデルは更新できます。ランタイムは作成後に変更できません。",
+        "allowedUserIdLabel": "許可するユーザー ID",
+        "savedUserIdPlaceholder": "保存済みユーザー ID を読み込み済み",
+        "userIdPlaceholder": "Telegram ユーザー ID（例: 12345678）",
+        "savedUserIdHelp": "Profile に保存済みの Telegram ユーザー ID を使用します。",
+        "allowedUserIdHelp": "このユーザーだけが bot とチャットできます。複数の場合はカンマ区切りです。",
+        "aiSourceLabel": "AI ソース",
+        "managedAiSource": "ClawSimple Managed",
+        "telegramBotTokenLabel": "Telegram Bot Token",
+        "telegramBotTokenHelpLabel": "Telegram Bot Token の確認方法",
+        "keepCurrentTokenPlaceholder": "空欄のままなら現在の Token を保持",
+        "botTokenPlaceholder": "@BotFather から取得した Bot Token を入力",
+        "modelLabel": "モデル",
+        "aiModelLabel": "AI モデル",
+        "agentRuntimeLabel": "ランタイム",
+        "openclawRuntime": "OpenClaw",
+        "hermesRuntime": "Hermes",
+        "agentRuntimeCreateHelp": "作成後、この Agent のランタイムは変更できません。",
+        "agentRuntimeLockedHelp": "ランタイムは作成時に設定済みです。",
+        "hermesUnavailableHelp": "このサーバーで Hermes Agent を有効にするには、サポートに連絡してください。",
+        "noPresetModels": "プリセットモデルが未設定です",
+        "agentModalCancel": "キャンセル",
+        "savingAgent": "保存中...",
+        "addingAgent": "追加中...",
+        "saveAgentChanges": "変更を保存",
+        "addAgentSubmit": "Agent を追加",
+        "settingsMenu": "設定",
+        "serverToolsTitle": "サーバー操作",
+        "serverToolsDescription": "使用頻度の低いサーバー操作はここに集約し、メイン Agent を見やすく保ちます。",
+        "serverInfoTitle": "サーバー情報",
+        "serverIdLabel": "Server ID",
+        "serverIpLabel": "公開 IP",
+        "serverRuntimeLabel": "実行モード",
+        "serverVersionLabel": "OpenClaw",
+        "extraAgentsTitle": "追加 Agent（{count}）",
+        "syncTelegramProfile": "Telegram プロフィールを同期: Telegram から最新の bot 名を取得します。",
+        "managed": "Managed",
+        "pending": "保留中",
+        "noServersLinked": "このサブスクリプションに紐づくサーバーはありません。",
+        "setupInProgress": "サーバーをセットアップ中",
+        "setupInProgressWithAgents": "サーバーをセットアップ中 · 追加 Agent {count} 件を設定中",
+        "mainAgentHint": "メイン Agent は削除できませんが、追加 Agent と同じ編集フォームを使えます。",
+        "groupChatGuidePrefix": "Agent でグループチャットを有効にするには、",
+        "groupChatGuideLink": "このガイド"
+      },
+      "feedback": {
+        "eyebrow": "コミュニティと応答",
+        "title": "フィードバックとサポート",
+        "description": "ご不満や技術的な問題がありますか？ 迅速な解決のために、Discordまたはメールでお気軽にお問い合わせください。",
+        "supportBadge": "高速サポート",
+        "discordButton": "Discord コミュニティ",
+        "emailButton": "メールで連絡",
+        "trustpilotTitle": "体験を共有する",
+        "trustpilotDescription": "皆様からの励ましは、私たちの製品開発にとって非常に重要です。ClawSimpleを気に入っていただけましたら、Trustpilotでの評価をご検討ください。",
+        "trustpilotBadge": "コミュニティ評価"
+      },
+      "maintenanceBotTip": "Profile から bot、モデル、各 bot の固定ランタイムを管理できます。"
+    }
+  },
+  "about": {
+    "title": "私たちについて",
+    "intro": "ClawSimpleは、OpenClaw と Hermes Agent のマネージドデプロイサービスを提供しています。サーバー設定や保守なしで、個人AIボットを実行できます。",
+    "mission": {
+      "title": "私たちの使命",
+      "content": "OpenClaw と Hermes Agent のデプロイをサービスとして整え、ユーザーがボット本体に集中できるようにします。"
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "content": "ご質問はこちらまで"
+    }
+  },
+  "privacy": {
+    "title": "プライバシーポリシー",
+    "lastUpdated": "最終更新：2025年1月",
+    "data": {
+      "title": "収集するデータ",
+      "content": "サービス提供に必要な最小限のデータのみを収集します：認証用のメールアドレス、デプロイ設定、請求情報。新しいデプロイではプラットフォーム AI とマネージド検索を標準で使うため、セットアップ時に AI provider key は不要です。"
+    },
+    "keys": {
+      "title": "APIキー",
+      "content": "Telegram ボットトークンはサーバー初期化に使われます。ClawSimple は標準でプラットフォーム AI とマネージド検索を接続するため、OpenAI、Z.ai、その他の AI provider key をセットアップ時に提出する必要はありません。"
+    },
+    "cookies": {
+      "title": "Cookies",
+      "content": "認証とセッション管理のために必要なCookieを使用します。トラッキングや広告Cookieは使用しません。"
+    },
+    "contact": {
+      "title": "ご質問？",
+      "content": "プライバシーに関するお問い合わせは privacy@clawsimple.com まで"
+    }
+  },
+  "workflowLabels": {
+    "verificationLabel": "検証ステータス",
+    "testedLabel": "直近の検証",
+    "firstResultLabel": "最初の結果",
+    "setupLabel": "開始前に",
+    "restrictionsLabel": "現在の制限",
+    "sampleOutputLabel": "サンプル出力",
+    "officialSupportLabel": "公式対応済み",
+    "rankingLabel": "優先度",
+    "rankingHint": "検証状態・セットアップの手間・最初の結果までの時間でランク付け",
+    "statusPassed": "検証済み",
+    "statusPartial": "使える",
+    "statusUnverified": "未検証",
+    "statusFailed": "現在利用不可",
+    "setupReady": "そのまま使える",
+    "setupSteps": "あと {count} ステップ",
+    "promptDeterminismLabel": "Prompt 安定度",
+    "promptDeterminismHigh": "高",
+    "promptDeterminismMedium": "中",
+    "promptDeterminismLow": "低",
+    "partialHint": "利用できますが、テンプレートから始めたほうが安定します。自由入力だと結果がぶれやすい状態です。",
+    "unverifiedHint": "このワークフローは今回の公式検証をまだ完了していません。",
+    "verifiedCountLabel": "検証済み",
+    "partialCountLabel": "使える"
+  },
+  "terms": {
+    "title": "利用規約",
+    "lastUpdated": "最終更新：2026年4月",
+    "service": {
+      "title": "サービス説明",
+      "content": "ClawSimpleは、OpenClawボット向けの自動化されたサーバーデプロイメントと管理サービスを提供します。サービスは月払いまたは年払いのサブスクリプションで提供されます。"
+    },
+    "payment": {
+      "title": "支払いと請求",
+      "content": "サブスクリプション料は月額または年額で前払いされます。いつでもサブスクリプションをキャンセルできます。サービスは現在の請求期間の終了まで継続します。"
+    },
+    "credits": {
+      "title": "Credits",
+      "content": "購入した Credits は、managed AI と managed search/crawl の利用にのみ使えます。Credits は購入から 365 日後に期限切れとなり、譲渡できず、法令で求められる場合を除き通貨に交換できません。"
+    },
+    "refund": {
+      "title": "返金",
+      "content": "返金は個別に対応いたします。解決できないサービスの問題が発生した場合は、返金のご相談をお問い合わせください。"
+    },
+    "liability": {
+      "title": "責任の制限",
+      "content": "サービスの使用によって生じるいかなる損害についても、データの損失、サービスの中断、第三者APIの故障を含むがこれらに限定されない、責任を負いません。"
+    },
+    "changes": {
+      "title": "規約の変更",
+      "content": "規約をいつでも更新する場合があります。サービスの継続使用は、変更の受け入れを示します。"
+    }
+  },
+  "blog": {
+    "cta": {
+      "title": "自分のボットをデプロイする準備はできましたか？",
+      "description": "Telegram AIボットを3分で起動。サーバー設定は不要です。",
+      "button": "ボットを始める"
+    },
+    "listing": {
+      "title": "ブログ",
+      "description": "ClawSimpleチームからの最新情報、ガイド、インサイト。",
+      "readMore": "続きを読む"
+    },
+    "post": {
+      "backToList": "ブログに戻る"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+ALTER TYPE "public"."skills_catalog_source" ADD VALUE 'github' BEFORE 'manual';

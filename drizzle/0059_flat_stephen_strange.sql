@@ -1,0 +1,1 @@
+ALTER TABLE "workflow_verification" ADD COLUMN "test_prompt" text;

@@ -1,0 +1,376 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* 排版（Marc Lou — Headlines）：标题要大、紧、短。
+     字号 h1 60px / h2 48px（桌面），移动端 32–40px → clamp 流式。
+     字距 -0.4px、行高 1（Marc 原值）。这里不强制 font-weight，
+     交给 Instrument Serif 展示字体；用 text-h1/text-h2 时按需加 font-*。 */
+  --text-h1: clamp(2.25rem, 6vw, 3.75rem);     /* 36 → 60px */
+  --text-h1--line-height: 1;
+  --text-h1--letter-spacing: -0.4px;
+  --text-h2: clamp(2rem, 4.5vw, 3rem);         /* 32 → 48px */
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.4px;
+  --tracking-headline: -0.4px;
+  --leading-headline: 1;
+}
+
+:root {
+  --radius: 0.625rem;
+  --brand-orange: #e2542a;
+  --brand-coral: #f58a56;
+  --brand-openclaw-red: #e81b25;
+  --brand-openclaw-red-hot: #f70514;
+  --brand-shell-ink: #17110f;
+  --brand-shell-ink-soft: #221714;
+  --brand-shell-paper: #fcfaf7;
+  --brand-shell-sand: #f7f1ea;
+  --background: oklch(0.985 0.01 67);
+  --foreground: oklch(0.23 0.03 40);
+  --card: oklch(0.995 0.01 67);
+  --card-foreground: oklch(0.23 0.03 40);
+  --popover: oklch(0.995 0.01 67);
+  --popover-foreground: oklch(0.23 0.03 40);
+  --primary: oklch(0.64 0.19 40);
+  --primary-foreground: oklch(0.99 0.01 67);
+  --secondary: oklch(0.96 0.02 65);
+  --secondary-foreground: oklch(0.26 0.03 40);
+  --muted: oklch(0.97 0.015 65);
+  --muted-foreground: oklch(0.53 0.03 45);
+  --accent: oklch(0.94 0.03 58);
+  --accent-foreground: oklch(0.3 0.04 38);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.9 0.02 55);
+  --input: oklch(0.9 0.02 55);
+  --ring: oklch(0.7 0.16 40);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0.01 67);
+  --sidebar-foreground: oklch(0.23 0.03 40);
+  --sidebar-primary: oklch(0.64 0.19 40);
+  --sidebar-primary-foreground: oklch(0.99 0.01 67);
+  --sidebar-accent: oklch(0.96 0.02 65);
+  --sidebar-accent-foreground: oklch(0.26 0.03 40);
+  --sidebar-border: oklch(0.9 0.02 55);
+  --sidebar-ring: oklch(0.7 0.16 40);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    line-height: 1.6;   /* 正文易读默认；之前缺，导致段落偏挤 */
+    background-image:
+      radial-gradient(circle at top left, rgba(245, 138, 86, 0.12), transparent 34%),
+      radial-gradient(circle at 85% 10%, rgba(226, 84, 42, 0.08), transparent 24%);
+  }
+  /* 标题兜底排版（Marc Headlines 法则）：收紧字距与行高，让没显式设类的
+     标题也"大而紧"。不设 font-weight，保留 Instrument Serif 展示字重。
+     letter-spacing 用 -0.02em（随字号缩放，约合 Marc 的 -0.4px）。
+     组件里若用 leading-* / tracking-* 工具类会覆盖这里。 */
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  .dark body {
+    background-image:
+      radial-gradient(circle at top left, rgba(247, 5, 20, 0.09), transparent 30%),
+      radial-gradient(circle at 84% 10%, rgba(232, 27, 37, 0.06), transparent 24%);
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px var(--background) inset !important;
+    -webkit-text-fill-color: var(--foreground) !important;
+    caret-color: var(--foreground) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+  }
+}
+
+@keyframes use-case-track-forward {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(var(--use-case-distance, 0px) * -1), 0, 0);
+  }
+}
+
+@keyframes use-case-track-reverse {
+  from {
+    transform: translate3d(calc(var(--use-case-distance, 0px) * -1), 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@layer components {
+  .surface-stack {
+    position: relative;
+    isolation: isolate;
+    background-color: var(--surface-bg, transparent);
+  }
+
+  .surface-stack::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-image: var(--surface-glow, none);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .surface-stack > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-shell {
+    --surface-bg: var(--brand-shell-paper);
+    --surface-glow:
+      radial-gradient(circle at 14% 8%, rgba(245, 138, 86, 0.18), transparent 26%),
+      radial-gradient(circle at 82% 12%, rgba(226, 84, 42, 0.08), transparent 22%);
+  }
+
+  .dark .page-shell {
+    --surface-bg: #120f10;
+    --surface-glow:
+      radial-gradient(circle at 16% 8%, rgba(247, 5, 20, 0.12), transparent 24%),
+      radial-gradient(circle at 82% 10%, rgba(232, 27, 37, 0.07), transparent 20%);
+  }
+
+  .section-shell {
+    --surface-bg: #fcfaf7;
+    --surface-glow: linear-gradient(180deg, rgba(255, 248, 239, 0.96) 0%, rgba(248, 244, 237, 0.98) 100%);
+  }
+
+  .dark .section-shell {
+    --surface-bg: #12100f;
+    --surface-glow:
+      radial-gradient(circle at 18% 12%, rgba(247, 5, 20, 0.09), transparent 26%),
+      linear-gradient(180deg, rgba(24, 18, 17, 0.98) 0%, rgba(17, 16, 15, 0.98) 100%);
+  }
+
+  .section-shell-soft {
+    --surface-bg: #fcfaf7;
+    --surface-glow: linear-gradient(180deg, rgba(255, 250, 244, 0.98) 0%, rgba(247, 240, 232, 0.98) 100%);
+  }
+
+  .dark .section-shell-soft {
+    --surface-bg: #11100f;
+    --surface-glow:
+      radial-gradient(circle at 20% 10%, rgba(232, 27, 37, 0.08), transparent 24%),
+      linear-gradient(180deg, rgba(23, 19, 18, 0.98) 0%, rgba(17, 16, 15, 0.98) 100%);
+  }
+
+  .section-shell-deep {
+    --surface-bg: #17110f;
+    --surface-glow:
+      radial-gradient(circle at 50% 0%, rgba(245, 138, 86, 0.2) 0%, rgba(226, 84, 42, 0.08) 26%, transparent 48%),
+      linear-gradient(180deg, rgba(34, 23, 20, 1) 0%, rgba(23, 17, 15, 1) 100%);
+  }
+
+  .dark .section-shell-deep {
+    --surface-bg: #130f10;
+    --surface-glow:
+      radial-gradient(circle at 50% 2%, rgba(247, 5, 20, 0.18) 0%, rgba(232, 27, 37, 0.08) 22%, transparent 42%),
+      linear-gradient(180deg, rgba(25, 17, 18, 1) 0%, rgba(17, 14, 15, 1) 100%);
+  }
+
+  .card-shell {
+    --surface-bg: rgba(255, 251, 246, 0.95);
+    --surface-glow: linear-gradient(180deg, rgba(255, 252, 248, 0.96) 0%, rgba(252, 245, 238, 0.94) 100%);
+    box-shadow: 0 24px 52px -30px rgba(53, 27, 18, 0.28);
+  }
+
+  .dark .card-shell {
+    --surface-bg: rgba(24, 18, 18, 0.92);
+    --surface-glow:
+      radial-gradient(circle at 16% 12%, rgba(247, 5, 20, 0.08), transparent 28%),
+      linear-gradient(180deg, rgba(36, 26, 26, 0.96) 0%, rgba(23, 18, 18, 0.96) 100%);
+    box-shadow: 0 24px 52px -34px rgba(0, 0, 0, 0.48);
+  }
+
+  .card-shell-soft {
+    --surface-bg: rgba(255, 252, 248, 0.92);
+    --surface-glow: linear-gradient(180deg, rgba(255, 251, 246, 0.94) 0%, rgba(252, 245, 238, 0.92) 100%);
+    box-shadow: 0 18px 38px -28px rgba(67, 31, 20, 0.32);
+  }
+
+  .dark .card-shell-soft {
+    --surface-bg: rgba(24, 18, 18, 0.86);
+    --surface-glow:
+      radial-gradient(circle at 18% 10%, rgba(232, 27, 37, 0.07), transparent 26%),
+      linear-gradient(180deg, rgba(33, 26, 26, 0.94) 0%, rgba(24, 18, 18, 0.94) 100%);
+    box-shadow: 0 18px 38px -30px rgba(0, 0, 0, 0.5);
+  }
+
+  .card-shell-deep {
+    --surface-bg: #1b1412;
+    --surface-glow:
+      radial-gradient(circle at 82% 12%, rgba(245, 138, 86, 0.16), transparent 22%),
+      linear-gradient(180deg, rgba(34, 24, 21, 1) 0%, rgba(27, 20, 18, 1) 100%);
+    box-shadow: 0 28px 60px -38px rgba(0, 0, 0, 0.45);
+  }
+
+  .dark .card-shell-deep {
+    --surface-bg: #171213;
+    --surface-glow:
+      radial-gradient(circle at 82% 12%, rgba(247, 5, 20, 0.14), transparent 22%),
+      linear-gradient(180deg, rgba(34, 22, 24, 1) 0%, rgba(23, 18, 19, 1) 100%);
+    box-shadow: 0 28px 60px -38px rgba(0, 0, 0, 0.54);
+  }
+
+  .brand-cta {
+    background-image: linear-gradient(135deg, var(--brand-coral) 0%, var(--brand-orange) 100%);
+    color: #fff7f2;
+    box-shadow: 0 24px 52px -24px rgba(226, 84, 42, 0.78);
+  }
+
+  .dark .brand-cta {
+    background-image: linear-gradient(135deg, #ff5c66 0%, var(--brand-openclaw-red) 52%, #b9111b 100%);
+    color: #fff6f7;
+    box-shadow: 0 22px 48px -24px rgba(232, 27, 37, 0.72);
+  }
+
+  .use-case-mask {
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  .use-case-track {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: max-content;
+    gap: 1rem;
+    padding-right: 1rem;
+    will-change: transform;
+  }
+
+  .use-case-track-forward {
+    animation: use-case-track-forward var(--use-case-duration, 38s) linear infinite;
+  }
+
+  .use-case-track-reverse {
+    animation: use-case-track-reverse var(--use-case-duration, 42s) linear infinite;
+  }
+
+  .use-case-mask:hover .use-case-track {
+    animation-play-state: paused;
+  }
+
+  .brand-shell-glow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand-shell-glow::before {
+    content: "";
+    position: absolute;
+    inset: auto;
+    top: -5rem;
+    right: -4rem;
+    height: 14rem;
+    width: 14rem;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(245, 138, 86, 0.22) 0%, rgba(245, 138, 86, 0) 72%);
+    pointer-events: none;
+  }
+
+  .dark .brand-shell-glow::before {
+    background: radial-gradient(circle, rgba(232, 27, 37, 0.18) 0%, rgba(232, 27, 37, 0) 72%);
+  }
+}

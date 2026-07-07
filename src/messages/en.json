@@ -1,0 +1,869 @@
+{
+  "common": {
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "overview": "Overview",
+    "pricing": "Pricing",
+    "deploy": "Go Live",
+    "profile": "Profile",
+    "roadmap": "Roadmap",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "dashboard": "Dashboard",
+    "language": "Language",
+    "blog": "Blog",
+    "whatsNew": "What's New",
+    "viewAllUpdates": "View all updates",
+    "relaunchFixHint": "New features are usually ready to use immediately. If anything feels off, contact support and we will check the server.",
+    "loading": "Loading..."
+  },
+  "home": {
+    "socialProof": {
+      "badge": "Early user feedback",
+      "quote": "\"One was great.\"",
+      "summary": "After reviewing 11 instant OpenClaw services, Mike MacCana singled out ClawSimple with the cleanest verdict in the entire post.",
+      "name": "Mike MacCana",
+      "role": "Developer Relations, Quicknode",
+      "sourceNote": "Shared publicly on X by the Solana at QuickNode account on March 2, 2026.",
+      "iframeTitle": "Mike MacCana video testimonial about ClawSimple",
+      "cta": "View the original post"
+    },
+    "hero": {
+      "notificationBanner": "📣 Subscription prices for new plans will increase on Feb 15th (UTC). Existing subscriptions will remain unchanged.",
+      "learnMore": "Learn More",
+      "title": "Your Telegram AI bot, running in 3 minutes",
+      "description": "No server setup. No terminal commands. We install OpenClaw or Hermes Agent, connect the AI, and keep your bot running on a private server.",
+      "cta": "Start my bot",
+      "noCreditCard": "No card needed to sign up. Payment method required before deployment.",
+      "trustLine": "Private server • 3-minute setup",
+      "productHuntLabel": "Featured on Product Hunt",
+      "secondaryCta": "See Prices",
+      "openSourceCore": "OpenClaw + Hermes Agent, ready first",
+      "localFirstControl": "OpenClaw and Hermes Agent installed",
+      "telegramFirst": "Platform AI connected",
+      "freshServerRelaunch": "Managed search included",
+      "multipleAgentsPerSeat": "Run a real task before building a system",
+      "maintenanceBot": "Limited maintenance bot",
+      "badge": "Managed OpenClaw + Hermes Agent Hosting",
+      "supportedVersion": "Supports OpenClaw {version}",
+      "supportedHermesVersion": "Supports Hermes Agent {version}",
+      "supportedVersions": "Supports OpenClaw {openclawVersion} + Hermes Agent {hermesVersion}",
+      "dismissBanner": "Dismiss banner",
+      "snapshot": {
+        "title": "ClawSimple Control Snapshot",
+        "liveControl": "Live Control Room",
+        "streaming": "Streaming",
+        "creator": "Creator",
+        "license": "License",
+        "channels": "Channels",
+        "deployLog": "Setup Log",
+        "running": "Running",
+        "cmd": "$ openclaw deploy --channel telegram"
+      },
+      "screenshots": {
+        "list": "Every agent, one tap away",
+        "hermes": "Your bot replies like a teammate",
+        "openclaw": "One topic, one group. No clutter.",
+        "physics": "Hand off anything. It gets done."
+      }
+    },
+    "trustBanner": {
+      "items": {
+        "privateServer": {
+          "title": "Private server",
+          "description": "Your bot runs on its own server, not shared"
+        },
+        "fastSetup": {
+          "title": "3-minute setup",
+          "description": "From form to live bot, fully automated"
+        },
+        "managedSearch": {
+          "title": "Managed search",
+          "description": "Search and page reading are ready on new deployments"
+        }
+      }
+    },
+    "howItWorks": {
+      "eyebrow": "How it works",
+      "title": "Three steps to your first real conversation.",
+      "steps": {
+        "connect": {
+          "title": "Connect",
+          "description": "Paste your Telegram bot token and pick an AI model"
+        },
+        "build": {
+          "title": "We build",
+          "description": "Server, OpenClaw, AI, and search are set up automatically"
+        },
+        "chat": {
+          "title": "Chat",
+          "description": "Your bot is live on Telegram. Start talking."
+        }
+      }
+    },
+    "benefits": {
+      "eyebrow": "Why ClawSimple",
+      "title": "Skip the setup work. Start the conversation.",
+      "items": {
+        "noTerminal": {
+          "title": "No terminal work",
+          "description": "One form, one click. We handle server config, packages, and runtime setup."
+        },
+        "aiIncluded": {
+          "title": "AI included",
+          "description": "Platform AI and managed search are connected by default. No provider key needed."
+        },
+        "staysRunning": {
+          "title": "Stays running",
+          "description": "Automated monitoring. When something needs attention, support handles the server work."
+        },
+        "pickRuntime": {
+          "title": "Pick your runtime",
+          "description": "OpenClaw or Hermes Agent per bot. Choose when you create it."
+        },
+        "multiAgent": {
+          "title": "Multiple agents, one price",
+          "description": "Add extra Telegram bots to the same server at no extra subscription cost."
+        },
+        "yourStack": {
+          "title": "Your stack, your keys",
+          "description": "Open-source runtimes. Your credentials stay on your server."
+        }
+      }
+    },
+    "features": {
+      "title": "What else needed updating",
+      "mainHeading": "The point is not only that OpenClaw or Hermes Agent gets installed. It is that useful work starts right away.",
+      "subtitle": "ClawSimple installs OpenClaw and Hermes Agent, connects platform AI and managed search, and keeps the bot running on your private server.",
+      "installFlow": {
+        "badge": "Install Flow",
+        "title": "Three steps to your first real workflow.",
+        "desc": "Connect the bot, connect the services you already use, then paste a prompt and let it do real work."
+      },
+      "feature1": {
+        "title": "Simple Setup",
+        "description": "Bring your OpenClaw or Hermes Agent bot to life on our premium systems with a simple click."
+      },
+      "feature2": {
+        "title": "Grows with You",
+        "description": "Our systems automatically adjust to handle as many users as you have."
+      },
+      "feature3": {
+        "title": "Reliable Monitoring",
+        "description": "We keep your OpenClaw and Hermes Agent bots running smoothly 24/7."
+      },
+      "osCore": {
+        "title": "Open agent runtimes",
+        "desc": "OpenClaw stays open-source (MIT), and Hermes Agent can run alongside it. Audit the stack or keep using ClawSimple without vendor lock-in."
+      },
+      "paidDelivery": {
+        "title": "Get OpenClaw and Hermes Agent running first",
+        "desc": "We handle setup, updates, and operations so you can skip the server work and get to the useful part faster."
+      },
+      "runtimeChoice": {
+        "title": "OpenClaw or Hermes Agent",
+        "desc": "Choose OpenClaw or Hermes Agent when creating a bot. That runtime stays fixed for the bot."
+      },
+      "yourInfra": {
+        "title": "Search and reading are ready to use",
+        "desc": "The common web-search, page-reading, and summarization path is already prepared so you do not need to stitch it together before trying the first workflow."
+      },
+      "byokAllPlans": {
+        "title": "Platform AI is connected first",
+        "desc": "A new deployment starts with the ClawSimple AI connection and managed search path already configured."
+      },
+      "multiAgent": {
+        "title": "Grow from one bot into multiple agents",
+        "desc": "Start with one useful assistant, then split into separate email, calendar, research, or maintenance agents when you actually need them."
+      },
+      "maintenanceBot": {
+        "title": "Profile maintenance actions",
+        "desc": "Use Profile to manage bots, models, and each bot's fixed runtime.",
+        "guideCta": "Open Profile"
+      },
+      "workflowReady": {
+        "title": "Minimal runtime by default",
+        "desc": "The installer focuses on OpenClaw, Hermes Agent, platform AI, managed search, and the settings needed to run them."
+      },
+      "step1": {
+        "title": "Connect the bot and the services",
+        "desc": "Add your Telegram bot token and choose the platform model for this server."
+      },
+      "step2": {
+        "title": "We prepare the environment",
+        "desc": "Server, OpenClaw, Hermes Agent, platform AI, managed search, and the baseline runtime setup are prepared for you."
+      },
+      "step3": {
+        "title": "Paste a prompt and start",
+        "desc": "Start with a direct Telegram request once the server is ready."
+      }
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Answers before you launch",
+      "subtitle": "Quick explanations for the questions most first-time users ask.",
+      "items": {
+        "telegramWhy": {
+          "question": "Why is Telegram the default channel?",
+          "answer": "Telegram is fast to set up, stable for long-running bots, and familiar to most users. It gives you a simple path to go live first, then expand to more channels later."
+        },
+        "telegramCredentials": {
+          "question": "What are Telegram Bot Token and User ID?",
+          "answer": "Bot Token is your bot's secret key from @BotFather. User ID is the numeric ID of who is allowed to chat with your bot - in most cases that's your own Telegram User ID (find it via @Getmyid_bot or @userinfobot). Token identifies the bot; User ID controls access."
+        },
+        "hermesSwitch": {
+          "question": "Can I change a bot from Hermes Agent to OpenClaw later?",
+          "answer": "No. Choose OpenClaw or Hermes Agent when creating the bot. To use the other runtime, create a new bot with that runtime."
+        },
+        "cloudVsMacMini": {
+          "question": "Cloud server vs running OpenClaw or Hermes Agent on Mac mini: which is better?",
+          "answer": "If you want the fastest OpenClaw or Hermes Agent setup and less ops work, cloud is usually better: installation is automated, uptime is easier to monitor, and support can handle server issues. Mac mini is great when you want full local control and already manage your own hardware. In practice, many users start in cloud and move parts in-house later."
+        },
+        "modelRecommendation": {
+          "question": "Which AI model should I start with?",
+          "answer": "If you are unsure, start with the default model that ClawSimple preselects for your plan. It is chosen for balanced quality, speed, and cost. You can switch models anytime later."
+        },
+        "billingMethod": {
+          "question": "How does billing work?",
+          "answer": "Billing is based on your plan, included AI/search usage, and any extra managed usage. New deployments use the ClawSimple platform AI connection and managed search by default; no provider key is required during setup."
+        },
+        "addAgentBilling": {
+          "question": "Does adding another agent inside one deployment cost extra?",
+          "answer": "Not as a separate server subscription. An extra agent reuses the same deployment and server, so you are not buying another server just to add one more bot. More agent traffic can consume the deployment's managed AI and search credits faster."
+        },
+        "addAgentRequirements": {
+          "question": "What do I need to provide when adding an agent?",
+          "answer": "At minimum, a fresh Telegram Bot Token for that new bot and a platform model selection. The allowlist usually defaults to your saved Telegram User ID, but you can change it."
+        },
+        "addAgentFlow": {
+          "question": "What is the actual flow for adding an agent?",
+          "answer": "Go to Profile > Overview, open the deployment card, click Add Agent, fill in the bot token and model settings, then submit. ClawSimple queues an add_agent job, updates the running OpenClaw config on that same deployment, and the new bot appears as active once the job finishes."
+        },
+        "addAgentCapacity": {
+          "question": "How many agents usually make one deployment feel resource-constrained, and do they share AI credits?",
+          "answer": "There is no single fixed number in the current product logic. A few light Telegram assistants on one deployment are usually fine; pressure shows up when several agents are all active at once, especially if they run long tool calls or heavier models. Managed AI credits are tracked at the deployment or seat level, so agents on the same deployment share that usage bucket."
+        }
+      }
+    }
+  },
+  "pricing": {
+    "title": "Managed OpenClaw + Hermes Agent Hosting Plans",
+    "subtitle": "Choose between Standard and Max based on included AI usage and server capacity.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "yearlyDiscount": "(-17%)",
+    "billedYearly": "Billed yearly",
+    "billedYearlyWithTotal": "Billed {total} yearly",
+    "newBadge": "New",
+    "allPaidPlansKeyNote": "All paid plans include managed hosting, platform AI, managed search, and support for more than one bot on the same server.",
+    "period": "/month",
+    "whyPay": {
+      "title": "Why Pay?",
+      "subtitle": "Pricing that respects open source.",
+      "certainty": {
+        "title": "Pay for certainty",
+        "description": "Open-source means you can, not that it will be fast. We remove the setup uncertainty."
+      },
+      "hiddenCosts": {
+        "title": "Avoid hidden costs",
+        "description": "Wrong permissions, broken services, and model misconfigurations cost hours."
+      },
+      "ownership": {
+        "title": "Own your infra",
+        "description": "Your server and credentials stay yours. We only automate the first mile."
+      }
+    },
+    "plans": {
+      "standard": {
+        "title": "Standard",
+        "description": "Best for most users. You get managed hosting, included AI credits, managed search/crawl usage, and a private server."
+      },
+      "max": {
+        "title": "Max",
+        "description": "Best for heavier daily use. More included AI credits, more managed search/crawl headroom, and the same managed setup."
+      }
+    },
+    "features": {
+      "provisioning": "Secure cloud setup",
+      "byok": "Platform AI included",
+      "systemd": "Managed server support",
+      "updates": "One-click updates",
+      "maintenanceBot": "Profile maintenance actions",
+      "multipleAgents": "Multiple agents per server",
+      "runtimeSwitching": "OpenClaw or Hermes Agent per bot",
+      "creditsIncluded": "Includes ${credits} monthly usage credits",
+      "useYourOwnKeyAnytime": "Platform AI connection included",
+      "clawSimpleIncluded": "ClawSimple AI included",
+      "standardQuota": "Standard usage quota",
+      "standardTopupOrByok": "Top-ups are shared across AI and search/crawl",
+      "hassleFree": "Hassle-free configuration",
+      "everythingInStandard": "Everything in Standard",
+      "fiveXQuota": "~2x AI usage quota",
+      "prioritySupport": "Priority support",
+      "highSpecServer": "Higher spec server",
+      "earlyAccess": "Early access to new features",
+      "installScript": "Install script",
+      "stepByStepDocs": "Step-by-step docs",
+      "transparency": "Full transparency",
+      "noVendorLockIn": "No vendor lock-in"
+    },
+    "choosePlan": "Choose Plan",
+    "deployNow": "Start my bot",
+    "multiAgent": {
+      "title": "Multiple agents, one subscription",
+      "description": "Add extra Telegram bots to the same server. Each runs its own Telegram token and AI model."
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign In to ClawSimple",
+      "description": "Enter your email to receive a login email.",
+      "google": "Sign in with Google",
+      "or": "Or",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "submit": "Send Login Link",
+      "sent": "Login link sent! Check your email.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "footer": {
+    "tagline": "Launch OpenClaw and Hermes Agent bots with confidence.",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "about": "About Us"
+  },
+  "deploy": {
+    "widget": {
+      "badge": "Launch Now",
+      "title": "Start your bot",
+      "description": "Paste your token, pick a model, and go.",
+      "trustSignals": {
+        "noServerKnowledge": "No server knowledge needed",
+        "platformAi": "Platform AI included",
+        "multiAgent": "Multiple agents, no extra cost"
+      }
+    },
+    "help": {
+      "newTokenWarning": "Please use a fresh Bot Token for each bot/agent.",
+      "closeModal": "Close modal",
+      "telegramHelp": "Telegram Help",
+      "tokenTitle": "Find your Bot Token",
+      "allowlistTitle": "Get your Telegram user ID",
+      "close": "Close",
+      "tokenStepOne": "Open Telegram and search for <code>@BotFather</code>.",
+      "tokenStepTwo": "Send <code>/newbot</code> and follow the prompts.",
+      "tokenStepThree": "Copy the token shown in the final message.",
+      "tokenExample": "Example: <code>123456789:ABC-DEF1234ghIkl-zyx57W2v1u123ew11</code>",
+      "tokenCaption": "BotFather token message",
+      "allowlistStepOne": "Search for <code>@userinfobot</code> (or <code>@getmyid_bot</code>).",
+      "allowlistStepTwo": "Start the bot and copy your numeric user ID.",
+      "allowlistStepThree": "Add the ID, or multiple IDs separated by commas.",
+      "allowlistWarning": "Important: use the exact usernames <first>@userinfobot</first> or <second>@getmyid_bot</second> to avoid impersonators.",
+      "allowlistExample": "Example: <code>6861230049</code>",
+      "allowlistCaption": "User ID response"
+    },
+    "statusTitle": "Your Agent Status",
+    "statusModalLabel": "Bot Status",
+    "statusModalCompleted": "Setup complete",
+    "statusModalFailed": "Setup failed",
+    "statusModalPreparing": "Getting your agent ready",
+    "statusModalClose": "Close",
+    "statusModalChatReady": "🎉 You can now chat with your new bot on Telegram!",
+    "statusCardChatCta": "Chat with {username} on Telegram",
+    "statusModalOpenTelegram": "Open {username} on Telegram",
+    "deployPhaseProvisioning": "Provisioning server",
+    "deployPhaseRuntime": "Installing runtime",
+    "deployPhaseBot": "Configuring bot",
+    "deployPhaseHealth": "Final health checks",
+    "deployPhaseReady": "Almost ready",
+    "noDeployment": "No bot is running yet. Once you start, the status will show up here.",
+    "statusActive": "Online",
+    "statusFailed": "Issue Found",
+    "statusDeploying": "Starting up...",
+    "paymentPending": "Payment is pending. Please complete it within 1 hour.",
+    "graceEnds": "Payment due by",
+    "completePayment": "Complete payment",
+    "deploying": "Starting up...",
+    "realProgressLabel": "Live progress",
+    "deployProgressHint": "This usually takes about 2-3 minutes. You can close this window; we'll finish everything in the background.",
+    "progressSteps": {
+      "serverAssigned": {
+        "title": "Server reserved",
+        "description": "The deployment target has been allocated and linked to this setup."
+      },
+      "nodeReported": {
+        "title": "Node reported",
+        "description": "The startup script has called back with real node details."
+      },
+      "runtimeInstalled": {
+        "title": "Runtime installed",
+        "description": "Base packages, the OpenClaw CLI, and Hermes Agent runtime have finished installing."
+      },
+      "botConfigured": {
+        "title": "Bot configured",
+        "description": "Telegram and model settings were written to the deployment."
+      },
+      "serviceStarted": {
+        "title": "Service started",
+        "description": "The system service is up and the gateway process has started."
+      },
+      "serviceReady": {
+        "title": "Health verified",
+        "description": "Final validation passed and the bot is ready to use."
+      }
+    },
+    "setupVideo": {
+      "iframeTitle": "OpenClaw and Hermes Agent setup walkthrough"
+    },
+    "viewStatusDetail": "View Details",
+    "viewAllDeployments": "View All Bots",
+    "showActiveOnly": "Show active only",
+    "confirm": {
+      "title": "Confirm New Setup",
+      "heading": "Start another bot?",
+      "description": "You are about to start an additional bot service.",
+      "chargeTitle": "New paid server",
+      "chargeMonthly": "Confirming will charge ${monthly}/month for a separate server.",
+      "chargeYearly": "Confirming will charge ${total}/year for a separate server (about ${monthlyEquivalent}/month).",
+      "chargeReason": "Open another server only when one server no longer has enough compute, or when you want full isolation between bots.",
+      "warningTitle": "Friendly Reminder",
+      "warningText": "Each bot setup should use a different bot so that you can talk to different bots.",
+      "warningReason": "",
+      "botFatherLink": "Go to @BotFather to create a new bot",
+      "cancel": "Cancel",
+      "confirm": "Confirm & Start",
+      "processing": "Processing..."
+    },
+    "form": {
+      "title": "Create Personal Agent Server",
+      "tokenLabel": "Telegram Bot Token",
+      "tokenPlaceholder": "Enter your bot token from @BotFather",
+      "tokenHelp": "How to find Telegram Bot Token",
+      "userLabel": "Telegram User ID",
+      "userPlaceholder": "Enter your user ID",
+      "userPlaceholderSaved": "Loaded from your saved Telegram user ID",
+      "checkingProfile": "Checking your profile...",
+      "userSavedHint": "Using the Telegram user ID saved in your Profile. Unlink there to change it.",
+      "userHint": "Only these users can chat with the bot. Separated by comma.",
+      "userHelp": "How to get Telegram user ID",
+      "existingDeploymentFound": "Existing Deployment Found",
+      "aiModelLabel": "Included AI Model",
+      "providerLabel": "AI Provider",
+      "apiKeyLabel": "API Key",
+      "apiKeyPlaceholder": "sk-...",
+      "havePromo": "Have a promo code?",
+      "promoLabel": "Promo Code",
+      "promoPlaceholder": "Enter code",
+      "apply": "Apply",
+      "working": "Working...",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "yearlyDiscount": "(-17%)",
+      "deployNow": "Launch Now",
+      "addPayment": "Add payment method",
+      "useClawSimple": "Use $6 AI quota",
+      "useClawSimpleMax": "Use $28 AI quota",
+      "bringYourOwn": "Platform AI model",
+      "runtimeLabel": "Agent runtime",
+      "runtimeHermes": "Hermes Agent",
+      "runtimeHermesDesc": "Default for new servers. Runtime is fixed after creation.",
+      "runtimeOpenClaw": "OpenClaw",
+      "runtimeOpenClawDesc": "Use the classic OpenClaw runtime for this bot.",
+      "tooltips": {
+        "runtime": "Choose Hermes Agent for the default experience, or OpenClaw Agent for classic mode. Runtime is fixed after creation.",
+        "plan": "Standard: best for most users. Max: more AI usage and higher server specs for heavier daily use.",
+        "model": "This is the AI model your bot will use. You can switch models anytime in Telegram with the /models command."
+      },
+      "modelSwitchHint": "Not sure? You can switch models anytime in Telegram with the /models command.",
+      "stepOne": "Step 1",
+      "stepTwo": "Step 2",
+      "planLabel": "Choose a plan",
+      "planHelper": "Choose the included AI usage level for this private server.",
+      "legacyPlanLockedHelper": "This subscription keeps its original legacy plan. Public signup for this plan is offline, but your existing subscription can still deploy here.",
+      "planStandard": "Standard",
+      "planMax": "Max",
+      "legacyPlanLockedBadge": "Existing subscription",
+      "planPrivateBadge": "Private server",
+      "legacyPlanLockedDescription": "This legacy plan remains available for your current subscription. You can continue deploying under it here.",
+      "planStandardDesc": "Private server with included AI usage. Best default choice for most people.",
+      "planMaxDesc": "Private server with more included AI usage for heavier use.",
+      "aiSetupStatusManaged": "AI billing is included in this plan",
+      "aiSetupStatusOwn": "This plan uses your own AI provider",
+      "aiSetupSummaryManaged": "No provider connection is required during setup.",
+      "aiSetupSummaryOwn": "You will connect your provider details in the next section.",
+      "aiSetupNextManaged": "You can still add or change your provider later in Profile.",
+      "aiSetupNextOwn": "Choose a provider below and enter the API details you want this server to use.",
+      "managedSetupTitle": "Included AI setup",
+      "providerSetupTitle": "Connect your AI account",
+      "providerSetupDesc": "Enter your provider details below. We use them to connect your server to your AI account.",
+      "baseUrlLabel": "Base URL",
+      "baseUrlPlaceholder": "https://api.example.com/v1",
+      "baseUrlDesc": "Only change this if your provider gave you a custom API URL.",
+      "modelNameLabel": "Model Name",
+      "modelNamePlaceholder": "model-id",
+      "modelNameDesc": "Use the provider's exact model ID (OpenAI-compatible).",
+      "fallbackModelsLabel": "Backup Models (optional)",
+      "fallbackModelsPlaceholder": "model-a,model-b,model-c",
+      "modelCostWarning": "This model is expensive. Your ${price}/month quota covers ~{messageCount} messages with this model. You can switch to cheaper models anytime using the <command>/models</command> command in Telegram.",
+      "presetAnthropic": "Anthropic",
+      "presetOpenAI": "OpenAI",
+      "presetPoe": "Poe",
+      "presetGoogle": "Google Gemini",
+      "presetCustom": "Custom",
+      "editConnection": "Edit Connection",
+      "connectionDetails": "Connection Details"
+    },
+    "security": {
+      "title": "Safe & Secure",
+      "description": "Your keys are only used once to set up. We never store them."
+    },
+    "card": {
+      "title": "Profile",
+      "loading": "Loading your list...",
+      "dismissError": "Dismiss error",
+      "signInRequired": "Please sign in to view your servers.",
+      "signIn": "Sign in",
+      "personalAccount": "Personal Account",
+      "workspaceLabel": "Profile workspace",
+      "manageBilling": "Manage Billing",
+      "signOut": "Sign Out",
+      "adminPanel": "Admin Panel",
+      "tabs": {
+        "overview": "Overview",
+        "billing": "Billing",
+        "settings": "Settings",
+        "feedback": "Feedback"
+      },
+      "tabDescriptions": {
+        "overview": "Manage your servers and server health.",
+        "billing": "Manage subscriptions and Credits.",
+        "settings": "Manage Telegram account settings.",
+        "feedback": "Community channels and support."
+      },
+      "noDeployments": "No servers set up yet.",
+      "noActiveDeployments": "No servers are online right now.",
+      "stats": {
+        "activeServers": "Active Servers",
+        "addDeployment": "Add Server",
+        "addDeploymentHint": "Add a new server",
+        "liveDeploymentCount": "{count} live deployment(s)",
+        "serverCountLabel": "{count} total",
+        "activePlans": "Active Plans",
+        "extraCreditBalance": "Credit Balance",
+        "planQuotaHint": "Per-server AI and search/crawl allowances are shown below.",
+        "noExtraCredits": "No credits purchased.",
+        "nextExpiringCredits": "${amount} expires next"
+      },
+      "noSubscriptions": {
+        "title": "No active subscriptions found.",
+        "description": "Start a new managed server to bring your first bot online.",
+        "cta": "Open server setup"
+      },
+      "billing": {
+        "managedCreditsTitle": "Managed Credits",
+        "managedCreditsDescription": "Used after included managed usage allowance is exhausted.",
+        "creditCarryoverHint": "Purchased credits expire 365 days after purchase.",
+        "includedUsage": "Included each cycle: $${amount} managed usage",
+        "balance": "Balance ${amount}",
+        "noExtraCredits": "No credits purchased.",
+        "nextExpiration": "${amount} expires on {date}",
+        "buyCredits": "Buy ${amount} credits",
+        "creditConfirmTitle": "Charge saved card",
+        "creditConfirmAmount": "Buy ${amount} credits",
+        "creditConfirmDescription": "We will use your saved Stripe payment details when available. If Stripe needs confirmation, checkout will open.",
+        "creditConfirmSavedCard": "Credits are added after payment succeeds.",
+        "creditConfirmCancel": "Cancel",
+        "creditConfirmAction": "Continue",
+        "servers": "{active}/{capacity} servers",
+        "subscriptionStarted": "Subscription started {time}",
+        "ends": "Ends {date}"
+      },
+      "createFirst": "Start your first bot",
+      "showActiveOnly": "Show active only",
+      "save": "Save",
+      "cancel": "Cancel",
+      "unknown": "Unknown",
+      "settings": {
+        "aiProviderTitle": "AI Provider",
+        "aiProviderDescription": "Set a custom provider for one server. After saving, every bot on that server uses this provider.",
+        "aiProviderCustomStatus": "Custom AI",
+        "aiProviderPlatformStatus": "Platform AI",
+        "aiProviderNoDeployments": "No active servers.",
+        "aiProviderDeploymentLabel": "Server",
+        "aiProviderPresetLabel": "Provider",
+        "aiProviderApiKeyLabel": "API Key",
+        "aiProviderApiKeyPlaceholder": "Leave blank to keep the current key",
+        "aiProviderModelLabel": "Main model",
+        "aiProviderModelPlaceholder": "e.g. gpt-5.2",
+        "aiProviderFallbackModelsLabel": "Fallback models",
+        "aiProviderFallbackModelsPlaceholder": "Optional, comma-separated",
+        "aiProviderBaseUrlLabel": "Base URL",
+        "aiProviderBaseUrlPlaceholder": "https://api.example.com/v1",
+        "aiProviderHelp": "Manual changes inside OpenClaw or Hermes Agent can still override this setting.",
+        "aiProviderSave": "Save AI provider",
+        "aiProviderSaving": "Saving...",
+        "telegramUserIdTitle": "Telegram User ID",
+        "telegramUserIdDescription": "Save once, then new deployments and agent setup can auto-fill the Telegram Allow list.",
+        "savedStatus": "Saved",
+        "notSavedStatus": "Not saved",
+        "telegramUserIdLabel": "Telegram user ID",
+        "telegramUserIdPlaceholder": "Enter numeric Telegram user ID",
+        "savedHint": "Saved and locked. Unlink to change this ID.",
+        "enterHint": "Enter your numeric Telegram user ID once.",
+        "saving": "Saving...",
+        "unlink": "Unlink",
+        "unlinking": "Unlinking...",
+        "refresh": "Refresh",
+        "refreshing": "Refreshing..."
+      },
+      "paymentPending": "Please complete payment within 1 hour.",
+      "graceEnds": "Payment due by",
+      "completePayment": "Complete payment",
+      "endingSoon": "Scheduled to end at next billing cycle.",
+      "undoRemoval": "Undo",
+      "removeAtPeriodEnd": "Remove at period end",
+      "delete": "Delete",
+      "deleted": "Subscription deleted.",
+      "justNow": "Just now",
+      "minutesAgo": "{n}m ago",
+      "hoursAgo": "{n}h ago",
+      "daysAgo": "{n}d ago",
+      "status": {
+        "active": "Online",
+        "deploying": "Starting",
+        "failed": "Error",
+        "removed": "Stopped",
+        "paymentPending": "Waiting for payment",
+        "endingSoon": "Closing soon"
+      },
+      "serverModal": {
+        "genericDescription": "Choose a plan for the new server.",
+        "useExistingSeat": "This will use an unused seat from your current subscription.",
+        "addSeat": "Creating a new server adds a separate charge."
+      },
+      "serverCopy": {
+        "defaultName": "Server {index}",
+        "createdAt": "Created {time}",
+        "addSamePlanServer": "Add another server with this subscription",
+        "noSearchResults": "No servers match your search.",
+        "quotaUsage": "AI quota ${used} / ${cap} · {percent}% · ${left} left",
+        "quotaUnused": "No AI usage yet · ${cap} available",
+        "quotaUsed": "AI usage ${used} of ${cap} · ${left} left",
+        "scheduledPlan": "Scheduled plan: {plan} on {date}",
+        "addAgent": "Add Agent",
+        "exportBackup": "Export Backup",
+        "downloadBackup": "Download Backup",
+        "downloadBackupAgain": "Download Again",
+        "backupExporting": "Exporting Backup",
+        "encryptedBackup": "Encrypted backup",
+        "revealBackupPassword": "Reveal Password",
+        "revealBackupPasswordAgain": "Reveal Again",
+        "showBackupDetails": "Show Details",
+        "hideBackupDetails": "Hide Details",
+        "backupPassword": "Password",
+        "copyBackupPassword": "Copy Password",
+        "decryptCommand": "Decrypt command",
+        "copyDecryptCommand": "Copy Command",
+        "backupExportTitle": "Generate and download an encrypted full backup",
+        "backupStarting": "Starting encrypted backup export...",
+        "backupPreparing": "Preparing encrypted backup... waiting for the server.",
+        "backupReady": "Encrypted backup ready. Download it now, then reveal the password only when you need to decrypt it.",
+        "backupReadyToast": "Encrypted backup is ready. Download starting now.",
+        "backupTimedOut": "Backup timed out. Please try again.",
+        "sessionExpired": "Session expired. Please sign in again.",
+        "downloadLinkError": "Unable to create download link.",
+        "downloadLinkMissing": "Download link is missing.",
+        "backupExportError": "Unable to export encrypted backup.",
+        "backupIdMissing": "Backup export did not return backup_id.",
+        "revealBackupPasswordError": "Unable to reveal backup password.",
+        "backupPasswordMissing": "Backup password is missing.",
+        "backupPasswordWarning": "Keep this password private. Anyone with both the file and the password can decrypt the backup.",
+        "backupPasswordCopied": "Backup password copied.",
+        "decryptCommandCopied": "Decrypt command copied.",
+        "changePlan": "Change Plan",
+        "preparing": "Preparing...",
+        "relaunch": "Relaunch",
+        "cancelServer": "Cancel Server",
+        "undoCancel": "Undo Cancel",
+        "agentsCount": "Agents ({count})",
+        "scheduledRemoval": "Scheduled for removal.",
+        "scheduledRemovalOn": "Scheduled for removal on {date}.",
+        "tableName": "Name",
+        "tableOnlineSince": "Online since",
+        "tableModel": "Model",
+        "tableActions": "Actions",
+        "mainBadge": "Main",
+        "mainAgentTitle": "Main agent",
+        "mainAgentDescription": "Most users install skills and tune their bot here first. Extra agents stay folded away until you actually need them.",
+        "skillsLabel": "Installed skills",
+        "noSkillsInstalled": "No skills installed yet. Start here for the most common setup.",
+        "installSkill": "Install Skill",
+        "editAgent": "Edit Agent",
+        "addAgentTitle": "Add Agent",
+        "editAgentTitle": "Edit Agent",
+        "editMainAgentTitle": "Edit Main Agent",
+        "agentFallbackName": "Agent",
+        "editAgentHint": "Token and model can be updated. Runtime cannot be changed after creation.",
+        "allowedUserIdLabel": "Allowed User ID",
+        "savedUserIdPlaceholder": "Loaded from saved user ID",
+        "userIdPlaceholder": "Your Telegram User ID (e.g., 12345678)",
+        "savedUserIdHelp": "Using your saved Telegram user ID from Profile.",
+        "allowedUserIdHelp": "Only these users can chat with the bot. Separated by comma.",
+        "aiSourceLabel": "AI Source",
+        "managedAiSource": "ClawSimple Managed",
+        "telegramBotTokenLabel": "Telegram Bot Token",
+        "telegramBotTokenHelpLabel": "How to find Telegram Bot Token",
+        "keepCurrentTokenPlaceholder": "Leave empty to keep current token",
+        "botTokenPlaceholder": "Enter your bot token from @BotFather",
+        "modelLabel": "Model",
+        "aiModelLabel": "AI Model",
+        "agentRuntimeLabel": "Runtime",
+        "openclawRuntime": "OpenClaw",
+        "hermesRuntime": "Hermes",
+        "agentRuntimeCreateHelp": "Runtime is fixed after the agent is created.",
+        "agentRuntimeLockedHelp": "Runtime was set when this agent was created.",
+        "hermesUnavailableHelp": "Contact support to enable Hermes agents on this server.",
+        "noPresetModels": "No preset models configured",
+        "agentModalCancel": "Cancel",
+        "savingAgent": "Saving...",
+        "addingAgent": "Adding...",
+        "saveAgentChanges": "Save changes",
+        "addAgentSubmit": "Add agent",
+        "settingsMenu": "Settings",
+        "serverToolsTitle": "Server tools",
+        "serverToolsDescription": "Lower-frequency server actions live here so the main agent stays uncluttered.",
+        "serverInfoTitle": "Server details",
+        "serverIdLabel": "Server ID",
+        "serverIpLabel": "Public IP",
+        "serverRuntimeLabel": "Runtime",
+        "serverVersionLabel": "OpenClaw",
+        "extraAgentsTitle": "Extra agents ({count})",
+        "syncTelegramProfile": "Sync Telegram profile: pull the latest bot name from Telegram.",
+        "managed": "Managed",
+        "pending": "Pending",
+        "noServersLinked": "No servers linked to this subscription.",
+        "setupInProgress": "Server setup in progress",
+        "setupInProgressWithAgents": "Server setup in progress · {count} extra agent configuring",
+        "mainAgentHint": "Main agent is required and cannot be deleted, but it can use the same edit form as extra agents.",
+        "groupChatGuidePrefix": "To enable group chat for your agent, see",
+        "groupChatGuideLink": "this guide"
+      },
+      "feedback": {
+        "eyebrow": "Community & Response",
+        "title": "Feedback & Support",
+        "description": "Have a complaint or technical issue? We're here to help! Reach out on Discord or via Email for a fast resolution.",
+        "supportBadge": "Fast Support",
+        "discordButton": "Discord Community",
+        "emailButton": "Direct Email",
+        "trustpilotTitle": "Share your experience",
+        "trustpilotDescription": "Your encouragement means the world to us. If you're happy with ClawSimple, please consider sharing your thoughts on Trustpilot.",
+        "trustpilotBadge": "Community Trusted"
+      },
+      "maintenanceBotTip": "Use Profile to manage bots, models, and each bot's fixed runtime."
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "intro": "ClawSimple provides managed deployment services for OpenClaw and Hermes Agent. We make it easier to run personal AI bots without server setup and maintenance work.",
+    "mission": {
+      "title": "Our Mission",
+      "content": "We keep OpenClaw and Hermes Agent deployments usable for people who want the bot, not the server work."
+    },
+    "contact": {
+      "title": "Contact",
+      "content": "Questions? Reach out to us at"
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: January 2025",
+    "data": {
+      "title": "Data We Collect",
+      "content": "We collect minimal data necessary to provide our services: your email address for authentication, deployment configuration, and billing information. We do not store your API keys—after your server is initialized, your keys are discarded."
+    },
+    "keys": {
+      "title": "API Keys",
+      "content": "Your Telegram bot token is used to set up your server. New deployments use ClawSimple platform AI and managed search by default, so you do not need to provide AI provider keys during setup."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "content": "We use essential cookies for authentication and session management. We do not use tracking or advertising cookies."
+    },
+    "contact": {
+      "title": "Questions?",
+      "content": "For privacy-related inquiries, contact us at privacy@clawsimple.com"
+    }
+  },
+  "workflowLabels": {
+    "verificationLabel": "Verification",
+    "testedLabel": "Last tested",
+    "firstResultLabel": "First result",
+    "setupLabel": "Before you start",
+    "restrictionsLabel": "Current limits",
+    "sampleOutputLabel": "Sample output",
+    "officialSupportLabel": "Officially supported",
+    "rankingLabel": "Priority",
+    "rankingHint": "Ranked by verification, setup effort, and time to first result",
+    "statusPassed": "Verified",
+    "statusPartial": "Usable",
+    "statusUnverified": "Unverified",
+    "statusFailed": "Failing",
+    "setupReady": "Ready out of the box",
+    "setupSteps": "{count} steps needed",
+    "promptDeterminismLabel": "Prompt stability",
+    "promptDeterminismHigh": "High",
+    "promptDeterminismMedium": "Medium",
+    "promptDeterminismLow": "Low",
+    "partialHint": "Usable, but best started from the template. Free-form requests may still produce inconsistent results.",
+    "unverifiedHint": "Not yet officially validated in this cycle.",
+    "verifiedCountLabel": "verified",
+    "partialCountLabel": "usable"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: April 2026",
+    "service": {
+      "title": "Service Description",
+      "content": "ClawSimple provides automated server deployment and management services for OpenClaw bots. Services are provided on a subscription basis with monthly or yearly billing intervals."
+    },
+    "payment": {
+      "title": "Payment & Billing",
+      "content": "Subscription fees are charged monthly or yearly in advance. You can cancel your subscription at any time. Service continues until the end of the current billing period."
+    },
+    "credits": {
+      "title": "Credits",
+      "content": "Purchased credits can be used only for managed AI and managed search/crawl usage. Credits expire 365 days after purchase, are not transferable, and cannot be exchanged for currency except where required by law."
+    },
+    "refund": {
+      "title": "Refunds",
+      "content": "Refunds are handled on a case-by-case basis. If you experience service issues that we cannot resolve, please contact us for a refund consideration."
+    },
+    "liability": {
+      "title": "Limitation of Liability",
+      "content": "We are not liable for any damages arising from your use of the service, including but not limited to data loss, service interruptions, or third-party API failures."
+    },
+    "changes": {
+      "title": "Changes to Terms",
+      "content": "We may update these terms at any time. Continued use of the service constitutes acceptance of any changes."
+    }
+  },
+  "blog": {
+    "cta": {
+      "title": "Ready to deploy your own bot?",
+      "description": "Get your Telegram AI bot running in 3 minutes. No server setup required.",
+      "button": "Deploy with ClawSimple"
+    },
+    "listing": {
+      "title": "Blog",
+      "description": "The latest updates, guides, and insights from the ClawSimple team.",
+      "readMore": "Read more"
+    },
+    "post": {
+      "backToList": "Back to blog"
+    }
+  }
+}

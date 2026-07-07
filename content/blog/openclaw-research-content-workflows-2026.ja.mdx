@@ -1,0 +1,159 @@
+---
+title: "OpenClaw を調査とコンテンツ制作に使う 12 の型"
+description: "ニュースルーム運用、repo から本を作る流れ、日次ブリーフィング、コミュニティの兆候検出。2026 年 3 月上旬に共有された OpenClaw の research/content ワークフローを、真似しやすい形で整理しました。"
+date: 2026-03-07
+image: /images/blog/morning-briefing.png
+---
+
+OpenClaw が話題になり始めた初期は「エージェントが何かを実行できる」こと自体が注目されていました。ですが、2026 年 3 月上旬に共有されていた、より信頼できる実例は少し違いました。**散らかった情報を、繰り返し、構造化された出力へ変換するエージェント**です。
+
+最近の公開例で強かったのは、ただのチャットボットではありません。再利用可能な pipeline でした。
+
+- 定期的にソースを走査する
+- スコア付けとフィルタをかける
+- 短い編集済みアウトプットを作る
+- 実際の配信チャネルに届ける
+
+この型は、起業家、研究者、個人メディア運営者、そして「毎日使えるインテリジェンス製品」をフル SaaS を作らずに持ちたい人にそのまま応用できます。
+
+## なぜ 2026 年 3 月上旬にこのワークフローが目立ったのか
+
+- 2026 年 3 月 3 日の r/OpenClaw 投稿 ["You asked for it, so I open-sourced my entire OpenClaw newsroom pipeline"](https://www.reddit.com/r/openclaw/comments/1rjwn44/you_asked_for_it_so_i_opensourced_my_entire/) は、スクリプト、cron 設定、API key 配置、配信手順まで含む完全な GitHub repo へリンクしていました。
+- [`jacob-bd/openclaw-newsroom`](https://github.com/jacob-bd/openclaw-newsroom) repo には、5 つのデータソース、SQLite による重複排除、LLM の editorial curation、OpenClaw cron 配信まで含むニュース走査 pipeline が整理されています。
+- 2026 年 3 月 1 日の r/OpenClaw showcase ["Multi-agent book writing skill released"](https://www.reddit.com/r/openclaw/comments/1rhnqru/multiagent_book_writing_skill_released/) では、`git-repo-to-book` skill が共有され、コードやメモを長文コンテンツへ変換する公開例としてかなり分かりやすいものでした。
+- 少し前から使われていた OpenClaw の morning briefing パターンも、実は同じ系統です。情報を集め、圧縮し、適切なタイミングで届ける、という意味で自然に接続しています。
+
+## 真似する価値がある research/content ワークフロー 12 選
+
+1. 自分専用の AI ニュースルームを作る
+2. 毎日の AI ブリーフィングを配信する
+3. ニッチなコミュニティから兆候を拾う
+4. repo を本や講座に変換する
+5. メモから長文コンテンツを作る
+6. RSS、GitHub、Reddit から founder briefing を作る
+7. star の伸びと trending repo を 1 本の digest にまとめる
+8. 候補記事群から editorial picks を作る
+9. analyst 風の市場サマリーをチャネル向けに作る
+10. 保存リンクをテーマ別 reading list に変換する
+11. 継続調査を週次メモへまとめる
+12. documentation と commit history から章構成を作る
+
+この中で、今すぐ真似しやすい公開手順がある 5 つを抜き出します。
+
+<h2 id="build-a-private-ai-newsroom" className="scroll-mt-24">自分専用の AI ニュースルームを作る</h2>
+
+`openclaw-newsroom` repo が特に優れているのは、ふわっとした prompt ではなく、**スクリプト、導入手順、環境変数、cron 設定、出力制約**まできちんと公開されている点です。
+
+文書化されている流れは次の通りです。
+
+1. 2 時間ごとに実行する
+2. RSS、Reddit、X、GitHub、web search の 5 ソースを走査する
+3. SQLite で重複を排除する
+4. 上位記事を enrich する
+5. editorial selection を行う
+6. Telegram などのチャネルへ配信する
+
+**なぜ重要なのか**
+
+- 単発デモではなく、実際の定期 pipeline になっている
+- モデルだけに全部やらせるのではなく、OpenClaw が script をオーケストレーションしている
+- 演出っぽさより、日常運用の現実感がある
+
+<h2 id="publish-daily-ai-briefings" className="scroll-mt-24">毎日の AI ブリーフィングを配信する</h2>
+
+ニュースルーム型が作れたら、より単純で汎用的なのが daily briefing です。
+
+**OpenClaw に頼む内容**
+
+1. 毎朝、選んだソース群を走査する
+2. 重要度と新規性で順位付けする
+3. 3〜7 本の話題を 1 文要約つきで返す
+4. 各話題に「なぜ重要か」をタグ付けする
+   - product launch
+   - model update
+   - infrastructure
+   - regulation
+   - funding
+5. 営業開始前に Telegram、Slack、メールへ配信する
+
+**おすすめのソース構成**
+
+- 信頼できる RSS を数本
+- GitHub trending を 1 つ
+- Reddit コミュニティを 1〜2 個
+- 補完用に web search を必要に応じて追加
+
+<h2 id="scan-niche-communities-for-signals" className="scroll-mt-24">ニッチなコミュニティから兆候を拾う</h2>
+
+ここから OpenClaw は、ただの assistant ではなく**自分専用の analyst**に近づきます。
+
+**OpenClaw に頼む内容**
+
+1. 少数の subreddit、ニッチな forum、または GitHub repo を監視する
+2. 繰り返し出てくる不満、意外な workaround、新規プロジェクト公開を抽出する
+3. 今日の結果と前回 digest を比較する
+4. 本当に新しいもの、または勢いが加速しているものだけを浮かび上がらせる
+
+**特に相性がよい領域**
+
+- developer tooling
+- ecommerce 運営者コミュニティ
+- infra / security の雑談領域
+- 検索機能が弱い業界特化 forum
+
+<h2 id="turn-a-repo-into-a-book-or-course" className="scroll-mt-24">repo を本や講座に変換する</h2>
+
+`git-repo-to-book` skill は、今週の OpenClaw showcase の中でも、**長文 synthesis** の公開例としてかなり分かりやすいものでした。
+
+**OpenClaw に頼む内容**
+
+1. repository 構成、README、docs、主要 source files を読む
+2. 概念、設計、実例を軸に chapter outline を作る
+3. 本全体を一気に書かせず、章ごとに順番に草稿化する
+4. 各セクションがどの docs / code を根拠にしているか source map を残す
+
+**なぜ面白いのか**
+
+- 散らばった技術資産を、ひとつの教材へ変換できる
+- 単純な Q&A より、OpenClaw の multi-agent / multi-step 強みが出やすい
+- 既存素材を blank page から書き直さずに再利用できる
+
+<h2 id="create-long-form-content-from-notes" className="scroll-mt-24">メモから長文コンテンツを作る</h2>
+
+repo-to-book は一つの型ですが、もっと広くて始めやすい版があります。**日々のメモ、保存リンク、作業中の下書きを、公開可能な長文へまとめ直す**ことです。
+
+**OpenClaw に頼む内容**
+
+1. markdown ディレクトリ、保存リンク、過去 digest から素材を集める
+2. ひとつのストーリーに束ねる
+3. blog post、memo、thread、report を下書きする
+4. source link と人間確認が必要な主張の短い appendix を残す
+
+**向いている場面**
+
+- 週次 founder memo
+- product strategy note
+- 公開ブログ下書き
+- 投資家・チーム向けアップデート
+
+## 現実的な導入順
+
+1. briefing
+2. community scanning
+3. newsroom pipeline
+4. long-form synthesis
+5. repo-to-book publishing
+
+この順番なら、最初のバージョンを短く、試しやすく、安く保てます。まず「正しい情報を拾って要約できる」ことを確認し、その後で重い執筆仕事を任せる流れです。
+
+## 2026 年 3 月上旬時点での実務的な教訓
+
+優れた OpenClaw 調査ワークフローは、モデルに「全部知っていてほしい」と期待しません。代わりに、**プロセスを回させます。**
+
+- fetch
+- filter
+- compare
+- summarize
+- deliver
+
+だからこそ、2026 年 3 月上旬の公開例で強かったのは、純粋な prompt magic ではなく、script、data source、memory file、cron schedule を伴う repo や skill package だったのです。

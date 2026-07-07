@@ -1,0 +1,63 @@
+---
+title: "How to Use OpenClaw for Morning Briefings and Evening Reviews"
+description: "Build your private AI executive assistant: Automate your morning briefings and evening reviews with OpenClaw, and learn best practices for your \"Assistant Account\"."
+date: 2026-02-17
+---
+
+Everyone dreams of having a Jarvis. But before you hand over your calendar, emails, and even private diary to an AI, the first thing you need is **absolute privacy** and **control**.
+
+That's why we need OpenClaw—an open-source AI agent that runs entirely under your control. (If you don't have your own instance yet, successful deployment with [ClawSimple](https://clawsimple.com) takes just minutes, but that's not the point today).
+
+Today, we're talking about **fine-tuning**. How to use a carefully designed prompt to train a freshly deployed "blank slate" bot into a private executive assistant that understands you and serves you every morning and evening.
+
+### Core Concept: Not Just a Tool, But an "Independent Entity"
+
+We suggest you don't authorize it directly with your main account. Instead, give it an independent identity.
+
+Many users are used to authorizing Bots directly with their personal Google accounts. That's fine, but for professionalism, security, and a sense of "ritual", we suggest:
+
+**Treat the Bot as an independent "person".**
+
+1.  **Get it a dedicated email**: e.g., `assistant.yourname@gmail.com`.
+2.  **Give it a dedicated Browser Profile**: Create a new profile in Chrome or Edge specifically for logging into this account.
+
+This way, when the Bot needs authentication (OAuth), you complete the authorization in its dedicated browser profile. It truly becomes your digital assistant with its own identity, accessing only the data you've authorized.
+
+### Start Training: Talk to Your Bot
+
+After deploying OpenClaw and binding it to Telegram, send it this instruction directly. This is the "spell" we've prepared for you:
+
+> **I need you to help me with two things. I can provide you with a Notion API Key and Maton (or other service) API Key, and I will cooperate with you to complete web authentication. Please try to complete the rest of the logic by calling Skills yourself. Ask me if you have any difficulties.**
+>
+> **Task 1: 7 AM "Morning Briefing"**
+>
+> Every day at **7:11 AM** (ProTip: avoiding the top of the hour ensures better response speed and success rates because AI Providers process massive scheduled tasks at the hour mark, and it might even cost less), automatically send me a message containing:
+> 1.  **Today's Schedule**: Read my Calendar Skill.
+> 2.  **Today's Weather & Outfit Advice**: Call the Weather Skill and tell me if I need an umbrella.
+> 3.  **Summary of Unanswered Emails from Yesterday**: Call the Email Skill to find important emails I didn't reply to yesterday, and use the Summary Skill to summarize 3 of them for me.
+> 4.  **Industry Intelligence**: Use the Web Search Skill to grab and summarize 3 pieces of latest news in the industry I follow.
+>
+> **Task 2: Evening "Review / Diary Bot"**
+>
+> Every night at **21:00**, or when I send "Summarize today":
+> 1.  **Read Today's Chat History**: Review all our conversations today.
+> 2.  **Generate Review Note**: Organize today's key events, my mood changes, and new Todos into a structured diary.
+> 3.  **Write Note**: Call the Notion Skill to automatically write this review into my notebook.
+
+### What Happens Next?
+
+After sending this, OpenClaw will start analyzing your request:
+
+1.  **Organize Requirements**: It will list what permissions it needs (e.g., Google Calendar, Gmail, Notion, etc.).
+2.  **Initiate Authentication**: It will throw you a few authentication links.
+3.  **Complete Deployment**: Open the dedicated browser you prepared for your "Assistant" and click these links to complete authorization.
+
+Once authenticated, it will tell you: "All set! I've set up the scheduled tasks."
+
+### Enjoy Your Automated Life
+
+The next morning at 7:11, while you're still in bed, your phone vibrates. Your exclusive AI assistant has already organized everything you need for the day—schedule, weather, email summary, industry news—into a concise message sent to you.
+
+At night, when you finish a busy day, it automatically helps you organize your thoughts and records the bits and pieces of the day.
+
+This is the charm of owning a private AI. No need to subscribe to expensive SaaS, no need to worry about data privacy—everything is under your control. [ClawSimple](https://clawsimple.com) just opens the door; the world behind it is entirely defined by you.

@@ -1,0 +1,1 @@
+ALTER TYPE "public"."install_status" ADD VALUE 'terminated';

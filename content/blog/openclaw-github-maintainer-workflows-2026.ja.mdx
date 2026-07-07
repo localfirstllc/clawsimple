@@ -1,0 +1,139 @@
+---
+title: "OpenClaw を GitHub メンテナー業務に使う 11 の型"
+description: "最近の OpenClaw 議論では、受信箱だけでなく issue triage、ラベル付け、PR 下書き、repo 自動化が何度も共有されていました。2026 年 3 月上旬時点で公開手順が比較的そろっている運用をまとめます。"
+date: 2026-03-07
+image: /images/blog/add-agent-modal.png
+---
+
+2026 年 3 月上旬に出回っていた OpenClaw の「メール以外で役立つ例」は、よい意味でかなり地味でした。**リポジトリが事務作業の沼になるのを防ぐために、メンテナーがエージェントを使っていた**のです。
+
+最近は大きく 3 つの型が繰り返し出てきました。
+
+- incoming issue を分類して適切な場所に流したい
+- repo を clone してファイルを変え、PR を開く作業をもっと少ない手間で回したい
+- その場しのぎの prompt ではなく、再利用できる skill template として固めたい
+
+GitHub の認証情報と安全な working directory がすでに OpenClaw 側で用意されているなら、ここはかなりレバレッジの高い領域です。自前でランタイムを組みたくないなら、[ClawSimple](/) の managed setup がいちばん速いままです。
+
+## なぜ 2026 年 3 月上旬にこの話が目立ったのか
+
+- 2026 年 3 月 2 日の r/OpenClaw 投稿 ["I made some skills to let openclaw auto manage issues and Git repositories"](https://www.reddit.com/r/openclaw/comments/1rirp4l/i_made_some_skills_to_let_openclaw_auto_manage/) では、`gisia` プロジェクトと repo 管理系 skill の再利用例に注目が集まりました。
+- 2026 年 3 月 1 日の gist ["github-contributor OpenClaw SKILL.md"](https://gist.github.com/hesreallyhim/c0f77a5d3cefcb1225521a09d7c89cbf) は、GitHub contribution タスクを反復可能な skill にする軽量テンプレートとして共有されていました。
+- GitHub 公式の ["Meet the Workflows: Issue Triage"](https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows/) は、安全な issue labeling の公開例として依然かなり参考になります。権限を狭くし、許可ラベルを固定し、まずコメントを残す設計です。
+- OpenClaw 公式の **v2026.3.2** リリースノートには、plugin HTTP auth、skills workspace 警告、archive 展開の安全性向上が含まれており、第三者 skill や plugin に依存する maintainer ワークフローでは特に重要でした。
+
+## 真似する価値がある maintainer ワークフロー 11 選
+
+1. GitHub issue を自動ラベル付けする
+2. バグ報告をラベル付きタスクに変換する
+3. 反復的な修正の PR を開く
+4. 週次 maintainer ダイジェストを作る
+5. 計画前に issue backlog を要約する
+6. サポート会話を GitHub issue に変換する
+7. merged PR から release note 草案を作る
+8. docs を整形して cleanup PR を出す
+9. 機能要望とサポート質問を分類する
+10. project board 用のステータス更新を作る
+11. 古い issue を現在のコードベース文脈で説明する
+
+この中で、今すぐ真似しやすい公開手順がそろっている 4 つを下で整理します。
+
+<h2 id="auto-label-github-issues" className="scroll-mt-24">GitHub issue を自動ラベル付けする</h2>
+
+これは最初の一歩として最もきれいです。**できることの範囲が狭く、監査もしやすい**からです。
+
+GitHub の issue triage workflow 例でも、権限は絞られ、出力は `bug`、`feature`、`enhancement`、`documentation`、`question`、`help-wanted`、`good-first-issue` のような既知ラベル集合に限定されています。
+
+**OpenClaw に頼む内容**
+
+1. 新規作成または再オープンされた未ラベル issue を監視する
+2. title、body、近傍の repository context だけを読む
+3. allowlist から 1 つラベルを付ける
+4. なぜそのラベルにしたか短いコメントを残す
+5. 既にラベル済み、または担当者が付いている issue はスキップする
+
+**なぜ始めやすいか**
+
+- 成功/失敗の判断が早い
+- コードを書かなくても可視的な価値が出る
+- 今週 OpenClaw 用に流用されていた GitHub 公開例と直接噛み合う
+
+<h2 id="turn-bug-reports-into-labeled-tasks" className="scroll-mt-24">バグ報告をラベル付きタスクに変換する</h2>
+
+`gisia` repo では `issues`、`labels`、`epics`、`project` まわりの skill template が参照されており、サポート受信箱と GitHub backlog をつなぎたいときにちょうどよい形です。
+
+**OpenClaw に頼む内容**
+
+1. サポートメッセージ、クラッシュレポート、内部バグメモを読む
+2. 再現可能なタイトル、主要ステップ、severity ヒントを抽出する
+3. 重複しそうな issue を検索する
+4. 適切なラベル付きで GitHub issue を新規作成、または更新する
+5. repo が board や epic を使っているなら、必要に応じてそこへ紐付ける
+
+**よい制約**
+
+- 新規 issue の前に必ず duplicate 検索を行う
+- ラベルは有限集合に制限する
+- project board 更新は、最初の精度が安定するまで任意に留める
+
+<h2 id="open-prs-for-repetitive-fixes" className="scroll-mt-24">反復的な修正の PR を開く</h2>
+
+これは「ついに実用っぽくなった」と感じやすい例でした。3 月のスレッドでも、環境を正しく用意すると、OpenClaw が repo を編集して小さな変更を作り、そのまま PR まで出せる例が話題になっていました。
+
+**OpenClaw に頼む内容**
+
+1. 対象 repo を既知の workspace に clone する
+2. 変更内容を 1 種類に絞る
+   - docs cleanup
+   - changelog 更新
+   - 反復的な lint 修正
+   - version bump
+3. 必要な checks を実行する
+4. 構造化された commit message で branch に commit する
+5. 変更理由とテスト概要つきで PR を開く
+
+**なぜ narrow scope が重要なのか**
+
+- モデルは、広い設計変更より反復変換のほうがはるかに安定する
+- review コストが安い
+- 失敗したときの戻し方が明確
+
+<h2 id="generate-weekly-maintainer-digests" className="scroll-mt-24">週次 maintainer ダイジェストを作る</h2>
+
+これは GitHub 版の inbox summary です。**低リスク、高頻度、しかも普通に助かる**という意味でかなり優秀です。
+
+**OpenClaw に頼む内容**
+
+1. 直近 7 日で opened、closed、未ラベルの issue を確認する
+2. 次のようにテーマ別に整理する
+   - regressions
+   - docs confusion
+   - feature requests
+   - support noise
+3. 今週、人間の maintainer が最も見るべき 3 件を抽出する
+4. Telegram、Slack、メール向けに planning summary を下書きする
+
+**理想的な出力**
+
+- 1 段落の要約
+- block されている項目
+- close 候補の stale issue
+- 短時間で片付く easy win
+
+## 最も安全な導入順
+
+1. ラベル付け
+2. issue 草案化
+3. 週次ダイジェスト
+4. 小さな PR
+5. より広い repo 管理は後から
+
+この順番は、2026 年 3 月上旬時点で最も強い公開ガイダンスと一致しています。まずは権限を絞る。次にレビューしやすい出力にする。その後で repository state を変更させる。
+
+## 無視すべきでない現実的リスク
+
+OpenClaw 公式リリースノートとコミュニティ議論は、同じことを示しています。**maintainer ワークフローの安全性は、周辺の skill と plugin の衛生状態に依存する**ということです。
+
+第三者 repo skill を入れるなら、`SKILL.md` を確認し、workspace を境界付きにし、label allowlist、directory root、branch naming rule を明示するべきです。
+
+「repo automation」は便利です。しかし「曖昧な prompt で広い shell access を渡すこと」は、あとで自分の仕事を増やす別の方法でしかありません。

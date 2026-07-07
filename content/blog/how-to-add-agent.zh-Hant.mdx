@@ -1,0 +1,39 @@
+---
+title: 部署成功後如何增加 Agent (機器人)
+description: 了解如何在初次部署成功後，透過 Profile 頁面在一個 OpenClaw 伺服器上添加和管理更多 AI 代理（Bots）。
+date: 2026-02-23
+image: /images/blog/add-agent-button.png
+---
+
+在 [ClawSimple](/) 部署您的第一個 OpenClaw 伺服器之後，您可能會發現自己想要為不同的任務運行多個獨立的機器人。好消息是，**您可以輕鬆地將更多 Agent 附加到同一個伺服器（Seat）中，而無需支付額外的伺服器費用或進行複雜的配置**。
+
+下面，我們將透過簡單的圖文教程向您展示如何在 Dashboard 中添加新的 Agent。
+
+## 第一步：進入您的 Profile 控制台
+
+登入 ClawSimple 控制台並導航至 **Profile > Overview** 頁面。在這裡，您將看到您所有當前活躍的部署計劃（Active Plans）。
+
+在伺服器卡片上找到您想要掛載新 Agent 的目標伺服器，點擊卡片右上方的 **"+ Add Agent"** 按鈕。
+
+![Add Agent 按鈕位置](/images/blog/add-agent-button.png)
+
+## 第二步：配置您的新 Agent
+
+點擊 "+ Add Agent" 之後，系統會彈出一個配置窗口。在這裡，您只需填寫新機器人的基本資訊。
+
+由於這是附加到現有伺服器上的新 Agent，它會繼承部分通用配置（如白名單限制），但您需要提供：
+
+1. **Telegram Bot Token**：這是您從 Telegram `@BotFather` 獲取的全新 Bot API 會話權杖。
+2. **AI Model（模型選擇）**：從下拉選單中為這個特定的機器人選擇它預期的 AI 模型（您可以讓不同機器人運行不同的模型！）。
+3. **Allowed User ID**（選填/預設）：通常會預設使用您的主帳號 ID，如果想限制或給他人使用，在此填寫對應使用者的 ID 即可。
+
+![填寫 Agent 配置](/images/blog/add-agent-modal.png)
+
+## 第三步：等待生效
+
+確認填寫的資訊無誤後，點擊 **"Add agent"** 按鈕提交。ClawSimple 的後台系統會自動將您的配置下發給伺服器。
+
+新添加的機器人狀態將在片刻之後變成 "Active"。一旦完成，您就可以在 Telegram 中直接向這個新機器人發送訊息，它已經準備好為您服務了。
+
+**隨時隨地擴展您的 AI 軍隊：** 
+由於採用了高效的底層架構，當請求負載不高時，單個伺服器即可承載多達 10 台相互獨立的 Bot。現在就去嘗試部署您的下一個特定用途的 AI 助手吧！

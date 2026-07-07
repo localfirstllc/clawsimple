@@ -1,0 +1,78 @@
+---
+title: "Hermes Agent 最近很紅，它是什麼？我需要從 OpenClaw 換過來嗎？"
+description: "基於 Hermes 和 OpenClaw 的官方 GitHub 倉庫，梳理兩個專案的實質差異，以及 ClawSimple 適合誰。"
+date: 2026-04-16
+---
+
+如果你在用 OpenClaw，最近可能已經看到有人提起 Hermes Agent。
+
+它確實在社群裡開始被討論。有些用戶在對比，有些在問要不要換。比較典型的一個例子是：某用戶在 Android 的 Termux + proot 環境裡跑 OpenClaw，升級後出了問題，最後改用原生安裝的 Hermes，問題消失了。
+
+---
+
+## Hermes 和 OpenClaw 各自在強調什麼
+
+看 Hermes 官方 GitHub 的第一屏，說得很直接：會從對話經驗裡生成技能，會在使用中持續改進技能，會主動提醒自己持久化知識，會搜尋過去的對話。然後是六種 terminal backend：`local`、`Docker`、`SSH`、`Daytona`、`Singularity`、`Modal`。
+
+OpenClaw 強調的是另一件事：一個 Gateway，把 Telegram、Slack、WhatsApp、Signal、Discord 等多種渠道接起來，多代理路由、Web 控制台、行動節點、媒體收發。
+
+---
+
+## 那批切換到 Hermes 的用戶，在意的是什麼
+
+從帖子來看，切換原因通常集中在兩點：
+
+**執行環境**。有些用戶跑 OpenClaw 的環境比較特殊（Termux、舊系統、自訂容器），出了問題很難排查。Hermes 六種 terminal backend 的叙事，對這批人來說吸引力很直接。
+
+**記憶和技能沉澱**。Hermes 把「會從使用中成長」放在首位，打中了一批特別在意「agent 越用越懂我」的用戶。OpenClaw 也有記憶和技能體系，但這不是它在首頁上主要講的東西。
+
+值得注意的是，Hermes 還專門提供了 `hermes claw migrate` 指令，可以把 OpenClaw 的設定、記憶、技能和 API keys 整批遷移過去。
+
+---
+
+## ClawSimple 在這裡扮演什麼角色
+
+ClawSimple 做的事情很具體：幫你把 OpenClaw 部署好，壞了有人幫你修。
+
+不需要自己搞 SSH、systemd、備份恢復。升級和 Relaunch 都做成了面板操作。官方 Bot 獨立於主實例，即便主實例掛了，也能透過它觸發狀態檢查和修復。
+
+---
+
+## 對一般用戶來說，各自最值得注意的一點
+
+**Hermes**：最大優點是越用越懂你——它會主動從對話裡學習、積累技能，用久了會有明顯的「私人助理」感。最大缺點是沒有托管，裝好只是第一步，出問題全靠自己解決，對沒有技術背景的人來說基本進不去。
+
+**原生 OpenClaw**：最大優點是在你已經在用的 app 裡工作，Telegram、WhatsApp 本來就在手機上，不需要裝新東西。最大缺點和 Hermes 一樣——安全設定、版本升級、故障排查，這些事一個都跑不掉，社群裡「照步驟做了但還是壞了」的帖子很多。
+
+**ClawSimple**：最大優點是不需要任何技術背景，填 Bot Token、點部署，幾分鐘跑起來，出問題有人幫你修。最大缺點是底層跑的是 OpenClaw，沒有 Hermes 那種「越用越成長」的體驗，如果你本來就是衝這個去的，ClawSimple 滿足不了。
+
+對一般用戶來說，Hermes 和原生 OpenClaw 的缺點其實是同一個：沒有人幫你兜底。
+
+---
+
+## 選哪個
+
+**Hermes 適合你，如果：**
+
+- 你想要 agent 從對話裡積累技能，持續進化
+- 你在意用什麼環境跑（Docker、SSH、VPS、serverless 都是考量因素）
+- 你有能力自己處理安裝和維護
+
+**原生 OpenClaw 適合你，如果：**
+
+- 你最在意的是多渠道接入——Telegram、WhatsApp、Signal 都能找到同一個 AI
+- 你需要 Web 控制台、行動節點這類功能
+- 你是技術用戶，想直接掌控整套系統
+
+**ClawSimple 適合你，如果：**
+
+- 你想用 OpenClaw，但不想管伺服器
+- 你要的是「能穩定跑起來，壞了有人幫你拉回來」
+- 你是一般用戶或小團隊，希望盡快把實例投入日常使用
+
+---
+
+## 參考來源
+
+- Hermes Agent 官方 GitHub：[NousResearch/hermes-agent](https://github.com/nousresearch/hermes-agent)
+- OpenClaw 官方 GitHub：[openclaw/openclaw](https://github.com/openclaw/openclaw)

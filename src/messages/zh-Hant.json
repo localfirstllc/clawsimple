@@ -1,0 +1,870 @@
+{
+  "common": {
+    "getStarted": "開始使用",
+    "learnMore": "了解更多",
+    "overview": "概覽",
+    "pricing": "定價",
+    "deploy": "開始",
+    "profile": "個人中心",
+    "roadmap": "產品路線圖",
+    "signIn": "登入",
+    "signOut": "登出",
+    "dashboard": "控制台",
+    "language": "語言",
+    "blog": "部落格",
+    "whatsNew": "最新更新",
+    "viewAllUpdates": "查看所有更新",
+    "relaunchFixHint": "新功能通常可直接使用；如果遇到異常，請聯繫支援，我們會檢查伺服器。",
+    "loading": "載入中..."
+  },
+  "home": {
+    "socialProof": {
+      "badge": "早期使用者的真實回饋",
+      "quote": "「只有一個是真的好。」",
+      "summary": "在比較 11 個 OpenClaw 即時服務後，Mike MacCana 對 ClawSimple 的判斷，被濃縮成最直接的一句。",
+      "name": "Mike MacCana",
+      "role": "Quicknode 開發者關係",
+      "sourceNote": "由 Solana at QuickNode 帳號於 2026 年 3 月 2 日公開發佈在 X 上。",
+      "iframeTitle": "Mike MacCana 對 ClawSimple 的影片評價",
+      "cta": "查看原帖"
+    },
+    "hero": {
+      "notificationBanner": "📣 新訂閱計劃的價格將於 2 月 15 日（UTC）上調。現有訂閱不受影響。",
+      "learnMore": "了解更多",
+      "title": "你的 Telegram AI 機器人，3 分鐘跑起來",
+      "description": "不用配伺服器，不用敲命令行。我們裝好 OpenClaw 或 Hermes Agent，接好 AI，讓你的機器人在獨立伺服器上持續運行。",
+      "trustLine": "獨立伺服器 • 3 分鐘部署",
+      "cta": "啟動我的機器人",
+      "noCreditCard": "註冊無需信用卡，部署前需添加支付方式",
+      "productHuntLabel": "已登上 Product Hunt",
+      "secondaryCta": "查看方案",
+      "openSourceCore": "開箱即用的 OpenClaw + Hermes Agent",
+      "localFirstControl": "安裝 OpenClaw 和 Hermes Agent",
+      "telegramFirst": "接通平台 AI",
+      "freshServerRelaunch": "包含託管搜尋",
+      "multipleAgentsPerSeat": "先讓真實任務跑起來，再慢慢擴展",
+      "maintenanceBot": "受限維護機器人",
+      "badge": "Managed OpenClaw + Hermes Agent Hosting",
+      "supportedVersion": "當前支援 OpenClaw {version}",
+      "supportedHermesVersion": "當前支援 Hermes Agent {version}",
+      "supportedVersions": "當前支援 OpenClaw {openclawVersion} + Hermes Agent {hermesVersion}",
+      "dismissBanner": "關閉橫幅",
+      "snapshot": {
+        "title": "ClawSimple 控制台快照",
+        "liveControl": "即時控制室",
+        "streaming": "運行中",
+        "creator": "創建者",
+        "license": "許可證",
+        "channels": "渠道",
+        "deployLog": "安裝日誌",
+        "running": "進行中",
+        "cmd": "$ openclaw deploy --channel telegram"
+      },
+      "screenshots": {
+        "list": "所有 Agent，一鍵直達",
+        "hermes": "AI 回覆像隊友一樣自然",
+        "openclaw": "一個話題一個群，告別混亂",
+        "physics": "任何任務交出去，自然會完成"
+      }
+    },
+    "trustBanner": {
+      "items": {
+        "privateServer": {
+          "title": "獨立伺服器",
+          "description": "你的機器人跑在專屬伺服器上，不與他人共享"
+        },
+        "fastSetup": {
+          "title": "3 分鐘部署",
+          "description": "填完表單到機器人上線，全程自動"
+        },
+        "managedSearch": {
+          "title": "託管搜尋",
+          "description": "新部署預設接通搜尋和頁面讀取"
+        }
+      }
+    },
+    "howItWorks": {
+      "eyebrow": "使用流程",
+      "title": "三步開始第一次真實對話。",
+      "steps": {
+        "connect": {
+          "title": "連接",
+          "description": "貼上 Telegram Bot Token，選一個 AI 模型"
+        },
+        "build": {
+          "title": "我們搭建",
+          "description": "伺服器、OpenClaw、AI 和搜尋，全部自動配置"
+        },
+        "chat": {
+          "title": "開始聊天",
+          "description": "機器人已在 Telegram 上線。直接開聊。"
+        }
+      }
+    },
+    "benefits": {
+      "eyebrow": "為什麼選擇 ClawSimple",
+      "title": "跳過配置工作。直接開始對話。",
+      "items": {
+        "noTerminal": {
+          "title": "不用碰終端",
+          "description": "一張表單，一次點擊。伺服器配置、依賴安裝、運行環境，我們搞定。"
+        },
+        "aiIncluded": {
+          "title": "AI 已接入",
+          "description": "平台 AI 和託管搜尋預設連通。不需要自己準備 API Key。"
+        },
+        "staysRunning": {
+          "title": "持續在線",
+          "description": "自動監控。伺服器需要處理時，由支援人員接手。"
+        },
+        "pickRuntime": {
+          "title": "自選運行環境",
+          "description": "每個機器人獨立選擇 OpenClaw 或 Hermes Agent。建立時決定，之後固定。"
+        },
+        "multiAgent": {
+          "title": "多機器人，不加價",
+          "description": "在同一台伺服器上新增多個 Telegram 機器人，不額外收訂閱費。"
+        },
+        "yourStack": {
+          "title": "你的棧，你的密鑰",
+          "description": "開源運行環境。你的憑證只留在你的伺服器上。"
+        }
+      }
+    },
+    "features": {
+      "title": "為什麼這頁其他部分也要一起改",
+      "mainHeading": "重點不該只是「幫你裝 OpenClaw 或 Hermes Agent」，而是裝好後立刻能做什麼。",
+      "subtitle": "ClawSimple 負責安裝 OpenClaw 和 Hermes Agent，接通平台 AI 與託管搜尋，並讓機器人穩定運行在你的獨立伺服器上。",
+      "installFlow": {
+        "badge": "安裝流程",
+        "title": "三步開始跑真實任務",
+        "desc": "先把機器人和常用服務接上，再複製 prompt 讓它做第一件真工作，而不是先折騰半天設定。"
+      },
+      "feature1": {
+        "title": "極簡設置",
+        "description": "一鍵將機器人運行在優質雲端伺服器上。"
+      },
+      "feature2": {
+        "title": "自動擴容",
+        "description": "隨著用戶群增長，系統會自動調整性能以保持流暢。"
+      },
+      "feature3": {
+        "title": "24/7 監控",
+        "description": "我們全天候監控您的機器人，讓您無後顧之憂。"
+      },
+      "osCore": {
+        "title": "開放的 agent 執行環境",
+        "desc": "OpenClaw 仍然是開源 (MIT)，Hermes Agent 也可以並行使用。你可以審計這套系統、之後自行託管，或繼續使用 ClawSimple。"
+      },
+      "paidDelivery": {
+        "title": "先把 OpenClaw 和 Hermes Agent 跑起來",
+        "desc": "我們負責安裝、更新與維運，讓你不用先處理伺服器細節，就能更快進入真實使用。"
+      },
+      "runtimeChoice": {
+        "title": "OpenClaw 或 Hermes Agent",
+        "desc": "新建 bot 時選擇 OpenClaw 或 Hermes Agent。選定後，這個 bot 的執行時不再修改。"
+      },
+      "yourInfra": {
+        "title": "搜尋與閱讀能力可直接用",
+        "desc": "網頁搜尋、頁面閱讀和摘要這類高頻動作，不需要你再自己摸索一遍基礎配套。"
+      },
+      "byokAllPlans": {
+        "title": "平台 AI 已接好",
+        "desc": "標準部署會走 ClawSimple 的平台 AI token 與模型設定。你不用在 ClawSimple 裡填自己的模型 key。"
+      },
+      "multiAgent": {
+        "title": "從一個機器人擴到多個 Agent",
+        "desc": "先把一個機器人跑順，再慢慢拆出專門負責郵件、日程、研究或維護的 agent。"
+      },
+      "maintenanceBot": {
+        "title": "Profile 維護操作",
+        "desc": "在 Profile 中管理機器人、模型和每個 bot 已選定的執行時。",
+        "guideCta": "開啟 Profile"
+      },
+      "workflowReady": {
+        "title": "安裝器只做必要配置",
+        "desc": "安裝器只負責 OpenClaw、Hermes Agent、平台 AI、託管搜尋，以及讓它們穩定運行的必要配置。"
+      },
+      "step1": {
+        "title": "連上機器人和服務",
+        "desc": "提供 Telegram 機器人 Token，按需接上 Gmail、Calendar、Tasks、Notion 等常用服務。"
+      },
+      "step2": {
+        "title": "我們把環境準備好",
+        "desc": "伺服器、OpenClaw、Hermes Agent、平台 AI、託管搜尋和基礎執行設定會自動準備好。"
+      },
+      "step3": {
+        "title": "複製 prompt 開始工作",
+        "desc": "直接讓機器人去讀郵件、看日程、摘要網頁，先跑通第一條真實工作流。"
+      }
+    },
+    "faq": {
+      "eyebrow": "常見問題",
+      "title": "開始前最常見的疑問",
+      "subtitle": "給首次使用者的重點說明，一次看懂。",
+      "items": {
+        "telegramWhy": {
+          "question": "為什麼預設推薦 Telegram？",
+          "answer": "Telegram 上線快、連線穩定、使用者熟悉度高。你可以先快速跑通機器人，再按需擴展到更多渠道。"
+        },
+        "telegramCredentials": {
+          "question": "Telegram Bot Token 和 User ID 分別是什麼？",
+          "answer": "Bot Token 是你在 @BotFather 取得的機器人密鑰；User ID 是允許與機器人對話的使用者數字 ID —— 通常這就是你自己的 Telegram 帳號 ID（可透過 @Getmyid_bot 或 @userinfobot 取得）。Token 用於識別機器人，User ID 用於控制存取權限。"
+        },
+        "hermesSwitch": {
+          "question": "建立後還能把 bot 從 Hermes Agent 改成 OpenClaw 嗎？",
+          "answer": "不能。新建 bot 時選擇 OpenClaw 或 Hermes Agent。需要另一個執行時，就新建一個使用該執行時的 bot。"
+        },
+        "cloudVsMacMini": {
+          "question": "雲端伺服器 vs 在 Mac mini 上跑 OpenClaw 或 Hermes Agent，該怎麼選？",
+          "answer": "如果你想更快完成 OpenClaw 或 Hermes Agent setup、降低維運負擔，雲端通常更合適：安裝可自動化、在線狀態更容易監控，伺服器問題也可由支援人員處理。Mac mini 適合你想完全本地掌控，且已有硬體維運能力的情境。很多使用者會先在雲端起步，再逐步把部分能力搬回自有環境。"
+        },
+        "modelRecommendation": {
+          "question": "建議先用哪個 AI 模型？",
+          "answer": "若不確定，先使用 ClawSimple 為當前方案預設的模型。它通常在效果、速度與成本間更均衡，後續也可隨時切換。"
+        },
+        "billingMethod": {
+          "question": "計費方式是怎樣的？",
+          "answer": "計費會依你的方案、內建 AI / 搜尋用量，以及可能產生的額外託管用量計算。新部署預設使用 ClawSimple 平台 AI 連線與託管搜尋，安裝時不需要提供 AI provider key。"
+        },
+        "addAgentBilling": {
+          "question": "在一個 deployment 裡再新增一個 agent，會另外收費嗎？",
+          "answer": "不會以「新增一台伺服器」的方式另外收費。額外 agent 會沿用同一個 deployment 與同一台伺服器，所以不是再買一份伺服器訂閱。真正會增加的是使用量：如果這些 agent 更活躍，會更快消耗這個 deployment 的託管 AI 與搜尋 credits。"
+        },
+        "addAgentRequirements": {
+          "question": "新增 agent 時，使用者需要提供哪些資訊？",
+          "answer": "至少需要這個新機器人的 Telegram Bot Token，以及平台模型選擇。允許存取的 Telegram User ID 通常會預設帶入你已儲存的帳號，也可以更改。"
+        },
+        "addAgentFlow": {
+          "question": "新增 agent 的實際流程是什麼？",
+          "answer": "進入 Profile > Overview，找到目標 deployment，點擊 Add Agent，填入 bot token 與模型相關設定後提交。ClawSimple 會在同一個 deployment 上排隊執行 add_agent job，更新正在運行的 OpenClaw 設定；job 完成後，新 bot 就會顯示為 active。"
+        },
+        "addAgentCapacity": {
+          "question": "通常幾個 agent 會讓一個 deployment 開始吃緊？不同 agent 的 AI credits 會共享嗎？",
+          "answer": "目前實作裡沒有一個固定通用數字。少量輕量 Telegram 助手通常可以共存；真正容易吃緊的是多個 agent 同時活躍、頻繁執行長工具呼叫，或一起使用更重的模型。託管 AI credits 是按 deployment 或 seat 維度統計，所以同一個 deployment 下的 agent 會共享同一份用量池。"
+        }
+      }
+    }
+  },
+  "pricing": {
+    "title": "Managed OpenClaw + Hermes Agent Hosting 定價",
+    "subtitle": "在 Standard 和 Max 之間選擇，區別是內建 AI 用量和伺服器規格。",
+    "monthly": "月付",
+    "yearly": "年付",
+    "yearlyDiscount": "省 17%",
+    "billedYearly": "按年計費",
+    "billedYearlyWithTotal": "按年計費 {total}",
+    "newBadge": "新",
+    "allPaidPlansKeyNote": "所有付費方案都包含託管維運、平台 AI、託管搜尋，以及在同一台伺服器上運行多個 Bot 的能力。",
+    "period": "/月",
+    "whyPay": {
+      "title": "為什麼要付費？",
+      "subtitle": "尊重開源的定價模式。",
+      "certainty": {
+        "title": "為確定性付費",
+        "description": "開源意味著您可以做，但不代表能快速完成。我們消除了設置的不確定性。"
+      },
+      "hiddenCosts": {
+        "title": "避免隱形成本",
+        "description": "錯誤的權限、損壞的服務和模型配置錯誤會花費數小時。"
+      },
+      "ownership": {
+        "title": "擁有您的基礎設施",
+        "description": "您的伺服器和憑據歸您所有。我們只自動化第一公里的路程。"
+      }
+    },
+    "plans": {
+      "standard": {
+        "title": "標準版",
+        "description": "適合大多數使用者。包含託管服務、內建 AI 配額、託管 search/crawl 和獨立伺服器。"
+      },
+      "max": {
+        "title": "Max",
+        "description": "適合使用更頻繁的使用者。包含更多 AI 配額、更多託管 search/crawl 餘量，以及同樣的託管體驗。"
+      }
+    },
+    "features": {
+      "provisioning": "安全雲端安裝",
+      "byok": "包含平台 AI",
+      "systemd": "託管伺服器支援",
+      "updates": "一鍵升級",
+      "maintenanceBot": "Profile 維護操作",
+      "runtimeSwitching": "每個 bot 可選 OpenClaw 或 Hermes Agent",
+      "creditsIncluded": "包含 ${credits} 月度使用配額",
+      "useYourOwnKeyAnytime": "包含平台 AI 連線",
+      "clawSimpleIncluded": "包含 6$ AI 配額",
+      "standardQuota": "標準使用額度",
+      "standardTopupOrByok": "加購 Credits 會在 AI 和 search/crawl 之間共享",
+      "hassleFree": "零配置煩惱",
+      "everythingInStandard": "包含標準版所有功能",
+      "fiveXQuota": "2 倍 AI 使用額度",
+      "highSpecServer": "更高配置伺服器",
+      "prioritySupport": "優先支援",
+      "earlyAccess": "搶先體驗新功能",
+      "installScript": "安裝腳本",
+      "stepByStepDocs": "詳細文件",
+      "transparency": "完全透明",
+      "noVendorLockIn": "無廠商鎖定",
+      "multipleAgents": "單訂閱多 Agent"
+    },
+    "choosePlan": "選擇方案",
+    "deployNow": "啟動我的機器人",
+    "multiAgent": {
+      "title": "一個訂閱，多個 Agent",
+      "description": "在同一個伺服器上新增多個 Telegram Bot。每個 Agent 有獨立的 Token 和 AI 模型。"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "登入 ClawSimple",
+      "description": "輸入您的郵箱以接收登入驗證郵件。",
+      "google": "使用 Google 繼續",
+      "or": "或",
+      "emailLabel": "郵箱地址",
+      "emailPlaceholder": "you@example.com",
+      "submit": "發送登入郵件",
+      "sent": "登入郵件已發送！請檢查您的郵箱。",
+      "error": "出了點問題，請重試。"
+    }
+  },
+  "footer": {
+    "tagline": "讓 OpenClaw 和 Hermes Agent 機器人運行更簡單。",
+    "product": "產品",
+    "company": "公司",
+    "legal": "法律",
+    "privacy": "隱私政策",
+    "terms": "服務條款",
+    "about": "關於我們"
+  },
+  "deploy": {
+    "widget": {
+      "badge": "立即啟動",
+      "title": "啟動你的機器人",
+      "description": "貼上 Token，選個模型，開始。",
+      "trustSignals": {
+        "noServerKnowledge": "無需伺服器知識",
+        "platformAi": "平台 AI 已接入",
+        "multiAgent": "多機器人，不加價"
+      }
+    },
+    "help": {
+      "newTokenWarning": "每次設置都要使用新機器人（新的金鑰）。",
+      "closeModal": "關閉視窗",
+      "telegramHelp": "Telegram 說明",
+      "tokenTitle": "如何找到 Bot Token",
+      "allowlistTitle": "如何取得 Telegram 使用者 ID",
+      "close": "關閉",
+      "tokenStepOne": "打開 Telegram，搜尋 <code>@BotFather</code>。",
+      "tokenStepTwo": "送出 <code>/newbot</code>，並依提示完成建立。",
+      "tokenStepThree": "複製最後一則訊息裡顯示的 Token。",
+      "tokenExample": "範例：<code>123456789:ABC-DEF1234ghIkl-zyx57W2v1u123ew11</code>",
+      "tokenCaption": "BotFather 回傳的 Token 訊息",
+      "allowlistStepOne": "搜尋 <code>@userinfobot</code>（或 <code>@getmyid_bot</code>）。",
+      "allowlistStepTwo": "啟動機器人，並複製你的數字使用者 ID。",
+      "allowlistStepThree": "填入這個 ID；若有多個，請用逗號分隔。",
+      "allowlistWarning": "注意：請使用正確的帳號名稱 <first>@userinfobot</first> 或 <second>@getmyid_bot</second>，避免遇到仿冒機器人。",
+      "allowlistExample": "範例：<code>6861230049</code>",
+      "allowlistCaption": "User ID 回傳示例"
+    },
+    "statusTitle": "你的 Agent 狀態",
+    "statusModalLabel": "部署狀態",
+    "statusModalCompleted": "部署完成",
+    "statusModalFailed": "部署失敗",
+    "statusModalPreparing": "正在為你準備 Agent",
+    "statusModalClose": "關閉",
+    "statusModalChatReady": "🎉 現在可以在 Telegram 上和您的新機器人聊天了！",
+    "statusCardChatCta": "在 Telegram 上和 {username} 聊天",
+    "statusModalOpenTelegram": "在 Telegram 中開啟 {username}",
+    "deployPhaseProvisioning": "正在配置伺服器",
+    "deployPhaseRuntime": "正在安裝執行環境",
+    "deployPhaseBot": "正在配置機器人",
+    "deployPhaseHealth": "最終健康檢查",
+    "deployPhaseReady": "即將就緒",
+    "noDeployment": "尚未開始運行。運行後狀態將顯示在此處。",
+    "statusActive": "執行中",
+    "statusFailed": "出現問題",
+    "statusDeploying": "正在啟動...",
+    "paymentPending": "付款待處理。請在 1 小時內完成。",
+    "graceEnds": "付款截止於",
+    "completePayment": "完成付款",
+    "deploying": "正在啟動...",
+    "realProgressLabel": "即時進度",
+    "deployProgressHint": "通常需要 2-3 分鐘。您可以關閉此視窗，系統將在背景完成所有操作。",
+    "progressSteps": {
+      "serverAssigned": {
+        "title": "伺服器已分配",
+        "description": "本次部署已取得實際節點，並與目前會話綁定。"
+      },
+      "nodeReported": {
+        "title": "節點已回報",
+        "description": "啟動腳本已回傳真實節點資訊。"
+      },
+      "runtimeInstalled": {
+        "title": "執行環境已安裝",
+        "description": "基礎相依、OpenClaw CLI 和 Hermes Agent 執行環境已安裝完成。"
+      },
+      "botConfigured": {
+        "title": "機器人已配置",
+        "description": "Telegram 與模型設定已寫入目前部署。"
+      },
+      "serviceStarted": {
+        "title": "服務已啟動",
+        "description": "systemd 服務已拉起，gateway 行程已啟動。"
+      },
+      "serviceReady": {
+        "title": "健康檢查已通過",
+        "description": "最終驗證已完成，機器人現在可以使用。"
+      }
+    },
+    "setupVideo": {
+      "iframeTitle": "OpenClaw 和 Hermes Agent 配置示範影片"
+    },
+    "viewFullStatus": "查看詳情",
+    "viewStatusDetail": "查看詳情",
+    "viewAllDeployments": "查看所有機器人",
+    "showActiveOnly": "僅顯示執行中",
+    "confirm": {
+      "title": "確認新機器人設置",
+      "heading": "開啟另一個機器人？",
+      "description": "您即將開啟另一個機器人服務。",
+      "chargeTitle": "新的付費伺服器",
+      "chargeMonthly": "確認後會為單獨伺服器扣款 ${monthly}/月。",
+      "chargeYearly": "確認後會為單獨伺服器扣款 ${total}/年（約 ${monthlyEquivalent}/月）。",
+      "chargeReason": "只有當單台伺服器的運算能力已經不夠，或您希望機器人之間完全隔離時，才建議再開新伺服器。",
+      "warningTitle": "友情提醒",
+      "warningText": "每次機器人設置都應使用不同的機器人，這樣你才可以跟不同的機器人對話。",
+      "warningReason": "",
+      "botFatherLink": "前往 @BotFather 建立新機器人",
+      "cancel": "取消",
+      "confirm": "確認開啟",
+      "processing": "處理中..."
+    },
+    "card": {
+      "title": "個人中心",
+      "loading": "載入部署列表...",
+      "dismissError": "關閉錯誤提示",
+      "signInRequired": "請登入查看您的伺服器。",
+      "signIn": "登入",
+      "personalAccount": "個人帳戶",
+      "workspaceLabel": "Profile 工作區",
+      "manageBilling": "管理帳單",
+      "signOut": "登出",
+      "adminPanel": "管理後台",
+      "tabs": {
+        "overview": "概覽",
+        "billing": "帳單",
+        "settings": "設定",
+        "feedback": "回饋"
+      },
+      "tabDescriptions": {
+        "overview": "管理你的伺服器與運行狀態。",
+        "billing": "管理訂閱與 Credits。",
+        "settings": "管理 Telegram 帳戶設定。",
+        "feedback": "社群管道與支援入口。"
+      },
+      "noDeployments": "還沒有建立伺服器。",
+      "noActiveDeployments": "目前沒有正在運行的伺服器。",
+      "stats": {
+        "activeServers": "執行中的伺服器",
+        "addDeployment": "新增伺服器",
+        "addDeploymentHint": "新增一台伺服器",
+        "liveDeploymentCount": "{count} 個正在運行的部署",
+        "serverCountLabel": "共 {count} 台",
+        "activePlans": "有效方案",
+        "extraCreditBalance": "Credits 餘額",
+        "planQuotaHint": "每台伺服器的 AI 與 search/crawl 額度會顯示在下方。",
+        "noExtraCredits": "還沒有購買 Credits。",
+        "nextExpiringCredits": "${amount} 即將到期"
+      },
+      "noSubscriptions": {
+        "title": "目前沒有有效訂閱。",
+        "description": "開啟一台新的託管伺服器，讓你的第一個機器人上線。",
+        "cta": "前往伺服器設定"
+      },
+      "billing": {
+        "managedCreditsTitle": "託管 Credits",
+        "managedCreditsDescription": "方案內 AI 或託管 search/crawl 額度用完後使用。",
+        "creditCarryoverHint": "購買的 Credits 會在 365 天後到期。",
+        "includedUsage": "每個週期包含：${ai} AI · ${search} search/crawl",
+        "balance": "餘額 ${amount}",
+        "noExtraCredits": "還沒有購買 Credits。",
+        "nextExpiration": "${amount} 將於 {date} 到期",
+        "buyCredits": "購買 ${amount} 美元 Credits",
+        "creditConfirmTitle": "使用已儲存卡扣款",
+        "creditConfirmAmount": "購買 ${amount} 美元 Credits",
+        "creditConfirmDescription": "系統會優先使用你在 Stripe 已儲存的付款資訊。如果 Stripe 需要確認，會開啟 checkout。",
+        "creditConfirmSavedCard": "付款成功後，Credits 會加入餘額。",
+        "creditConfirmCancel": "取消",
+        "creditConfirmAction": "繼續",
+        "servers": "{active}/{capacity} 台伺服器",
+        "subscriptionStarted": "訂閱開始於 {time}",
+        "ends": "結束於 {date}"
+      },
+      "createFirst": "開啟您的第一個機器人",
+      "showActiveOnly": "僅顯示執行中",
+      "save": "儲存",
+      "cancel": "取消",
+      "unknown": "未知",
+      "settings": {
+        "aiProviderTitle": "AI Provider",
+        "aiProviderDescription": "為一台伺服器設定自訂 provider。儲存後，這台伺服器上的所有 bot 都會使用這條連線。",
+        "aiProviderCustomStatus": "自訂 AI",
+        "aiProviderPlatformStatus": "平台 AI",
+        "aiProviderNoDeployments": "暫無執行中的伺服器。",
+        "aiProviderDeploymentLabel": "伺服器",
+        "aiProviderPresetLabel": "Provider",
+        "aiProviderApiKeyLabel": "API Key",
+        "aiProviderApiKeyPlaceholder": "留空則保留目前的金鑰",
+        "aiProviderModelLabel": "主模型",
+        "aiProviderModelPlaceholder": "例如 gpt-5.2",
+        "aiProviderFallbackModelsLabel": "備援模型",
+        "aiProviderFallbackModelsPlaceholder": "可選，用逗號分隔",
+        "aiProviderBaseUrlLabel": "Base URL",
+        "aiProviderBaseUrlPlaceholder": "https://api.example.com/v1",
+        "aiProviderHelp": "如果你在 OpenClaw 或 Hermes Agent 內部手動修改設定，內部設定仍可覆蓋這裡的設定。",
+        "aiProviderSave": "儲存 AI provider",
+        "aiProviderSaving": "儲存中...",
+        "telegramUserIdTitle": "Telegram 使用者 ID",
+        "telegramUserIdDescription": "儲存一次後，新部署和新增 Agent 可自動填入 Telegram 白名單。",
+        "savedStatus": "已儲存",
+        "notSavedStatus": "未儲存",
+        "telegramUserIdLabel": "Telegram 使用者 ID",
+        "telegramUserIdPlaceholder": "輸入數字形式的 Telegram 使用者 ID",
+        "savedHint": "已儲存並鎖定。若要修改，請先解除綁定。",
+        "enterHint": "輸入一次你的數字 Telegram 使用者 ID。",
+        "saving": "儲存中...",
+        "unlink": "解除綁定",
+        "unlinking": "解除綁定中...",
+        "refresh": "重新整理",
+        "refreshing": "重新整理中..."
+      },
+      "paymentPending": "請在 1 小時內完成支付。",
+      "graceEnds": "付款截止於",
+      "completePayment": "完成支付",
+      "endingSoon": "已計畫在下一個計費週期結束。",
+      "undoRemoval": "復原",
+      "removeAtPeriodEnd": "週期結束時移除",
+      "delete": "刪除",
+      "deleted": "訂閱已刪除。",
+      "justNow": "剛剛",
+      "minutesAgo": "{n}分鐘前",
+      "hoursAgo": "{n}小時前",
+      "daysAgo": "{n}天前",
+      "status": {
+        "active": "執行中",
+        "deploying": "啟動中",
+        "failed": "問題",
+        "removed": "已移除",
+        "paymentPending": "待支付",
+        "endingSoon": "即將到期"
+      },
+      "serverModal": {
+        "genericDescription": "為新伺服器選擇方案。",
+        "useExistingSeat": "這次會優先使用你目前訂閱中尚未使用的席位。",
+        "addSeat": "新開一台伺服器會產生單獨費用。"
+      },
+      "serverCopy": {
+        "defaultName": "伺服器 {index}",
+        "createdAt": "建立於 {time}",
+        "addSamePlanServer": "依目前訂閱方案再新增一台伺服器",
+        "noSearchResults": "沒有符合搜尋條件的伺服器。",
+        "quotaUsage": "AI 配額 ${used} / ${cap} · {percent}% · 剩餘 ${left}",
+        "quotaUnused": "尚未產生 AI 用量 · 目前可用 ${cap}",
+        "quotaUsed": "AI 已使用 ${used} / ${cap} · 剩餘 ${left}",
+        "scheduledPlan": "已排程變更：{date} 起切換為 {plan}",
+        "addAgent": "新增 Agent",
+        "exportBackup": "匯出備份",
+        "downloadBackup": "下載備份",
+        "downloadBackupAgain": "重新下載",
+        "backupExporting": "正在匯出備份",
+        "encryptedBackup": "加密備份",
+        "revealBackupPassword": "顯示密碼",
+        "revealBackupPasswordAgain": "再次顯示",
+        "showBackupDetails": "展開詳情",
+        "hideBackupDetails": "收起詳情",
+        "backupPassword": "密碼",
+        "copyBackupPassword": "複製密碼",
+        "decryptCommand": "解密指令",
+        "copyDecryptCommand": "複製指令",
+        "backupExportTitle": "產生並下載完整加密備份",
+        "backupStarting": "正在啟動加密備份匯出...",
+        "backupPreparing": "正在準備加密備份……等待伺服器處理。",
+        "backupReady": "加密備份已就緒。請先下載，再於需要解密時顯示密碼。",
+        "backupReadyToast": "加密備份已就緒，正在開始下載。",
+        "backupTimedOut": "備份逾時，請重試。",
+        "sessionExpired": "工作階段已過期，請重新登入。",
+        "downloadLinkError": "無法建立下載連結。",
+        "downloadLinkMissing": "缺少下載連結。",
+        "backupExportError": "無法匯出加密備份。",
+        "backupIdMissing": "備份匯出未回傳 backup_id。",
+        "revealBackupPasswordError": "無法顯示備份密碼。",
+        "backupPasswordMissing": "缺少備份密碼。",
+        "backupPasswordWarning": "請妥善保管此密碼。任何同時取得檔案與密碼的人都能解密此備份。",
+        "backupPasswordCopied": "備份密碼已複製。",
+        "decryptCommandCopied": "解密指令已複製。",
+        "changePlan": "更改方案",
+        "preparing": "準備中...",
+        "relaunch": "重新部署",
+        "cancelServer": "取消伺服器",
+        "undoCancel": "還原取消",
+        "agentsCount": "Agents（{count}）",
+        "scheduledRemoval": "已排程移除。",
+        "scheduledRemovalOn": "已排程在 {date} 移除。",
+        "tableName": "名稱",
+        "tableOnlineSince": "上線時間",
+        "tableModel": "模型",
+        "tableActions": "操作",
+        "mainBadge": "主 Agent",
+        "mainAgentTitle": "主 Agent",
+        "mainAgentDescription": "大多數使用者會先在這裡安裝 skill、調整模型與同步機器人資訊。額外 Agent 預設收起，需要時再展開。",
+        "skillsLabel": "已安裝 Skills",
+        "noSkillsInstalled": "還沒有安裝 skill。大多數使用者會先從這裡開始。",
+        "installSkill": "安裝 Skill",
+        "editAgent": "編輯 Agent",
+        "addAgentTitle": "新增 Agent",
+        "editAgentTitle": "編輯 Agent",
+        "editMainAgentTitle": "編輯主 Agent",
+        "agentFallbackName": "Agent",
+        "editAgentHint": "可以更新 Token 和模型。執行時在建立後不能修改。",
+        "allowedUserIdLabel": "允許的使用者 ID",
+        "savedUserIdPlaceholder": "已載入儲存的使用者 ID",
+        "userIdPlaceholder": "你的 Telegram 使用者 ID（例如 12345678）",
+        "savedUserIdHelp": "使用 Profile 中儲存的 Telegram 使用者 ID。",
+        "allowedUserIdHelp": "只有這些使用者可以和機器人聊天。多個 ID 請用逗號分隔。",
+        "aiSourceLabel": "AI 來源",
+        "managedAiSource": "ClawSimple 託管",
+        "telegramBotTokenLabel": "Telegram Bot Token",
+        "telegramBotTokenHelpLabel": "如何找到 Telegram Bot Token",
+        "keepCurrentTokenPlaceholder": "留空則保留目前 Token",
+        "botTokenPlaceholder": "輸入從 @BotFather 取得的 Bot Token",
+        "modelLabel": "模型",
+        "aiModelLabel": "AI 模型",
+        "agentRuntimeLabel": "執行時",
+        "openclawRuntime": "OpenClaw",
+        "hermesRuntime": "Hermes",
+        "agentRuntimeCreateHelp": "建立後，這個 Agent 的執行時不能修改。",
+        "agentRuntimeLockedHelp": "執行時已在建立時確定。",
+        "hermesUnavailableHelp": "請聯繫支援為這台伺服器啟用 Hermes Agent。",
+        "noPresetModels": "尚未設定預設模型",
+        "agentModalCancel": "取消",
+        "savingAgent": "儲存中...",
+        "addingAgent": "新增中...",
+        "saveAgentChanges": "儲存變更",
+        "addAgentSubmit": "新增 Agent",
+        "settingsMenu": "設定",
+        "serverToolsTitle": "伺服器操作",
+        "serverToolsDescription": "低頻但重要的伺服器級操作放在這裡，避免把主 Agent 面板擠滿。",
+        "serverInfoTitle": "伺服器資訊",
+        "serverIdLabel": "Server ID",
+        "serverIpLabel": "公網 IP",
+        "serverRuntimeLabel": "執行模式",
+        "serverVersionLabel": "OpenClaw 版本",
+        "extraAgentsTitle": "額外 Agent（{count}）",
+        "syncTelegramProfile": "同步 Telegram 資料：從 Telegram 拉取最新機器人名稱。",
+        "managed": "託管",
+        "pending": "處理中",
+        "noServersLinked": "這個訂閱下還沒有關聯伺服器。",
+        "setupInProgress": "伺服器啟動中",
+        "setupInProgressWithAgents": "伺服器啟動中 · 還有 {count} 個額外 Agent 正在設定",
+        "mainAgentHint": "主 Agent 無法刪除，但可以和額外 Agent 共用同一套編輯表單。",
+        "groupChatGuidePrefix": "若要為你的 Agent 啟用群聊，請查看",
+        "groupChatGuideLink": "這篇指南"
+      },
+      "feedback": {
+        "eyebrow": "社群與回應",
+        "title": "回饋與支持",
+        "description": "遇到不滿意或技術難題？我們隨時待命！通過 Discord 或郵件聯繫我們，我們將儘快為您解決。",
+        "supportBadge": "快速支援",
+        "discordButton": "Discord 社群",
+        "emailButton": "直接寄信",
+        "trustpilotTitle": "分享使用體驗",
+        "trustpilotDescription": "您的鼓勵對我們意義重大。如果您喜歡 ClawSimple，請考慮在 Trustpilot 上分享您的評價。",
+        "trustpilotBadge": "社群信任"
+      },
+      "maintenanceBotTip": "在 Profile 中管理機器人、模型和每個 bot 已選定的執行時。"
+    },
+    "form": {
+      "title": "建立個人 Agent 伺服器",
+      "tokenLabel": "Telegram 機器人 Token",
+      "tokenPlaceholder": "輸入你從 @BotFather 取得的機器人 Token",
+      "tokenHelp": "如何找到 Telegram 機器人 Token",
+      "userLabel": "Telegram 用戶 ID",
+      "userPlaceholder": "輸入您的用戶 ID",
+      "userPlaceholderSaved": "已從你儲存的 Telegram 使用者 ID 自動載入",
+      "checkingProfile": "正在檢查你的資料...",
+      "userSavedHint": "目前使用的是你在 Profile 中儲存的 Telegram 使用者 ID。若要修改，請先在那裡解除綁定。",
+      "userHint": "只有這些使用者可以和機器人聊天。多個 ID 請用逗號分隔。",
+      "userHelp": "如何獲取 Telegram 用戶 ID 白名單",
+      "existingDeploymentFound": "已偵測到現有部署",
+      "aiModelLabel": "內建 AI 模型",
+      "providerLabel": "AI 供應商",
+      "apiKeyLabel": "API Key",
+      "apiKeyPlaceholder": "sk-...",
+      "havePromo": "有優惠碼？",
+      "promoLabel": "優惠碼",
+      "promoPlaceholder": "輸入代碼",
+      "apply": "應用",
+      "working": "處理中...",
+      "monthly": "月付",
+      "yearly": "年付",
+      "yearlyDiscount": "省 17%",
+      "deployNow": "立即開始",
+      "addPayment": "添加支付方式",
+      "useClawSimple": "使用 6$ AI 配額",
+      "useClawSimpleMax": "使用 28$ AI 配額",
+      "bringYourOwn": "平台 AI 模型",
+      "runtimeLabel": "Agent 執行環境",
+      "runtimeHermes": "Hermes Agent",
+      "runtimeHermesDesc": "新伺服器預設使用。建立後不再修改。",
+      "runtimeOpenClaw": "OpenClaw",
+      "runtimeOpenClawDesc": "這個 bot 使用經典 OpenClaw 執行環境。",
+      "tooltips": {
+        "runtime": "選擇 Hermes Agent 獲得預設體驗，或選擇 OpenClaw Agent 使用經典模式。執行環境在建立後固定。",
+        "plan": "Standard：最適合多數使用者。Max：更多 AI 用量和更高的伺服器配置，適合日常重度使用。",
+        "model": "這是你的 bot 將使用的 AI 模型。你可以隨時在 Telegram 中使用 /models 命令切換模型。"
+      },
+      "modelSwitchHint": "如果無法確定，沒關係，您可以在 Telegram 中透過 /models 命令隨時更改模型。",
+      "stepOne": "第 1 步",
+      "stepTwo": "第 2 步",
+      "planLabel": "選擇方案",
+      "planHelper": "選擇這台獨立伺服器包含的 AI 用量。",
+      "legacyPlanLockedHelper": "這個訂閱會繼續沿用原有的 legacy plan。該方案的公開購買入口已下線，但你現有的訂閱仍可在這裡繼續部署。",
+      "planStandard": "標準版",
+      "planMax": "Max版",
+      "legacyPlanLockedBadge": "現有訂閱",
+      "planPrivateBadge": "獨立伺服器",
+      "legacyPlanLockedDescription": "這個 legacy plan 會繼續對你目前的訂閱生效。你仍然可以在這裡繼續按這個方案部署。",
+      "planStandardDesc": "獨立伺服器，含內建 AI 用量。適合大多數用戶作為預設選擇。",
+      "planMaxDesc": "獨立伺服器，含更多內建 AI 用量。適合更重度的使用情境。",
+      "aiSetupStatusManaged": "此方案已包含 AI 計費",
+      "aiSetupStatusOwn": "此方案使用您自己的 AI 供應商",
+      "aiSetupSummaryManaged": "部署時不需要額外連接供應商。",
+      "aiSetupSummaryOwn": "下一步需要填寫您的供應商連線資訊。",
+      "aiSetupNextManaged": "之後您仍然可以在 Profile 中新增或更換供應商。",
+      "aiSetupNextOwn": "請在下方選擇供應商，並填寫要綁定到這台伺服器的 API 資訊。",
+      "managedSetupTitle": "內建 AI 設定",
+      "providerSetupTitle": "連接您的 AI 帳戶",
+      "providerSetupDesc": "請在下方填寫供應商資訊。我們會用這些資訊將您的伺服器連接到您的 AI 帳戶。",
+      "baseUrlLabel": "Base URL",
+      "baseUrlPlaceholder": "https://api.example.com/v1",
+      "baseUrlDesc": "只有在您的供應商提供自訂 API URL 時才需要修改。",
+      "modelNameLabel": "模型名稱",
+      "modelNamePlaceholder": "model-id",
+      "modelNameDesc": "使用提供商的確切模型 ID (相容 OpenAI)。",
+      "fallbackModelsLabel": "備援模型（可選）",
+      "fallbackModelsPlaceholder": "model-a,model-b,model-c",
+      "modelCostWarning": "此模型非常昂貴。您的 ${price}/月 AI 額度使用此模型約可發送 {messageCount} 則訊息。您可以隨時在 Telegram 中透過 <command>/models</command> 命令切換到更便宜的模型。",
+      "presetAnthropic": "Anthropic",
+      "presetOpenAI": "OpenAI",
+      "presetPoe": "Poe",
+      "presetGoogle": "Google Gemini",
+      "presetCustom": "自訂",
+      "editConnection": "編輯連接",
+      "connectionDetails": "連接詳情"
+    },
+    "security": {
+      "title": "安全透明",
+      "description": "您的 Key 僅用於初始化伺服器。我們絕不保存。"
+    }
+  },
+  "about": {
+    "title": "關於我們",
+    "intro": "ClawSimple 為 OpenClaw 和 Hermes Agent 提供託管部署服務。你可以運行個人 AI 機器人，不用處理伺服器設置和維護。",
+    "mission": {
+      "title": "我們的使命",
+      "content": "我們把 OpenClaw 和 Hermes Agent 部署變成可用服務，讓用戶專注於機器人本身。"
+    },
+    "contact": {
+      "title": "聯絡我們",
+      "content": "有問題？聯絡我們"
+    }
+  },
+  "privacy": {
+    "title": "隱私政策",
+    "lastUpdated": "最後更新：2025年1月",
+    "data": {
+      "title": "我們收集的數據",
+      "content": "我們僅收集提供服務所需的最少數據：用於身份驗證的電子郵件、部署配置和賬單信息。新部署預設使用平台 AI 與託管搜尋，安裝時不需要提供 AI provider key。"
+    },
+    "keys": {
+      "title": "API 密鑰",
+      "content": "你的 Telegram 機器人 Token 會用於伺服器初始化。ClawSimple 預設接通平台 AI 與託管搜尋，因此安裝時不需要提交 OpenAI、Z.ai 或其他 AI provider key。"
+    },
+    "cookies": {
+      "title": "Cookies",
+      "content": "我們使用必要的 cookies 進行身份驗證和會話管理。我們不使用跟蹤或廣告 cookies。"
+    },
+    "contact": {
+      "title": "有問題？",
+      "content": "如有隱私相關問題，請聯絡 privacy@clawsimple.com"
+    }
+  },
+  "workflowLabels": {
+    "verificationLabel": "驗證狀態",
+    "testedLabel": "最近驗證",
+    "firstResultLabel": "首個結果時間",
+    "setupLabel": "開始前需要什麼",
+    "restrictionsLabel": "當前限制",
+    "sampleOutputLabel": "示例輸出",
+    "officialSupportLabel": "官方已接好的能力",
+    "rankingLabel": "推薦強度",
+    "rankingHint": "基於驗證狀態、上手難度和首個結果時間排序",
+    "statusPassed": "官方已驗證",
+    "statusPartial": "可用",
+    "statusUnverified": "待驗證",
+    "statusFailed": "當前不可用",
+    "setupReady": "開箱即用",
+    "setupSteps": "還需 {count} 項準備",
+    "promptDeterminismLabel": "命中穩定度",
+    "promptDeterminismHigh": "高",
+    "promptDeterminismMedium": "中",
+    "promptDeterminismLow": "低",
+    "partialHint": "目前可以用，但更適合按模板啟動；如果直接自由提問，結果可能不穩定。",
+    "unverifiedHint": "這條用法還沒有完成本輪官方驗證。",
+    "verifiedCountLabel": "已驗證",
+    "partialCountLabel": "可用"
+  },
+  "terms": {
+    "title": "服務條款",
+    "lastUpdated": "最後更新：2026年4月",
+    "service": {
+      "title": "服務描述",
+      "content": "ClawSimple 為 OpenClaw 機器人提供自動化伺服器部署和管理服務。服務按月付或年付訂閱方式提供。"
+    },
+    "payment": {
+      "title": "支付與賬單",
+      "content": "訂閱費用按月或按年預付。您可以隨時取消訂閱。服務將持續到當前計費週期結束。"
+    },
+    "credits": {
+      "title": "Credits",
+      "content": "購買的 Credits 僅可用於託管 AI 和託管 search/crawl 用量。Credits 會在購買後 365 天到期，不可轉讓，除法律要求外不可兌換成貨幣。"
+    },
+    "refund": {
+      "title": "退款",
+      "content": "退款根據具體情況處理。如果您遇到我們無法解決的服務問題，請聯絡我們考慮退款。"
+    },
+    "liability": {
+      "title": "責任限制",
+      "content": "我們對因使用服務而產生的任何損害不承擔責任，包括但不限於數據丟失、服務中斷或第三方 API 故障。"
+    },
+    "changes": {
+      "title": "條款變更",
+      "content": "我們可能隨時更新這些條款。繼續使用服務即表示接受任何變更。"
+    }
+  },
+  "blog": {
+    "cta": {
+      "title": "準備好部署自己的機器人了嗎？",
+      "description": "3 分鐘內讓您的 Telegram AI 機器人上線，無需伺服器設定。",
+      "button": "開始部署"
+    },
+    "listing": {
+      "title": "部落格",
+      "description": "ClawSimple 團隊的最新更新、指南和見解。",
+      "readMore": "閱讀更多"
+    },
+    "post": {
+      "backToList": "返回部落格"
+    }
+  }
+}

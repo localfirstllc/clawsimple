@@ -1,0 +1,187 @@
+---
+title: "Hermes Agent 安裝配置指南：先避開這些常見問題"
+description: "一篇面向 Hermes Agent 新用戶的實用指南，涵蓋安裝、模型密鑰、Telegram gateway、skills、瀏覽器、Docker、Termux、Windows、本地模型和 OpenClaw 遷移。"
+date: 2026-04-27
+---
+
+Hermes Agent 最近被更多人關注，因為它把聊天 agent、記憶、skills、工具、消息 gateway 和 terminal backends 放在一個項目裡。
+
+這也讓首次配置變得不太直觀。用戶問的不只是「怎麼安裝 Hermes」，還包括 API key 放哪裡、為什麼 Windows 要用 WSL2、Telegram 怎麼接、Docker 裡為什麼看不到本地文件、skills 怎麼啟用、本地模型為什麼不會調用工具。
+
+這篇給你一個短版答案。
+
+## Hermes Agent 是什麼
+
+Hermes Agent 是 Nous Research 開源的 agent。它可以從命令行運行，也可以通過 gateway 接入聊天平台；它能使用 skills、記住之前的工作、調用工具，並通過多種 terminal backend 執行任務。
+
+官方 README 裡列出的常用入口包括：
+
+- `hermes` 啟動交互式 CLI。
+- `hermes model` 切換 LLM provider 和模型。
+- `hermes tools` 配置啟用哪些工具。
+- `hermes gateway` 啟動 Telegram、Discord、Slack、WhatsApp、Signal、Email 等消息入口。
+- `hermes update` 更新安裝。
+- `hermes doctor` 檢查常見問題。
+- `hermes claw migrate` 從 OpenClaw 導入數據。
+
+如果你希望 bot 跑在伺服器上，並且能從手機聊天裡訪問，gateway 路徑比 CLI 路徑更重要。
+
+## 安裝 Hermes Agent
+
+官方快速安裝命令是：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+```
+
+官方文檔支持 Linux、macOS、WSL2，以及通過 Termux 運行的 Android。原生 Windows 不在官方安裝路徑裡，Windows 用戶應使用 WSL2。
+
+安裝後，重新載入 shell 並啟動：
+
+```bash
+source ~/.bashrc
+hermes
+```
+
+如果你用 zsh：
+
+```bash
+source ~/.zshrc
+hermes
+```
+
+## 配置模型密鑰
+
+Hermes 會把普通配置和 secret 分開：
+
+- `~/.hermes/config.yaml` 保存非 secret 設置。
+- `~/.hermes/.env` 保存 API keys 和 tokens。
+
+官方配置命令會把值寫到合適的位置：
+
+```bash
+hermes config
+hermes config set model anthropic/claude-opus-4
+hermes config set OPENROUTER_API_KEY sk-or-...
+hermes config check
+hermes config migrate
+```
+
+想用引導式模型選擇，就用 `hermes model`。已經知道具體 key 或配置項，就用 `hermes config set`。
+
+## 設置 Telegram 或其他 gateway
+
+手機聊天場景需要配置 messaging gateway：
+
+```bash
+hermes gateway setup
+hermes gateway start
+```
+
+gateway 負責讓 Hermes 通過 Telegram 或其他聊天平台保持可訪問。消息會話默認工作目錄是 home 目錄，除非你設置 `MESSAGING_CWD`。
+
+示例：
+
+```bash
+hermes config set MESSAGING_CWD /home/ubuntu/projects
+```
+
+如果 Hermes 跑在 VPS 上，這個配置經常決定了「bot 有回覆」和「bot 在錯誤目錄裡執行任務」的區別。
+
+## 安裝和使用 skills
+
+Skills 是 Hermes 按需載入的操作說明。查看已安裝 skills：
+
+```bash
+hermes skills list
+```
+
+搜索 skill：
+
+```bash
+hermes skills search docker
+```
+
+安裝官方可選 skill：
+
+```bash
+hermes skills install official/research/arxiv
+```
+
+安裝後的 skills 通常在新會話裡生效。如果當前會話也要用，重置會話，或使用官方文檔裡的立即刷新選項。
+
+## 從 OpenClaw 遷移
+
+Hermes 提供 OpenClaw 遷移命令：
+
+```bash
+hermes claw migrate
+hermes claw migrate --dry-run
+hermes claw migrate --preset user-data
+```
+
+官方 README 說明，Hermes 可以導入 persona 文件、記憶、用戶創建的 skills、審批模式、消息配置、白名單 secret、TTS 資產和 workspace instructions。
+
+先用 `--dry-run`。遷移會觸碰個人 agent 狀態，覆蓋前先看計劃。
+
+如果你已經在用 [ClawSimple](https://clawsimple.com)，可以通過託管 runtime switch 運行 OpenClaw 並試用 Hermes Agent，不必自己重建伺服器。
+
+## 常見配置問題
+
+### Hermes 支持 Windows 嗎？
+
+官方安裝路徑不支持原生 Windows。請使用 WSL2，並在 WSL2 裡運行 Linux 安裝命令。
+
+### Hermes 支持 Android 嗎？
+
+支持，通過 Termux。官方安裝器包含 Termux 路徑，並使用精簡依賴集，因為完整安裝可能拉到不適合 Android 的包。
+
+社區仍然有人遇到 Android 原生 Python 依賴安裝失敗，所以先更新，並優先使用官方 Termux 路徑。
+
+### Hermes 能跑在 Docker 裡嗎？
+
+可以，但文件訪問取決於 volume mount 和工作目錄。容器看不到的本地文件，Hermes 也讀寫不到。把需要操作的目錄掛進去，並設置工作目錄。
+
+### 為什麼瀏覽器自動化在某些網站失敗？
+
+Headless browser 可能觸發 bot detection。有些用戶會通過 CDP 連接真實 Chrome session，並保持瀏覽器 profile 打開。這是按網站處理的問題，不保證所有受保護網站都能用。
+
+### 為什麼本地模型能聊天，卻不會調用工具？
+
+工具調用取決於模型、provider adapter、prompt 格式和 Hermes 配置。社區反饋裡，有些本地模型可以聊天，但工具調用不穩定。先用已知可用的 hosted model 測通工具鏈，再切回本地模型對比。
+
+### Hermes 有原生 multi-agent 支持嗎？
+
+GitHub 上有一個開放中的 native multi-agent feature request。該 issue 把當前 Hermes 行為描述為更偏單 agent：persona 和 memory 路徑較全局。如果你今天需要多個命名 agent 和隔離 runtime state，先檢查這個 issue 的最新狀態。
+
+## 首次運行檢查清單
+
+1. 用官方腳本安裝。
+2. 運行 `hermes doctor`。
+3. 用 `hermes model` 選擇模型。
+4. 用 `hermes config set` 加入需要的 keys。
+5. 運行 `hermes`。
+6. 安裝一個 skill，並測試它。
+7. 如果要用 Telegram 或其他聊天平台，運行 `hermes gateway setup`。
+8. 如果 gateway 要在項目目錄裡工作，設置 `MESSAGING_CWD`。
+9. 導入 OpenClaw 數據前先運行 `hermes claw migrate --dry-run`。
+10. 調試可能已修復的問題前，先用 `hermes update` 更新。
+
+## 什麼時候託管更合適
+
+如果你想完全掌控，並且能處理 shell、Python 環境、API keys、gateway、systemd、Docker 和更新，自託管 Hermes 很合適。
+
+如果目標是在聊天裡擁有一個可用 bot，託管會更省事。[ClawSimple](https://clawsimple.com) 處理 OpenClaw 和 Hermes Agent 周邊的伺服器設置、runtime switching 和維護，你可以從任務開始，而不是從安裝開始。
+
+## 參考來源
+
+- Hermes Agent GitHub: [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
+- 官方安裝文檔: [Installation](https://github.com/NousResearch/hermes-agent/blob/main/website/docs/getting-started/installation.md)
+- 官方配置文檔: [Configuration](https://hermes-agent.nousresearch.com/docs/user-guide/configuration/)
+- 官方 skills 文檔: [Working with Skills](https://hermes-agent.nousresearch.com/docs/guides/work-with-skills)
+- GitHub issue: [Native multi-agent support request](https://github.com/NousResearch/hermes-agent/issues/7517)
+- GitHub issue: [Install/configure crash report](https://github.com/NousResearch/hermes-agent/issues/12074)
+- Reddit: [Android Termux install failure discussion](https://www.reddit.com/r/hermesagent/comments/1smjhmr/hermes_agent_v090_install_failing_on_android/)
+- Reddit: [Browser use problem discussion](https://www.reddit.com/r/hermesagent/comments/1skesbe/browser_use_problem/)
+- Reddit: [Docker file access discussion](https://www.reddit.com/r/hermesagent/comments/1sdqlo2/hermesagent_installation_in_docker_wont_be_able/)
+- Reddit: [Local models not using tools discussion](https://www.reddit.com/r/hermesagent/comments/1seykze/local_models_not_using_tools/)

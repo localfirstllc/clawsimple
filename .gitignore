@@ -1,0 +1,41 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# Next.js
+.next/
+out/
+.source/
+.open-next/
+
+# environment and secrets
+.env
+.env.*
+.dev.vars
+secrets.json
+
+# local tooling
+.vercel/
+.wrangler/
+.playwright-auth/
+playwright-report/
+test-results/
+coverage/
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+cloudflare-env.d.ts
+
+# local-only private material
+.agents/
+.agent/
+admin-skills/
+official-skills/
+docs/
+hkb/
+logs/
+tmp/
+video/
+*.pem
+*.txt

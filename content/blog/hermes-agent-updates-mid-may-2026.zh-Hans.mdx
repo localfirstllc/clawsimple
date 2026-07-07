@@ -1,0 +1,124 @@
+---
+title: "Hermes Agent 最新进展：Kanban、Curator、Grok OAuth，以及大幅轻量化的安装体验"
+description: "Hermes Agent 在四周内发布了四个大版本——v0.11 到 v0.14——带来了多 Agent 任务看板、自主技能管理、带 1M 上下文窗口的 xAI Grok，以及让安装更快更轻的瘦身浪潮。"
+date: 2026-05-18
+---
+
+过去一个月 Hermes Agent 的开发节奏堪称惊人。四个版本——[v0.11](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.4.23)（Interface）、[v0.12](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.4.30)（Curator）、[v0.13](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.5.7)（Tenacity）和 [v0.14](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.5.16)（Foundation）——在四月底到五月中旬之间落地，合计超过 3,900 次提交、2,500 个合并 PR，关闭了 500 多个 Issue。
+
+以下是你真正能感受到的功能。
+
+---
+
+## 多 Agent Kanban：把任务交给 AI 团队
+
+v0.13 发布了最受期待的功能之一：持久化的多 Agent Kanban 看板。
+
+- 创建一个看板，把任务放上去，让多个 Hermes Worker 领取、转交和完成任务
+- 心跳、僵尸检测和重试预算保持团队诚实——如果一个 Worker 静默了，另一个会认领任务
+- 幻觉门禁和异常退出自动阻断，防止垃圾进入你的"已完成"列
+- 一次安装，多个 kanban——为不同项目运行独立的看板
+
+配合 `/goal`（v0.13），通过 Ralph 循环将 Agent 锁定在目标上跨轮次执行，Hermes 现在中途偏离任务的可能性大大降低。
+
+---
+
+## 自主 Curator：你的 Agent 会自我维护
+
+v0.12 引入了 `hermes curator`——一个后台 Agent，在 Gateway 的 cron 定时器上运行，按自己的计划维护你的技能库：
+
+- **按质量和使用情况对技能评分**
+- **整合**相关技能，减少数量、提高质量
+- **修剪**不再使用的废弃技能
+- **写出运行报告**，供你审核变化
+- 纵深防御门禁保护内置和 Hub 技能免受篡改
+- `hermes curator status` 按使用量排序技能——从最常用到最少用
+
+自我改进循环（Hermes 在每次对话后决定记住什么的核心机制）也在 v0.12 中得到了重大升级：基于评分标准的评估取代了自由形式的判断，派生进程优先选择 Agent 刚加载的技能，并且实时运行时凭证能正确传播，使循环拥有与 Agent 相同的工具访问权限。
+
+---
+
+## xAI Grok 通过 SuperGrok OAuth 接入——1M 上下文窗口
+
+v0.14 将 Grok 作为一等公民提供商引入 Hermes。如果你付费订阅了 SuperGrok，现在就可以通过登录 xAI 账户在 Hermes 中使用 Grok——无需 API Key，无需单独付费。
+
+- **grok-4.3 获得 1M token 上下文窗口**——将整个代码库或研究语料放进单个提示词中
+- OAuth 流程优雅处理授权错误
+- 提供 SSH 隧道文档，帮助在远程机器上完成 OAuth 流程
+
+---
+
+## OpenAI 兼容的本地代理：一份订阅，所有工具
+
+同样在 v0.14 中：`hermes proxy` 启动一个本地 HTTP 端点，对外提供 OpenAI API 格式，但后端由你登录的任意 OAuth 提供商驱动——Claude Pro、ChatGPT Pro、SuperGrok。
+
+实际意义：Codex CLI、Aider、Cline、Continue，以及任何期望 OpenAI 兼容端点的自定义脚本，现在都可以用你现有的订阅直接工作。无需任何 API Key。
+
+---
+
+## 瘦身浪潮：更轻、更快的安装
+
+v0.14 让 Hermes 大幅变轻：
+
+- **重型后端现在首次使用时才延迟安装**——消息适配器 SDK、图像生成 SDK 和 TTS 提供商不再在安装时全部拉取
+- **`pip install hermes-agent` 可从 PyPI 安装**——干净的安装不再拖入每个可选依赖
+- **分层安装**在你的平台拒绝某个 wheel 时优雅降级
+- **冷启动缩短约 19 秒**——叠加 v0.12 中 TUI 冷启动约 57% 的缩减
+- **浏览器 CDP 调用快了 180 倍**——自动化操作感觉即时而非卡顿
+- **跨会话 1 小时 Claude 提示词缓存**——重复推理更便宜也更快
+
+---
+
+## 视频、语音和媒体工具
+
+- **`video_analyze`**（v0.13）——在 Gemini 及兼容多模态模型上的原生视频理解。Agent 现在可以观看并描述视频内容
+- **`video_generate`**（v0.14）——统一的可插拔视频生成管线
+- **xAI Custom Voices**（v0.13）——语音克隆 TTS 提供商
+- **ComfyUI v5 + TouchDesigner-MCP**（v0.12）——从可选变为默认内置
+
+---
+
+## 新的推理提供商
+
+四个版本共落地九个新的推理路径：
+
+- **xAI Grok 通过 SuperGrok OAuth**（v0.14）
+- **GPT-5.5 通过 Codex OAuth**（v0.11）——模型选择器中实时模型发现
+- **原生 AWS Bedrock**（v0.11）——基于新的可插拔传输层的 Converse API
+- **NVIDIA NIM**（v0.11）
+- **Arcee AI**（v0.11）
+- **Google Gemini CLI OAuth**（v0.11）+ 原生 AI Studio API 路由
+- **Vercel ai-gateway**（v0.11）——带定价和动态发现
+- **OpenRouter Pareto Code 路由器**（v0.14）
+- **提供商作为可插拔表面**（v0.13）——无需修改核心即可添加自定义提供商
+
+---
+
+## 开发者体验
+
+- **基于 Ink 的新 TUI**（v0.11）——用 React/Ink 完全重写的交互式 CLI，Python JSON-RPC 后端。粘性输入框、实时流式输出、带每轮计时器和 git 分支的状态栏
+- **每次写入时 LSP 语义诊断**（v0.14）——支持的编辑器中实时代码反馈
+- **`computer_use` 支持非 Anthropic 提供商**（v0.14）——cua-driver 后端现在不仅限于 Claude
+- **任意终端中可点击的 URL**（v0.14）
+- **原生 Windows 公测版**（v0.14）
+- **通过 `uvx` 的 Zed ACP 注册表**（v0.14）
+- **`huggingface/skills` 作为受信任的默认来源**（v0.14）——社区技能开箱可发现
+
+---
+
+## 可靠性和安全性
+
+- **Checkpoints v2**（v0.13）——重写的状态持久化，带真正的裁剪功能，长时间会话不会臃肿
+- **Gateway 自动恢复**（v0.13）——因重启而中断的会话从中断处继续
+- **默认开启脱敏**（v0.13）——一个版本关闭了 8 个 P0 安全修复
+- **Telegram 原生按钮 UI 用于 `clarify`**（v0.14）——Agent 现在可以用可点击的按钮向你提问，而非大段文字
+
+---
+
+## 国际化
+
+Hermes v0.13 为 7 个语言提供了静态 Gateway 和 CLI 翻译：**中文、日语、德语、西班牙语、法语、乌克兰语和土耳其语**。文档站点也新增了中文（简体）语言。
+
+---
+
+如果你想体验最新 Hermes Agent 而无需管理自己的服务器，[ClawSimple](/) 现已提供一键 Hermes 部署，并支持从 Profile 页面在 OpenClaw 和 Hermes 之间切换运行时。

@@ -1,0 +1,86 @@
+---
+title: OpenClawをRelaunchしたくなる理由と、かんたんな手順
+description: 非エンジニア向け。Relaunchを使うべきタイミング、メリット、ClawSimpleでの手順をわかりやすくまとめました。
+date: 2026-02-21
+---
+
+OpenClawを1〜2台で運用していると、こんな場面が出てきます。
+
+- 返信が遅くなる、たまに返ってこない
+- 設定を変えたのに、挙動が安定しない
+- Bot Tokenを更新したいが、触るほど不安になる
+
+このときにおすすめなのが **Relaunch** です。
+
+Relaunchは一言でいうと、  
+**今の設定を使って、きれいな新しいサーバーで立ち上げ直すこと** です。
+
+## なぜRelaunchが便利なのか
+
+Relaunchは技術者向けの裏ワザではありません。  
+「とにかく早く正常な状態に戻す」ための手段です。
+
+- 復旧までが速い
+- 原因調査に時間を取られにくい
+- 試行錯誤で状態を悪化させにくい
+
+「直すこと」より「戻すこと」を優先したいときに、とても有効です。
+
+## コミュニティでよくある詰まり方
+
+話題は違っても、共通しているのは  
+**どこが悪いのか短時間で判断しづらい** という点です。
+
+- [My setup is either screwed or openclaw sucks](https://www.reddit.com/r/openclaw/comments/1r11azg/my_setup_is_either_screwed_or_openclaw_sucks/)  
+  手順どおりに進めても、安定しないケース。
+- [Mismatching Tokens](https://www.reddit.com/r/openclaw/comments/1r18u6b/mismatching_tokens/)  
+  Tokenまわりの不一致で挙動が不安定になるケース。
+- [How do you prevent JSON-Seppuku?](https://www.reddit.com/r/openclaw/comments/1r2ee7a/how_do_you_prevent_jsonseppuku/)  
+  設定を触るほど、状態管理が難しくなるケース。
+
+こういう状況では、修正を重ねるよりRelaunchのほうが結果的に早いことが多いです。
+
+## こんなときはRelaunch優先
+
+次のどれかに当てはまれば、Relaunchを先に検討してください。
+
+1. 反応が遅い・不安定など、症状がはっきりしない
+2. Bot Tokenの更新など、変更が大きい
+3. デバッグに時間を使いたくない
+
+目安としては、  
+**「原因がすぐ特定できない」と感じたらRelaunch** でOKです。
+
+## ClawSimpleでの手順（かんたん）
+
+Profileで対象ボットを開き、**Relaunch on a Fresh Server** を押します。
+
+1. Bot Token と管理者IDを確認
+2. 必要ならモデル/キーを更新
+3. 履歴も引き継ぎたい場合は **Keep Chat History & Memory** をON
+4. 確認して開始
+
+利用枠は以下です。
+
+- **30日ごとに最大10回まで無料Relaunch**
+- 実際には月1〜2回で足りることが多く、十分なケースがほとんどです
+
+## データは消えますか？
+
+状況に応じて選べます。
+
+- **通常Relaunch**: まずは素早く復旧
+- **記憶を引き継ぐRelaunch**: パスワード付きでメモリ移行
+
+「まず復旧したい」か「履歴も維持したい」かで選べます。
+
+## まとめ
+
+Relaunchの良さは、技術的であることではなく、  
+**迷ったときに安全に戻せること** です。
+
+- 早く復旧できる
+- 修正ループにはまりにくい
+- 通常運用へ戻しやすい
+
+1〜2台運用なら、Relaunchは“非常手段”ではなく“日常の復旧手順”として持っておくのがおすすめです。

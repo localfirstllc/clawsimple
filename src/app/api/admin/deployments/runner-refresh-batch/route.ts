@@ -1,0 +1,136 @@
+import crypto from "node:crypto";
+import { and, inArray } from "drizzle-orm";
+import { NextRequest, NextResponse } from "next/server";
+import { auth } from "@/lib/auth/config";
+import { db } from "@/lib/db";
+import { deploymentAgentJobs, installSessions } from "@/lib/db/schema";
+import { enqueueAgentJob } from "@/lib/deploy/agent-jobs";
+import { isAgentJobInProgress } from "@/lib/deploy/agent-jobs";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+type BatchBody = {
+  sids?: unknown;
+};
+
+const MAX_BATCH = 200;
+
+export async function POST(request: NextRequest) {
+  const session = await auth.api.getSession({ headers: request.headers });
+  if (!session) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  }
+  if (session.user.role !== "admin") {
+    return NextResponse.json({ error: "forbidden" }, { status: 403 });
+  }
+
+  let body: BatchBody | null = null;
+  try {
+    body = (await request.json()) as BatchBody;
+  } catch {
+    body = null;
+  }
+
+  const rawSids = Array.isArray(body?.sids) ? body?.sids : [];
+  const sids = Array.from(
+    new Set(
+      rawSids
+        .map((value) => (typeof value === "string" ? value.trim() : ""))
+        .filter((value) => value.length > 0)
+    )
+  );
+
+  if (sids.length === 0) {
+    return NextResponse.json({ error: "sids is required" }, { status: 400 });
+  }
+  if (sids.length > MAX_BATCH) {
+    return NextResponse.json(
+      { error: "too_many_sids", details: `Maximum ${MAX_BATCH} sids per request.` },
+      { status: 400 }
+    );
+  }
+
+  const deployments = await db
+    .select({
+      id: installSessions.id,
+      status: installSessions.status,
+      active: installSessions.active,
+    })
+    .from(installSessions)
+    .where(inArray(installSessions.id, sids));
+  const deploymentBySid = new Map(deployments.map((item) => [item.id, item]));
+
+  const pendingJobs = await db
+    .select({
+      sid: deploymentAgentJobs.sid,
+      jobType: deploymentAgentJobs.jobType,
+      createdAt: deploymentAgentJobs.createdAt,
+    })
+    .from(deploymentAgentJobs)
+    .where(
+      and(
+        inArray(deploymentAgentJobs.sid, sids),
+        inArray(deploymentAgentJobs.status, ["pending", "running"])
+      )
+    );
+  const pendingBySid = new Map<string, string>();
+  for (const row of pendingJobs) {
+    if (!isAgentJobInProgress(row)) continue;
+    if (!pendingBySid.has(row.sid)) {
+      pendingBySid.set(row.sid, row.jobType);
+    }
+  }
+
+  const results: Array<{
+    sid: string;
+    status: "enqueued" | "not_found" | "not_ready" | "job_in_progress";
+    job_id?: string;
+    details?: string;
+  }> = [];
+
+  let enqueued = 0;
+  for (const sid of sids) {
+    const deployment = deploymentBySid.get(sid);
+    if (!deployment) {
+      results.push({ sid, status: "not_found" });
+      continue;
+    }
+    if (!deployment.active || deployment.status !== "completed") {
+      results.push({
+        sid,
+        status: "not_ready",
+        details: "Only active completed deployments can refresh runner.",
+      });
+      continue;
+    }
+    const pendingType = pendingBySid.get(sid);
+    if (pendingType) {
+      results.push({
+        sid,
+        status: "job_in_progress",
+        details: `Another job is in progress (${pendingType}).`,
+      });
+      continue;
+    }
+
+    const jobId = crypto.randomUUID();
+    await enqueueAgentJob({
+      id: jobId,
+      sid,
+      userId: session.user.id,
+      jobType: "runner_refresh",
+      payload: {},
+    });
+    results.push({ sid, status: "enqueued", job_id: jobId });
+    enqueued += 1;
+  }
+
+  return NextResponse.json({
+    ok: true,
+    total: sids.length,
+    enqueued,
+    skipped: sids.length - enqueued,
+    results,
+  });
+}

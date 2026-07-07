@@ -1,0 +1,1 @@
+ALTER TABLE "deploy_preset_usage_daily" ADD COLUMN "last_model" text;

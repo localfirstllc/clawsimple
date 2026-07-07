@@ -1,0 +1,1 @@
+ALTER TABLE "install_sessions" ADD COLUMN "seat_remove_at" timestamp;

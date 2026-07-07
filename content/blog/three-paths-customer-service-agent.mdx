@@ -1,0 +1,67 @@
+---
+title: "The Fastest Way to Build a Customer Service Agent Is to Not Build One"
+description: "You want an AI customer service agent for your website. Should you use Coze, write it from scratch, or add a Skill to Hermes? One table, three paths, and the counterintuitive answer."
+date: 2026-02-19
+---
+
+When people first encounter the idea of "adding a skill file to an agent runtime" as a way to build a customer service agent, a common reaction is: _That sounds too simple. It can't be a real solution._ The instinct is to reach for a visual workflow builder like Coze, or to start writing a full agent loop from scratch in LangGraph.
+
+The reality is the opposite. Adding a skill to an existing agent runtime is not a compromise — it is **the most practical path** for anyone who wants full control over their customer service agent without reinventing infrastructure.
+
+## First, Understand the Layers
+
+Before comparing approaches, you need to see where each piece lives in the stack:
+
+```
+┌─────────────────────────────────────────────┐
+│            What Your Customers See            │
+│   WeChat · Feishu Bot · Web Widget · ...      │
+└──────────────────┬──────────────────────────┘
+                   │
+┌──────────────────▼──────────────────────────┐
+│         Agent Platform (Hermes / OpenClaw)    │
+│  Channels · Tool Loop · Sessions · MCP · Cron │
+└──────────────────┬──────────────────────────┘
+                   │
+┌──────────────────▼──────────────────────────┐
+│              Skill / Prompt Layer             │
+│  Classification · KB Retrieval · Ticketing    │
+└─────────────────────────────────────────────┘
+```
+
+**Hermes and OpenClaw are both full-stack agent platforms — each combines message channels (Telegram, WeChat, Feishu, etc.) with the agent runtime (tool loop, sessions, memory, MCP, cron). They are alternatives, not layers on top of each other. You pick one.**
+
+Your Skill sits at the bottom. It defines "how to do customer service." Everything above it — the agent runtime and the message channels — is already built into the platform you choose. You are not writing the tool-calling loop, the session manager, or the channel adapters. They already exist.
+
+So "adding a customer service skill to Hermes" is not a half-measure. It _is_ the complete path to a customer service agent. The difference from Coze is just the interface:
+
+- **Coze**: You drag nodes on a canvas, check boxes for plugins, upload a knowledge base.
+- **Hermes + Skill**: You write a `SKILL.md`, configure a knowledge base, wire up tools, and run `hermes`.
+
+The output is the same: a system that receives customer questions through message channels, conducts multi-turn conversations, queries a knowledge base, invokes tools, and generates ticket drafts.
+
+## Three Paths Compared
+
+| | Coze / Dify | Hermes + Skill | From Scratch (LangGraph) |
+|---|---|---|---|
+| **Agent Runtime** | Platform-hosted | Hermes provides | You build it |
+| **Message Channels** | Built into platform | Hermes or OpenClaw (Telegram / WeChat / Feishu / DingTalk / ...) | You integrate each one |
+| **Service Logic** | Visual DAG workflow | SKILL.md + prompts | Code-defined |
+| **Knowledge Base** | Built-in RAG | MCP / local docs | You build it |
+| **Session Memory** | Platform-hosted | Hermes native | You manage it |
+| **24/7 Uptime** | Platform guarantee | Deploy on your own server | You operate it |
+| **Data Control** | Platform servers | Your own machines | Your own machines |
+| **Learning Curve** | Low (drag-and-drop) | Medium (write Skill + config) | High (write full stack) |
+| **Flexibility Ceiling** | Platform boundary | Skill + MCP boundary | Unlimited |
+
+## Which One Should You Choose?
+
+**For the fastest prototype** → Coze / Dify. Zero code, built-in knowledge base and plugins, publishable to Feishu or WeChat immediately. The trade-off is that your data lives on the platform and your feature ceiling is bound by the platform's roadmap. Ideal for non-developers who need to see results in limited time.
+
+**For a fully-controlled, long-running customer service agent** → Hermes (or OpenClaw) + Skill. You already have the agent platform — message channels, session memory, MCP, cron — all built in. What's missing is just the Skill file — where you define classification rules (returns vs. order tracking vs. complaint escalation), knowledge base retrieval strategy, ticketing tool conditions, and human hand-off triggers. Deploy on your own server and run 24/7.
+
+**For embedding deeply into your own product with custom behavior** → LangGraph. You control every detail of the agent loop. The cost is that you also write session management, channel adapters, long-term memory strategy, monitoring, and operations yourself. Do not start from `while True: response = LLM(...)` — even with LangGraph, you use its built-in persistence, state management, and human-in-the-loop primitives.
+
+## The Bottom Line
+
+> Adding a customer service Skill to Hermes (or OpenClaw) is not "settling." It _is_ building a customer service agent. The Skill is the brain. Hermes and OpenClaw are the body — channels and runtime, already built. You write the brain; the body is there. Coze gives you both on a hosted platform. Building from scratch means you build both. Pick the platform that fits your channel needs, then add the Skill.

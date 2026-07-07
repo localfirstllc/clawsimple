@@ -1,0 +1,71 @@
+---
+title: 如何部署您自己的 OpenClaw 伺服器
+description: 使用我們的一鍵安裝腳本，在您自己的 Ubuntu 伺服器上輕鬆部署 OpenClaw 的詳細指南。
+date: 2026-02-03
+---
+
+雖然 [ClawSimple](/) 提供了便捷的全託管服務，但您完全可以免費在自己的基礎設施上運行 OpenClaw。
+
+本指南將帶您一步步在一個全新的 Ubuntu 伺服器上搭建自託管的 OpenClaw 實例。
+
+## 準備工作
+
+在開始之前，您需要準備：
+
+1.  **一台全新的 Ubuntu 伺服器**：推薦 Ubuntu 22.04 LTS 或更新版本。2核心 vCPU 和 4GB記憶體的配置是一個不錯的起點（例如阿里雲、騰訊雲、AWS 或 Hetzner）。
+2.  **Root 權限**：您需要擁有伺服器的 `root` 權限（或 sudo 權限）以便通過 SSH 登入。
+3.  **Telegram Bot Token**：通過 Telegram 上的 [@BotFather](https://t.me/BotFather) 創建一個新機器人並獲取 API Token。
+4.  **Telegram User ID**：找到您的數字 User ID（可以通過 [@userinfobot](https://t.me/userinfobot) 查看），以便將自己加入白名單。
+5.  **AI API Key**（可選）：如果您想使用特定的模型，準備好 OpenAI 或 Z.ai 的 API Key。
+
+## 第一步：連接到您的伺服器
+
+打開終端並 SSH 登入到您的伺服器：
+
+```bash
+ssh root@your-server-ip
+```
+
+## 第二步：運行安裝程序
+
+我們提供了一個自動化的安裝腳本，能夠處理依賴項（Node.js, pnpm）、創建 systemd 服務以及初始化配置。
+
+將以下命令複製並粘貼到您的終端中：
+
+```bash
+curl -fsSL https://clawsimple.com/api/install | bash
+```
+
+腳本運行過程中會詢問您幾個問題：
+
+*   **Telegram Bot Token**：粘貼您從 BotFather 獲取的 Token。
+*   **Telegram User ID**：輸入您的數字 ID。
+*   **AI API Keys**（可選）：如果有，請輸入；否則可以使用預設設置。
+
+## 第三步：部署完成
+
+腳本運行結束後，您會看到如下成功提示：
+
+```text
+==========================================
+  ClawSimple Installation Complete!
+==========================================
+```
+
+您的 OpenClaw 機器人現在已經作為一個名為 `clawsimple` 的 systemd 服務在後台運行了。
+
+### 常用命令
+
+*   **查看狀態**：`sudo systemctl status clawsimple`
+*   **查看日誌**：`sudo journalctl -u clawsimple -f`
+*   **重啟服務**：`sudo systemctl restart clawsimple`
+
+## 下一步
+
+您的機器人現在應該已經上線了！試著在 Telegram 上給它發送 `Hi` 看看。
+
+由於是自託管，您擁有對配置的完全控制權。主要配置文件位於：
+*   環境變量：`/opt/clawsimple/.env`
+*   OpenClaw 配置：`/opt/clawsimple/.openclaw/openclaw.json`
+
+祝您折騰愉快！

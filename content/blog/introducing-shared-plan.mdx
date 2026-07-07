@@ -1,0 +1,115 @@
+---
+title: "Your Own AI Agent for Less: Introducing the ClawSimple Shared Plan"
+description: "We're working on a new, more affordable plan that lets multiple users run their AI agents on the same physical server — each fully isolated inside Docker. For everyday use and testing, the experience is virtually identical to a dedicated server."
+date: 2026-03-01
+---
+
+One of the most common pieces of feedback we hear from prospective users is some variation of:
+
+> "I love the idea, but I only need it for personal use / testing. Can it be a little cheaper?"
+
+That's a fair ask. Running a **dedicated physical server per user** is the right choice for teams and power users, but it's genuine overkill if you're an individual who just wants a personal AI agent that's online 24/7 without the hassle of self-hosting.
+
+So we've been building something new.
+
+---
+
+## What We're Announcing
+
+We're working on a **Shared Plan** — a new tier where multiple users' AI agents run on the same physical machine, each in their own isolated **Docker container**.
+
+This is **not** a public preview yet. We want to be transparent about what's coming before it launches, so you know exactly what to expect — and what the trade-offs are.
+
+---
+
+## How It Works
+
+Right now, every ClawSimple subscription provisions a *dedicated* server: one machine, one user. That's great for performance isolation, but it means you're paying for compute that mostly sits idle if your agent isn't under constant heavy load.
+
+The Shared Plan flips this around:
+
+- **Multiple users share one physical host**
+- **Each user's OpenClaw instance runs in a dedicated Docker container**
+- **Containers are fully isolated** — your files, memory, and agent configuration are invisible to other users on the same host
+
+From the outside — meaning from Telegram — your bot behaves exactly the same way. You talk to it, it responds, it remembers things, it runs tools. There is no externally visible difference.
+
+---
+
+## What's the Same
+
+The things that matter most for everyday use are unchanged:
+
+**✅ Your agent is isolated.** Your Docker container has its own filesystem, its own process space, and its own network namespace. Other users on the same host cannot read your files, intercept your messages, or access your agent's memory.
+
+**✅ Security hardening is identical.** The same allowlist enforcement, prompt injection protections, and tool sandboxing that protect dedicated-server users apply equally inside Docker containers.
+
+**✅ Multi-agent support works.** You can still run multiple bots under one subscription — they all run securely inside your isolated Docker container, just as they would on a dedicated server.
+
+**✅ The dashboard experience is the same.** Deploy, Relaunch, add agents, check status — the [ClawSimple](/) UI is identical regardless of which plan you're on.
+
+**✅ BYOM works.** Bring your own model API keys and they stay encrypted inside your container, just like on a dedicated server.
+
+---
+
+## What's Different
+
+The honest answer is: for **testing** and **regular personal use**, almost nothing. But we want to be upfront about the nuances.
+
+**⚡ Compute is shared.** If another user on the same host runs an unusually CPU-intensive task, you may see a brief slowdown. This is the fundamental trade-off of shared infrastructure. We mitigate it with container-level resource limits (CPU quotas, memory caps), but it's not zero.
+
+**🔒 Slightly different isolation model.** On a dedicated server, you're the only user at the OS level. On a shared host, your container shares the kernel with other containers. Docker's namespace and cgroup isolation is robust and battle-tested, but it's a different security boundary than a fully dedicated VM. For the vast majority of use cases — personal assistants, research bots, automation workflows — this distinction is irrelevant.
+
+**🛠️ No root access.** Dedicated server users can SSH in with emergency credentials. Shared containers don't offer root shell access — your agent runs in a managed environment. This is actually more like how most SaaS products work, and most users never need it anyway.
+
+---
+
+## Who This Is For
+
+The Shared Plan is designed for:
+
+- **Individuals** who want a personal AI agent without paying dedicated-server prices
+- **Developers testing** OpenClaw configurations before committing to a full plan
+- **Teams evaluating** ClawSimple for the first time with lower upfront commitment
+- **Light workloads** where the agent responds to messages a few dozen times per day rather than handling thousands of tool calls per hour
+
+If you're running a customer-support bot for a high-traffic Telegram community, or a coding agent that's constantly executing long tasks, you'll likely still want a dedicated server. But for most personal users, the Shared Plan will be more than enough.
+
+---
+
+## Pricing
+
+We haven't finalized the numbers, but the target is a meaningful step down from the current BYOM plan — accessible enough that "I just want to try it" stops being a barrier.
+
+We'll announce pricing when we're closer to launch. If you're interested in early access, just keep an eye on [this blog](/blog) or reach out via [X](https://x.com/clawsimpleapp) or [Discord](https://discord.gg/3UbQJF7EaG).
+
+---
+
+## Why Docker, Not Just Processes?
+
+You might wonder: why not simply run multiple OpenClaw processes on the same server and call it done?
+
+Containers give us much stronger guarantees:
+
+- **Filesystem isolation**: Each container has its own root filesystem. Agent A cannot accidentally (or maliciously) access Agent B's workspace.
+- **Network isolation**: Each container gets its own network namespace. We can enforce per-user egress rules and prevent cross-container communication.
+- **Resource limits**: CPU and memory quotas at the container level prevent one noisy neighbor from degrading everyone else.
+- **Restart independence**: If one container crashes, it restarts without affecting others.
+
+Plain processes don't offer any of these without complex, error-prone configuration. Docker makes it the default.
+
+---
+
+## The Bottom Line
+
+Shared infrastructure has a reputation risk because it's been done badly — cramming too many users onto one box, skimping on limits, and ignoring isolation. We've seen the horror stories too.
+
+Our approach is different: sensible host density, hard container resource limits, and isolation that we're confident in. The experience for testing and regular use is, in practice, indistinguishable from a dedicated server.
+
+We're building this because we want more people to be able to afford their own AI agent — not because it's easy to build. Shared infrastructure done right is actually *harder* than dedicated servers. But the result is a price point that opens ClawSimple up to a whole new group of users.
+
+Stay tuned. We'll post a proper launch announcement with pricing and availability when it's ready.
+
+---
+
+*[ClawSimple](/) manages OpenClaw deployments so you can focus on what your agent does, not how it runs.*
