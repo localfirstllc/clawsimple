@@ -32,7 +32,6 @@ cloudflare-env.d.ts
 .agent/
 admin-skills/
 official-skills/
-docs/
 hkb/
 logs/
 tmp/

@@ -58,6 +58,7 @@ Included:
 - `content/blog/`
 - `public/`
 - `drizzle/`
+- `docs/`
 - `scripts/db/`
 - `workers/runner-notify/`
 
