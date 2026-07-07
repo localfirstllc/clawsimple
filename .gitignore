@@ -28,13 +28,13 @@ next-env.d.ts
 cloudflare-env.d.ts
 
 # local-only private material
-.agents/
-.agent/
-admin-skills/
-official-skills/
-hkb/
-logs/
-tmp/
-video/
+/.agents/
+/.agent/
+/admin-skills/
+/official-skills/
+/hkb/
+/logs/
+/tmp/
+/video/
 *.pem
 *.txt
