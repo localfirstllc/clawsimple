@@ -40,7 +40,7 @@ export function generateCompletionToken(sid: string): string {
 export function verifyCompletionToken(
   token: string,
   sid: string,
-  secret: string
+  secret: string,
 ): boolean {
   const parts = token.split(":");
   if (parts.length !== 3) return false;
@@ -81,7 +81,7 @@ export function generatePresetProxyToken(sid: string): string {
     process.env.COMPLETION_TOKEN_SECRET;
   if (!secret) {
     throw new Error(
-      "DEPLOY_PRESET_PROXY_TOKEN_SECRET (or COMPLETION_TOKEN_SECRET) not configured"
+      "DEPLOY_PRESET_PROXY_TOKEN_SECRET (or COMPLETION_TOKEN_SECRET) not configured",
     );
   }
 
@@ -94,7 +94,7 @@ export function generatePresetProxyToken(sid: string): string {
 export function verifyPresetProxyToken(
   token: string,
   sid: string,
-  secret: string
+  secret: string,
 ): boolean {
   const parts = token.split(":");
   if (parts.length !== 2) return false;
@@ -128,8 +128,6 @@ export function generateInstallEventToken(sid: string): string {
 
 /**
  * Verify an install event token, returning the validated SID or null.
- * If COMPLETION_TOKEN_SECRET is not configured, returns the parsed SID
- * (backward compatibility — auth is opt-in via env var).
  */
 export function verifyInstallEventToken(token: string): string | null {
   const parts = token.split(":");
@@ -140,8 +138,7 @@ export function verifyInstallEventToken(token: string): string | null {
 
   const secret = process.env.COMPLETION_TOKEN_SECRET;
   if (!secret) {
-    // Backward compatible: auth not enforced when secret is missing
-    return sid;
+    return null;
   }
 
   const hmac = crypto.createHmac("sha256", secret);

@@ -2,6 +2,7 @@ import { and, eq, inArray, isNotNull } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { deploymentAgentJobs, installSessions, user } from "@/lib/db/schema";
+import { requireCronSecret } from "@/lib/cron-auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -28,7 +29,7 @@ async function sendAlertWebhook(alerts: AlertRow[]) {
     `[runner-health] detected ${alerts.length} unhealthy deployment runner(s)`,
     ...alerts.map(
       (item) =>
-        `sid=${item.sid} email=${item.email ?? "unknown"} reasons=${item.reasons.join(",")} oldest_job=${item.oldestJobAt ?? "none"} pending=${item.pendingCount}`
+        `sid=${item.sid} email=${item.email ?? "unknown"} reasons=${item.reasons.join(",")} oldest_job=${item.oldestJobAt ?? "none"} pending=${item.pendingCount}`,
     ),
   ];
 
@@ -48,13 +49,8 @@ async function sendAlertWebhook(alerts: AlertRow[]) {
 }
 
 export async function POST(request: NextRequest) {
-  const cronSecret = process.env.CRON_SECRET;
-  if (cronSecret) {
-    const provided = request.headers.get("x-cron-secret");
-    if (provided !== cronSecret) {
-      return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-    }
-  }
+  const authError = requireCronSecret(request);
+  if (authError) return authError;
 
   const jobStuckMinutes = getPositiveIntEnv("RUNNER_JOB_STUCK_MINUTES", 30);
   const jobStuckMs = jobStuckMinutes * 60_000;
@@ -71,8 +67,8 @@ export async function POST(request: NextRequest) {
       and(
         eq(installSessions.active, true),
         eq(installSessions.status, "completed"),
-        isNotNull(installSessions.deployAgentTokenHash)
-      )
+        isNotNull(installSessions.deployAgentTokenHash),
+      ),
     );
 
   if (sessions.length === 0) {
@@ -95,8 +91,8 @@ export async function POST(request: NextRequest) {
     .where(
       and(
         inArray(deploymentAgentJobs.sid, sidList),
-        inArray(deploymentAgentJobs.status, ["pending", "running"])
-      )
+        inArray(deploymentAgentJobs.status, ["pending", "running"]),
+      ),
     );
 
   const jobsBySid = new Map<string, { count: number; oldestAt: Date | null }>();

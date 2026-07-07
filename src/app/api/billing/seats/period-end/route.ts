@@ -4,7 +4,11 @@ import { db } from "@/lib/db";
 import { billingSubscriptionItem, installSessions } from "@/lib/db/schema";
 import { deleteHetznerServer } from "@/lib/deploy/hetzner";
 import { releaseTelegramBotTokenAssignments } from "@/lib/deploy/telegram-token-assignments";
-import { reduceSeatsFromSubscription, hasManagedSeatRemovalSchedule } from "@/lib/billing/stripe";
+import {
+  reduceSeatsFromSubscription,
+  hasManagedSeatRemovalSchedule,
+} from "@/lib/billing/stripe";
+import { requireCronSecret } from "@/lib/cron-auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -24,7 +28,9 @@ function groupKey(session: {
   return `${session.stripeSubscriptionId}:${session.stripeSubscriptionItemId}`;
 }
 
-async function cleanupSessionAtPeriodEnd(session: typeof installSessions.$inferSelect) {
+async function cleanupSessionAtPeriodEnd(
+  session: typeof installSessions.$inferSelect,
+) {
   const serverId = session.serverFingerprint?.server_id;
   const deployProvider = session.serverFingerprint?.deploy_provider;
 
@@ -49,13 +55,8 @@ async function cleanupSessionAtPeriodEnd(session: typeof installSessions.$inferS
 }
 
 export async function POST(request: NextRequest) {
-  const cronSecret = process.env.CRON_SECRET;
-  if (cronSecret) {
-    const provided = request.headers.get("x-cron-secret");
-    if (provided !== cronSecret) {
-      return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-    }
-  }
+  const authError = requireCronSecret(request);
+  if (authError) return authError;
 
   const now = new Date();
   const due = await db
@@ -64,8 +65,8 @@ export async function POST(request: NextRequest) {
     .where(
       and(
         eq(installSessions.seatStatus, "pending_remove"),
-        lte(installSessions.seatRemoveAt, now)
-      )
+        lte(installSessions.seatRemoveAt, now),
+      ),
     );
   const leakedRows = await db
     .select({
@@ -80,8 +81,8 @@ export async function POST(request: NextRequest) {
       billingSubscriptionItem,
       eq(
         installSessions.stripeSubscriptionItemId,
-        billingSubscriptionItem.stripeSubscriptionItemId
-      )
+        billingSubscriptionItem.stripeSubscriptionItemId,
+      ),
     )
     .where(
       and(
@@ -92,12 +93,12 @@ export async function POST(request: NextRequest) {
           and(
             isNull(billingSubscriptionItem.cancelAt),
             eq(billingSubscriptionItem.cancelAtPeriodEnd, true),
-            lte(billingSubscriptionItem.currentPeriodEnd, now)
+            lte(billingSubscriptionItem.currentPeriodEnd, now),
           ),
           lte(billingSubscriptionItem.cancelAt, now),
-          eq(billingSubscriptionItem.status, "canceled")
-        )
-      )
+          eq(billingSubscriptionItem.status, "canceled"),
+        ),
+      ),
     );
 
   const grouped = new Map<string, { key: SeatGroupKey; ids: string[] }>();

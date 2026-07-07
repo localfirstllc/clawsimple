@@ -79,7 +79,9 @@ type EventPayload = {
   };
 };
 
-function pickAllowedMeta(meta: Record<string, unknown> | undefined): Record<string, unknown> {
+function pickAllowedMeta(
+  meta: Record<string, unknown> | undefined,
+): Record<string, unknown> {
   if (!meta || typeof meta !== "object") return {};
   const filtered: Record<string, unknown> = {};
   for (const key of Object.keys(meta)) {
@@ -102,35 +104,24 @@ export async function POST(request: NextRequest) {
   console.log("Install Event Payload:", body);
 
   // Authenticate via install event token (HMAC over SID).
-  // Backward compatible: if COMPLETION_TOKEN_SECRET is not set, auth is
-  // skipped and the parsed SID from the token is ignored.
   const authHeader = request.headers.get("authorization") ?? "";
-  const bearerToken = authHeader.match(/^Bearer\s+(.+)\s*$/i)?.[1]?.trim() ?? "";
-
-  let authenticatedSid: string | null = null;
-  if (bearerToken) {
-    authenticatedSid = verifyInstallEventToken(bearerToken);
+  const bearerToken =
+    authHeader.match(/^Bearer\s+(.+)\s*$/i)?.[1]?.trim() ?? "";
+  if (!bearerToken) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
   const sidFromBody = typeof body?.sid === "string" ? body.sid.trim() : "";
   const event = body?.event;
 
-  // When an auth token is present, the SID must match the token.
-  // When no auth token is provided, fall back to the body SID (backward compat
-  // for deployments that predate install event tokens).
-  let sid: string;
-  if (bearerToken) {
-    if (!authenticatedSid) {
-      return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-    }
-    if (sidFromBody && sidFromBody !== authenticatedSid) {
-      return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-    }
-    sid = authenticatedSid;
-  } else {
-    // No auth token provided — use body SID directly (backward compat).
-    sid = sidFromBody;
+  const authenticatedSid = verifyInstallEventToken(bearerToken);
+  if (!authenticatedSid) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
+  if (sidFromBody && sidFromBody !== authenticatedSid) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  }
+  const sid = authenticatedSid;
 
   if (!sid) {
     return NextResponse.json({ error: "sid is required" }, { status: 400 });
@@ -145,7 +136,10 @@ export async function POST(request: NextRequest) {
     typeof installPhase !== "undefined" &&
     !INSTALL_PHASE_VALUES.has(installPhase)
   ) {
-    return NextResponse.json({ error: "install_phase is invalid" }, { status: 400 });
+    return NextResponse.json(
+      { error: "install_phase is invalid" },
+      { status: 400 },
+    );
   }
 
   const existing = await db
@@ -179,7 +173,9 @@ export async function POST(request: NextRequest) {
   }
 
   // Only merge allowed meta keys into serverFingerprint.
-  const allowedMeta = pickAllowedMeta(body?.meta as Record<string, unknown> | undefined);
+  const allowedMeta = pickAllowedMeta(
+    body?.meta as Record<string, unknown> | undefined,
+  );
   const mergedFingerprint = {
     ...(current.serverFingerprint ?? {}),
     ...allowedMeta,
@@ -193,7 +189,7 @@ export async function POST(request: NextRequest) {
           : current.status
         : event,
     serverFingerprint: mergedFingerprint,
-    errorCode: event === "failed" ? body?.meta?.error_code ?? null : null,
+    errorCode: event === "failed" ? (body?.meta?.error_code ?? null) : null,
   };
 
   if (event === "completed" || event === "failed") {

@@ -38,7 +38,7 @@ describe("generateCompletionToken", () => {
   it("throws when COMPLETION_TOKEN_SECRET is not set", () => {
     delete process.env.COMPLETION_TOKEN_SECRET;
     expect(() => generateCompletionToken("test-sid")).toThrow(
-      "COMPLETION_TOKEN_SECRET not configured"
+      "COMPLETION_TOKEN_SECRET not configured",
     );
   });
 });
@@ -66,32 +66,44 @@ describe("verifyCompletionToken", () => {
     const oldTimestamp = (Date.now() - 25 * 60 * 60 * 1000).toString();
     const signature = hmacSign(`test-sid:${oldTimestamp}`, TEST_SECRET);
     const expiredToken = `test-sid:${oldTimestamp}:${signature}`;
-    expect(verifyCompletionToken(expiredToken, "test-sid", TEST_SECRET)).toBe(false);
+    expect(verifyCompletionToken(expiredToken, "test-sid", TEST_SECRET)).toBe(
+      false,
+    );
   });
 
   it("rejects tokens with a future timestamp", () => {
     const futureTimestamp = (Date.now() + 60_000).toString();
     const signature = hmacSign(`test-sid:${futureTimestamp}`, TEST_SECRET);
     const futureToken = `test-sid:${futureTimestamp}:${signature}`;
-    expect(verifyCompletionToken(futureToken, "test-sid", TEST_SECRET)).toBe(false);
+    expect(verifyCompletionToken(futureToken, "test-sid", TEST_SECRET)).toBe(
+      false,
+    );
   });
 
   it("rejects tampered signatures", () => {
     const token = generateCompletionToken("test-sid");
     const parts = token.split(":");
     const tampered = `${parts[0]}:${parts[1]}:${"0".repeat(64)}`;
-    expect(verifyCompletionToken(tampered, "test-sid", TEST_SECRET)).toBe(false);
+    expect(verifyCompletionToken(tampered, "test-sid", TEST_SECRET)).toBe(
+      false,
+    );
   });
 
   it("rejects malformed tokens (wrong segment count)", () => {
-    expect(verifyCompletionToken("only-one-segment", "test-sid", TEST_SECRET)).toBe(false);
-    expect(verifyCompletionToken("a:b:c:d", "test-sid", TEST_SECRET)).toBe(false);
+    expect(
+      verifyCompletionToken("only-one-segment", "test-sid", TEST_SECRET),
+    ).toBe(false);
+    expect(verifyCompletionToken("a:b:c:d", "test-sid", TEST_SECRET)).toBe(
+      false,
+    );
   });
 
   it("rejects tokens with non-numeric timestamps", () => {
     const signature = hmacSign("test-sid:not-a-number", TEST_SECRET);
     const badToken = `test-sid:not-a-number:${signature}`;
-    expect(verifyCompletionToken(badToken, "test-sid", TEST_SECRET)).toBe(false);
+    expect(verifyCompletionToken(badToken, "test-sid", TEST_SECRET)).toBe(
+      false,
+    );
   });
 });
 
@@ -130,7 +142,7 @@ describe("generatePresetProxyToken", () => {
   it("throws when neither DEPLOY_PRESET_PROXY_TOKEN_SECRET nor COMPLETION_TOKEN_SECRET is set", () => {
     delete process.env.COMPLETION_TOKEN_SECRET;
     expect(() => generatePresetProxyToken("test-sid")).toThrow(
-      "DEPLOY_PRESET_PROXY_TOKEN_SECRET (or COMPLETION_TOKEN_SECRET) not configured"
+      "DEPLOY_PRESET_PROXY_TOKEN_SECRET (or COMPLETION_TOKEN_SECRET) not configured",
     );
   });
 });
@@ -158,13 +170,24 @@ describe("verifyPresetProxyToken", () => {
 
   it("rejects tampered signatures", () => {
     const goodSignature = hmacSign("test-sid", TEST_SECRET);
-    const badSignature = (goodSignature[0] === "a" ? "b" : "a") + goodSignature.slice(1);
-    expect(verifyPresetProxyToken(`test-sid:${badSignature}`, "test-sid", TEST_SECRET)).toBe(false);
+    const badSignature =
+      (goodSignature[0] === "a" ? "b" : "a") + goodSignature.slice(1);
+    expect(
+      verifyPresetProxyToken(
+        `test-sid:${badSignature}`,
+        "test-sid",
+        TEST_SECRET,
+      ),
+    ).toBe(false);
   });
 
   it("rejects malformed tokens", () => {
-    expect(verifyPresetProxyToken("no-colon", "test-sid", TEST_SECRET)).toBe(false);
-    expect(verifyPresetProxyToken("a:b:c", "test-sid", TEST_SECRET)).toBe(false);
+    expect(verifyPresetProxyToken("no-colon", "test-sid", TEST_SECRET)).toBe(
+      false,
+    );
+    expect(verifyPresetProxyToken("a:b:c", "test-sid", TEST_SECRET)).toBe(
+      false,
+    );
   });
 });
 
@@ -188,7 +211,7 @@ describe("generateInstallEventToken", () => {
   it("throws when COMPLETION_TOKEN_SECRET is not set", () => {
     delete process.env.COMPLETION_TOKEN_SECRET;
     expect(() => generateInstallEventToken("test-sid")).toThrow(
-      "COMPLETION_TOKEN_SECRET not configured"
+      "COMPLETION_TOKEN_SECRET not configured",
     );
   });
 });
@@ -209,7 +232,8 @@ describe("verifyInstallEventToken", () => {
 
   it("returns null for a tampered signature", () => {
     const goodSignature = hmacSign("test-sid", TEST_SECRET);
-    const badSignature = (goodSignature[0] === "a" ? "b" : "a") + goodSignature.slice(1);
+    const badSignature =
+      (goodSignature[0] === "a" ? "b" : "a") + goodSignature.slice(1);
     expect(verifyInstallEventToken(`test-sid:${badSignature}`)).toBeNull();
   });
 
@@ -218,8 +242,8 @@ describe("verifyInstallEventToken", () => {
     expect(verifyInstallEventToken("a:b:c")).toBeNull();
   });
 
-  it("returns sid via backward-compat path when COMPLETION_TOKEN_SECRET is absent", () => {
+  it("returns null when COMPLETION_TOKEN_SECRET is absent", () => {
     delete process.env.COMPLETION_TOKEN_SECRET;
-    expect(verifyInstallEventToken("test-sid:any-signature")).toBe("test-sid");
+    expect(verifyInstallEventToken("test-sid:any-signature")).toBeNull();
   });
 });

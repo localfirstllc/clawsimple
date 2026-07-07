@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { installSessions } from "@/lib/db/schema";
 import { deleteHetznerServer } from "@/lib/deploy/hetzner";
 import { releaseTelegramBotTokenAssignments } from "@/lib/deploy/telegram-token-assignments";
+import { requireCronSecret } from "@/lib/cron-auth";
 import {
   removeSeatFromSubscription,
   getStripeClient,
@@ -14,13 +15,8 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
-  const cronSecret = process.env.CRON_SECRET;
-  if (cronSecret) {
-    const provided = request.headers.get("x-cron-secret");
-    if (provided !== cronSecret) {
-      return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-    }
-  }
+  const authError = requireCronSecret(request);
+  if (authError) return authError;
 
   const now = new Date();
   const pending = await db
@@ -29,8 +25,8 @@ export async function POST(request: NextRequest) {
     .where(
       and(
         eq(installSessions.seatStatus, "pending"),
-        eq(installSessions.active, true)
-      )
+        eq(installSessions.active, true),
+      ),
     );
 
   const results = [];
