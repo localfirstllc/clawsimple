@@ -47,3 +47,6 @@ jobs:
 
       - run: pnpm build
         name: Build
+        env:
+          DATABASE_URL: postgresql://ci:ci@localhost:5432/clawsimple_ci
+          BETTER_AUTH_SECRET: ci-build-secret
