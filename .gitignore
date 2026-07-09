@@ -36,5 +36,6 @@ cloudflare-env.d.ts
 /logs/
 /tmp/
 /video/
+.tmp_servers
 *.pem
 *.txt
