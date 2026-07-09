@@ -57,7 +57,7 @@ jobs:
             issue_number="$INPUT_ISSUE_NUMBER"
           fi
 
-          "$HOME/bin/jz-auto-pr-dispatch" \
+          "$HOME/.local/bin/jz-auto-pr-dispatch" \
             --repo "$REPOSITORY" \
             --issue "$issue_number" \
             --actor "$ACTOR"
